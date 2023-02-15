@@ -6,7 +6,7 @@ import styles from "../styles/index.module.css";
 import Help from "@/src/components/home/Help";
 import Footer from "@/src/components/common/Footer";
 import { useContext } from "react";
-import { StoreContext } from "@/src/utils/StoreContext";
+import { StoreContext } from "@/global/StoreContext";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 
 export default function Home() {

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "../src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
 import { useContext } from "react";
-import { StoreContext } from "@/src/utils/StoreContext";
+import { StoreContext } from "@/global/StoreContext";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 import SearchPage from "@/src/components/SearchPage";
 
@@ -17,10 +17,7 @@ export default function Search() {
     <>
       <Head>
         <title>Search | Arclif</title>
-        <meta
-          name="description"
-          content="Get suitable construction materials fro your projects."
-        />
+        <meta name="description" content="Get suitable construction materials fro your projects." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
       </Head>
