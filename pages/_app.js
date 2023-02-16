@@ -1,5 +1,5 @@
-import { StoreContextProvider } from "@/src/utils/StoreContext";
-import "@/styles/globals.css";
+import { StoreContextProvider } from "../global/StoreContext";
+import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {
   return (

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { StoreContext } from "@/src/utils/StoreContext";
+import { StoreContext } from "@/global/StoreContext";
 import React, { useContext } from "react";
 import styles from "./askProduct-popup.module.css";
 
