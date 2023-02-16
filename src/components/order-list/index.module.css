@@ -1,0 +1,239 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap";
+.secOne {
+  padding: 0 5vw;
+}
+.secOne h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #2c2c2c;
+  margin-top: 33px;
+  margin-bottom: 34px;
+}
+.secOne .secOneInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.secOne .Main_con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.secOne img.product {
+  max-width: 100%;
+  height: 209px;
+  width: 269px;
+  object-fit: cover;
+}
+.secOne .Two {
+  margin-left: 23px;
+}
+.secOne .TwoOne {
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+.secOne .TwoOne h4 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24.0234px;
+  line-height: 40px;
+  color: #000;
+}
+.secOne .TwoOne p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 29px;
+  color: #262626;
+  max-width: 584px;
+}
+.secOne .TwoTwo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.secOne .TwoTwoOne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 23px;
+}
+.secOne .TwoTwoOne span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #b10744;
+  margin-left: 12.39px;
+}
+.secOne .TwoTwoTwo p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 26px;
+  color: #000;
+}
+.secOne .Line {
+  width: 1px;
+  min-height: 195px;
+  border-left: 1px solid #d9d9d9;
+  margin-left: 23px;
+  margin-right: 23px;
+}
+.secOne .Three a.accept {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 152.19%;
+  color: #fff;
+  background: #b10744;
+  border-radius: 24px;
+  padding: 6px 90px;
+  margin-bottom: 18px;
+  display: inline-block;
+}
+.secOne .Three a.issue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px;
+  color: #a8a8a8;
+}
+.secOne .Three a.issue img {
+  margin-right: 7.5px;
+}
+
+.secTwo {
+  padding: 0 5vw;
+  margin-top: 23px;
+  margin-bottom: 23px;
+}
+.section_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 19px;
+}
+.section_buttons div {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  color: #747474;
+}
+.section_buttons div:not(:last-child) {
+  margin-right: 48px;
+}
+.section_buttons .active {
+  font-weight: 500;
+  color: #b10744;
+  border-bottom: 1px solid #b10744;
+}
+.secTwo .One {
+  border-top: 1px solid #d9d9d9;
+}
+.secTwo .One h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2c2c2c;
+  margin-top: 29px;
+  margin-bottom: 24px;
+}
+
+.section_outer {
+}
+.section_outer div {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 29px;
+  color: #343434;
+}
+
+@media only screen and (max-width: 1326px) {
+  .secOne .Three a.accept {
+    padding: 6px 22px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .secOne .TwoOne p {
+    max-width: 500px;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .secOne .Main_con {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .secOne .Two {
+    margin-left: 0px;
+  }
+  .secOne .TwoOne h4 {
+    margin-top: 10px;
+  }
+  .secOne .TwoOne {
+    border-bottom: none;
+    margin-bottom: 0px;
+  }
+}
+@media only screen and (max-width: 766px) {
+  .secOne .TwoTwo {
+    flex-direction: column;
+  }
+  .secOne .Line {
+    display: none;
+  }
+  .secOne .secOneInner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .secOne .Three a.accept {
+    padding: 6px 90px;
+  }
+  .secOne .TwoOne p {
+    max-width: inherit;
+  }
+  .secOne img.product {
+    width: 100%;
+  }
+  .One {
+    width: 100%;
+  }
+  .secOne .TwoTwoOne {
+    margin-bottom: 16px;
+    margin-right: 0px;
+  }
+
+  .Three {
+    border-top: 1px solid #d9d9d9;
+    width: 100%;
+    text-align: center;
+    padding-top: 23px;
+    margin-top: 23px;
+  }
+  .section_buttons div:not(:last-child) {
+    margin-right: 20px;
+  }
+  .section_buttons div {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
