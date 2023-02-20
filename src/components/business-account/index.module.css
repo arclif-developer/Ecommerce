@@ -1,0 +1,286 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap";
+.secOne {
+  padding: 0 5vw;
+}
+
+.secOne h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #2c2c2c;
+  margin-top: 30px;
+}
+
+.section_buttons {
+  display: inline-block;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin-top: 12px;
+  margin-bottom: 35px;
+}
+.section_buttons::-webkit-scrollbar {
+  display: none;
+}
+.section_buttons div {
+  display: inline-block;
+  width: auto;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 34px;
+  color: #747474;
+}
+.section_buttons div:not(:last-child) {
+  margin-right: 55px;
+}
+.section_buttons .active {
+  font-weight: 500;
+  color: #b10744;
+  border-bottom: 1px solid #b10744;
+}
+
+.profile_outer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.profile_image {
+  text-align: center;
+  margin-right: 23px;
+}
+.profile_image img {
+  height: 107px;
+  width: 107px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile_image div {
+  font-size: 70px;
+  font-weight: bolder;
+  line-height: 110px;
+  height: 107px;
+  width: 107px;
+  border-radius: 50%;
+  text-align: center;
+}
+.profile_image div span {
+  color: #85bb24;
+}
+
+.profile_image > span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #304156;
+}
+
+.profile_details {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #434343;
+  width: calc(100% - 107px);
+}
+.profile_details > div {
+  width: 100%;
+  max-width: 647px;
+}
+.profile_details label {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #434343;
+  display: inline-block;
+  padding-bottom: 11px;
+  padding-top: 15px;
+}
+.profile_details input {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #304156;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  width: 100%;
+  padding: 8px 20px;
+}
+.profile_details textarea {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #304156;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  width: 100%;
+  padding: 8px 20px;
+  max-height: 34.59px;
+}
+.profile_details .SpTwo > div {
+  width: 50%;
+  max-width: 312px;
+  float: left;
+}
+.profile_details .SpTwo > div:first-child {
+  margin-right: 23px;
+}
+.profile_details .saveOuter {
+  text-align: right;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  display: inline-block;
+}
+.profile_details .saveOuter .discard {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #747474;
+  display: inline-block;
+  margin-right: 41px;
+}
+.profile_details .saveOuter .save {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 11px 38px;
+  color: #ffffff;
+  background: #b10744;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+/* Order history started and account details ended */
+.history_outer {
+}
+.his_outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.his_outer > img {
+  width: 229px;
+  height: 206px;
+}
+
+.his_outer .Two {
+  margin-left: 32px;
+}
+.his_outer .TwoOne {
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+.his_outer .TwoOne h4 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24.0234px;
+  line-height: 40px;
+  color: #000000;
+}
+.his_outer .TwoOne p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 29px;
+  color: #262626;
+  max-width: 584px;
+}
+.his_outer .TwoTwo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.his_outer .TwoTwoOne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 23px;
+}
+.his_outer .TwoTwoOne span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #b10744;
+  margin-left: 12.39px;
+}
+.his_outer .TwoTwoTwo p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 26px;
+  color: #000;
+}
+
+.Three {
+}
+.ThreeOne {
+}
+.ThreeOne div {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #232323;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ThreeTwo {
+}
+.ThreeTwo a {
+}
+.ThreeTwo a:first-child {
+}
+.ThreeTwo a:last-child {
+}
+/* Sell product started and Order details ended */
+
+@media only screen and (max-width: 863px) {
+  .profile_details .SpTwo > div {
+    width: 100%;
+    max-width: 647px;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  .profile_outer {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .profile_details {
+    width: 100%;
+  }
+  .profile_image {
+    margin: 0 auto;
+  }
+  .section_buttons div:not(:last-child) {
+    margin-right: 23px;
+  }
+  .profile_details textarea {
+    max-height: 57px;
+  }
+}

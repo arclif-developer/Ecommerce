@@ -121,11 +121,16 @@
   margin-top: 23px;
   margin-bottom: 23px;
 }
+
 .section_buttons {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: inline-block;
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
   margin-bottom: 19px;
+}
+.section_buttons::-webkit-scrollbar {
+  display: none;
 }
 .section_buttons div {
   font-family: "Roboto";
@@ -134,6 +139,8 @@
   font-size: 16px;
   line-height: 34px;
   color: #747474;
+  display: inline-block;
+  width: auto;
 }
 .section_buttons div:not(:last-child) {
   margin-right: 48px;
@@ -235,5 +242,14 @@
   .section_buttons div {
     font-size: 14px;
     line-height: 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .section_buttons div {
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .section_buttons div:not(:last-child) {
+    margin-right: 15px;
   }
 }
