@@ -61,6 +61,14 @@ const AccountSettings = () => {
                   </div>
                 </div>
               </div>
+              <div className={styles.inputContainer}>
+                <p>Email address</p>
+                <input type="email" />
+              </div>
+              <div className={styles.buttonsContainer}>
+                <div className={styles.discardButton}>Discard</div>
+                <div className={styles.saveButton}>Save & Change</div>
+              </div>
             </div>
           </div>
         ) : (
