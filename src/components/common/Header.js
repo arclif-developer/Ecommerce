@@ -1,11 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import { StoreContext } from "@/global/StoreContext";
+import { useRouter } from "next/router";
 import React, { useContext } from "react";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [Store] = useContext(StoreContext);
   const setAskProductPopup = Store.setAskProductPopup;
+
+  const router = useRouter();
+
+  const gotoProfile = () => {
+    router.push("/profile");
+  };
 
   return (
     <>
@@ -30,7 +37,7 @@ const Header = () => {
                 <img className={styles.nh} src="/icon/delete-nh.svg" alt="" />
                 <img className={styles.h} src="/icon/delete-h.svg" alt="" />
               </span>
-              <span className={styles.user}>
+              <span className={styles.user} onClick={gotoProfile}>
                 <img className={styles.nh} src="/icon/user-nh.svg" alt="" />
                 <img className={styles.h} src="/icon/user-h.svg" alt="" />
               </span>

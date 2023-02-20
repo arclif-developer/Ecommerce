@@ -1,0 +1,114 @@
+.accountSettings {
+  margin-top: 30px;
+  font-family: inherit;
+}
+
+.accountSettings_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.accountSettings_header_left {
+  display: flex;
+  align-items: center;
+}
+
+.accountSettings_header_left > h3 {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 36px;
+  color: #262626;
+}
+
+.editButton {
+  height: 20px;
+  width: 40px;
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1939aa;
+  border: 0.82px solid #1939aa;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-left: 27px;
+}
+
+.accountSettings_header_right {
+  display: flex;
+  align-items: center;
+  color: #888888;
+}
+
+.accountSettings_header_right > p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  padding: 10px 0px;
+  padding-right: 33px;
+  border-right: 1px solid #f5f5f5;
+  margin-right: 33px;
+}
+
+.accountSettings_header_right > span {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.rightNav_header_active {
+  color: #b10744;
+}
+
+.accountSettings_body {
+  margin-top: 26px;
+}
+
+.personalInformation {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.personalInformation_card {
+  border: 1px solid #e9e9e9;
+  padding: 34px 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.personalInformation_card > img {
+  width: 67px;
+  height: 67px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 55px;
+}
+
+.inputContainer {
+  width: 100%;
+  margin: 0px 10px;
+}
+
+.inputContainer > p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #434343;
+  margin-bottom: 19px;
+}
+
+.inputContainer > input {
+  border: 1px solid #d0d0d0;
+  height: 38px;
+  width: 100%;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  outline: none;
+  padding: 0 20px;
+}
