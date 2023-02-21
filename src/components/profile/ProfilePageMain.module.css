@@ -1,0 +1,83 @@
+.profilePageMain {
+  padding: 0 5vw;
+  min-height: calc(100vh - 63px);
+  width: 100%;
+}
+
+.profile_header {
+  height: 68px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* position adding */
+}
+
+.profile_header_personal {
+  display: flex;
+  align-items: center;
+  padding-right: 47px;
+  border-right: 1px solid #f1f1f1;
+  height: 70%;
+}
+
+.profile_header_personal > img {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+}
+
+.profile_header_personal_details {
+  margin-left: 22px;
+}
+
+.profile_header_personal_details > p {
+  font-size: 14px;
+  font-weight: 300;
+  color: #393939;
+  text-align: left;
+}
+
+.profile_header_personal_details > h5 {
+  color: #393939;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.profile_header_options {
+  display: flex;
+  align-items: center;
+  gap: 53px;
+  padding-left: 41px;
+}
+
+.profile_header_menu,
+.profile_header_menu_active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile_header_menu > p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: left;
+  color: #505050;
+  margin-left: 10px;
+}
+
+.profile_header_menu_active > p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 27px;
+  text-align: left;
+  margin-left: 10px;
+  color: #b10744;
+}
+
+.profile_body {
+  margin-top: 24px;
+}
