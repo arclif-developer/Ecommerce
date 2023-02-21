@@ -129,6 +129,15 @@
   margin-top: 6px;
 }
 
+.header_right_icons .active .h,
+.header_right_icons .active:hover .h {
+  display: block !important;
+}
+.header_right_icons .active .nh,
+.header_right_icons .active:hover .nh {
+  display: none !important;
+}
+
 .header_right_icons .favorites .h {
   display: none;
 }
