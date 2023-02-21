@@ -206,15 +206,30 @@ export default function BusinessAccountMain() {
               <div className={styles.sell_max_outer}>
                 {Array.apply(null, { length: 5 }).map((e, i) => (
                   <div className={styles.sell_outer}>
-                    <div>
-                      <img
-                        className={styles.product}
-                        src="/img/common/ni.jpg"
-                        onError={(e) => (e.target.src = "/img/common/ina.png")}
-                        alt="Product Image"
-                      />
+                    <img
+                      className={styles.product}
+                      src="/img/common/ni.jpg"
+                      onError={(e) => (e.target.src = "/img/common/ina.png")}
+                      alt="Product Image"
+                    />
+                    <div className={styles.SellTwo}>
+                      <div className={styles.SellTwoOne}>
+                        The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented Smart GRID
+                        Technology Nylon Office Executive Chair.
+                      </div>
+                      <div className={styles.SellTwoTwo}>
+                        <span>₹349</span>
+                        <span>₹1,499</span>
+                        <span>76% off</span>
+                      </div>
+                      <div className={styles.SellTwoThree}>
+                        <a>Edit Price</a>
+                        <div>
+                          <img src="/img/common/edit.svg" />
+                          <span>Edit product details</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>dfh</div>
                   </div>
                 ))}
               </div>

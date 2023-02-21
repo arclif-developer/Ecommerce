@@ -305,6 +305,94 @@
 /* Sell product started and Order details ended */
 
 .sell_outer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e2e2e2;
+  border-radius: 2px;
+  margin-bottom: 24px;
+  padding: 25px 10px;
+  max-width: 933px;
+  width: 100%;
+}
+.sell_outer > img {
+  width: 241px;
+  height: 175px;
+  object-fit: cover;
+  padding-right: 10px;
+  border-right: 1px solid #d9d9d9;
+}
+.SellTwo {
+  margin-left: 45px;
+}
+.SellTwoOne {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 29px;
+  color: #262626;
+  max-width: 524px;
+}
+.SellTwoTwo {
+  margin-top: 15px;
+  margin-bottom: 21px;
+}
+.SellTwoTwo span {
+  font-family: "Roboto";
+  font-style: normal;
+  margin-bottom: 15px;
+}
+.SellTwoTwo span:nth-child(1) {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 29.82px;
+  color: #000000;
+  margin-right: 15px;
+}
+.SellTwoTwo span:nth-child(2) {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26.51px;
+  color: #bdbdbd;
+  text-decoration: line-through;
+  margin-right: 15px;
+}
+.SellTwoTwo span:nth-child(3) {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23.2px;
+  color: #21af40;
+}
+.SellTwoThree {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.SellTwoThree a {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #212121;
+  background: #d9d9d9;
+  border-radius: 2.23669px;
+  padding: 11px 92px;
+  margin-right: 46px;
+  display: inline-block;
+}
+.SellTwoThree div {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #b10744;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 1442px) {
@@ -375,6 +463,19 @@
   }
   .his_outer {
     margin-bottom: 0px;
+  }
+  .sell_outer {
+    flex-direction: column;
+  }
+  .sell_outer > img {
+    width: 100%;
+    height: 145px;
+    padding: 0 30px;
+    border-right: none;
+  }
+  .SellTwo {
+    margin-top: 17px;
+    margin-left: 0;
   }
 }
 
@@ -464,5 +565,31 @@
   }
   .history_outer {
     background-color: #f8f8f8;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .SellTwoOne {
+    max-width: calc(100% - 45px);
+    margin: 0 auto;
+  }
+  .SellTwoTwo {
+    max-width: calc(100% - 45px);
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+  .SellTwoThree {
+    max-width: calc(100% - 45px);
+    margin: 0 auto;
+    padding-top: 10px;
+    flex-direction: column;
+  }
+  .SellTwoThree a {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .SellTwoThree div {
+    width: 100%;
   }
 }
