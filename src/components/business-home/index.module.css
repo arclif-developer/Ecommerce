@@ -1,0 +1,33 @@
+@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap";
+.secOne {
+  padding: 0 5vw;
+}
+
+.secOneInner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 33px;
+  grid-row-gap: 33px;
+}
+.bidInner {
+}
+.bidInner > img {
+}
+.bidInner .Desc {
+}
+.bidInner .Locatn {
+}
+.bidInner .Buttn {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px;
+  color: #ffffff;
+  background: #b10744;
+  border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 6px;
+}
