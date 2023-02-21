@@ -77,7 +77,41 @@ const CartPageMain = () => {
           <h3>Price details</h3>
           <img src="/img/profile/i.svg" alt="" />
         </div>
-        <div className={styles.cartPage_right_content}></div>
+        <div className={styles.cartPage_right_content}>
+          <div className={styles.cartPage_right_content_row}>
+            <p>Price ( 03 items ) :</p> <span>₹33,249.00</span>
+          </div>
+          <div className={styles.cartPage_right_content_row}>
+            <p>Discount :</p> <span> ₹1,249.00</span>
+          </div>
+          <div className={styles.cartPage_right_content_row}>
+            <p>Delivery charge :</p> <span>Free</span>
+          </div>
+          <span className={styles.spanOne}></span>
+          <div className={styles.subtotal}>
+            <p>Subtotal (02 items)</p>
+            <span>₹3,249.00</span>
+          </div>
+          <div className={styles.orderNow_button}>Order now</div>
+          <div className={styles.deliveryAddress}>
+            <div className={styles.deliveryAddress_left}>
+              <img src="/img/cart/location.svg" alt="" />
+              <p>Delivery address</p>
+            </div>
+            <div className={styles.EditButton}>Edit</div>
+          </div>
+          <div className={styles.deliveryAddress_select}>
+            <input type="checkbox" />
+            <p>Great South Road, Manukau, Saules ilea 7 - 16, Cosi</p>
+          </div>
+          <span></span>
+          <div className={styles.deliveryAddress_button}>Delivery address +</div>
+          <span></span>
+          <div className={styles.terms}>
+            <img src="/img/cart/privacy.svg" alt="" />
+            <p>Safe and Secure Payments.100% Authentic products.</p>
+          </div>
+        </div>
       </div>
     </div>
   );
