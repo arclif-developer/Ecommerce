@@ -1,9 +1,8 @@
 import { StoreContext } from "@/global/StoreContext";
+import CartPageMain from "@/src/components/cart/CartPageMain";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 import Footer from "@/src/components/common/Footer";
 import Header from "@/src/components/common/Header";
-import AddAddressPopUp from "@/src/components/profile/AddAddressPopUp";
-import ProfilePageMain from "@/src/components/profile/ProfilePageMain";
 import Head from "next/head";
 import { useContext } from "react";
 
@@ -12,7 +11,6 @@ import styles from "./index.module.css";
 export default function Profile() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
-  const addAddressPopUp = Store.addAddressPopUp;
 
   return (
     <>
@@ -26,12 +24,11 @@ export default function Profile() {
         <div className={styles.main_outer_cover}>
           <Header />
           <div className={styles.main_inner}>
-            <ProfilePageMain />
+            <CartPageMain />
           </div>
           <Footer />
         </div>
         {askProductPopup ? <AskProductPopUp /> : ""}
-        {addAddressPopUp ? <AddAddressPopUp /> : ""}
       </main>
     </>
   );

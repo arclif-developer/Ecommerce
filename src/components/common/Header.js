@@ -14,6 +14,10 @@ const Header = () => {
     router.push("/profile");
   };
 
+  const gotoCart = () => {
+    router.push("/cart");
+  };
+
   return (
     <>
       <div className={styles.header_outer}>
@@ -33,7 +37,7 @@ const Header = () => {
                 <img className={styles.nh} src="/icon/favorites-nh.svg" alt="" />
                 <img className={styles.h} src="/icon/favorites-h.svg" alt="" />
               </span>
-              <span className={styles.delete}>
+              <span className={styles.delete} onClick={gotoCart}>
                 <img className={styles.nh} src="/icon/delete-nh.svg" alt="" />
                 <img className={styles.h} src="/icon/delete-h.svg" alt="" />
               </span>
