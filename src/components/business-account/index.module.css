@@ -168,6 +168,7 @@
 
 /* Order history started and account details ended */
 .history_outer {
+  margin-bottom: 23px;
 }
 .his_outer {
   display: flex;
@@ -177,17 +178,20 @@
 .his_outer > img {
   width: 229px;
   height: 206px;
+  object-fit: cover;
 }
 
-.his_outer .Two {
-  margin-left: 32px;
+.history_outer .Two {
+  min-height: 206px;
+  background-color: #f6f6f6;
+  padding: 12px 28px 12px 32px;
 }
-.his_outer .TwoOne {
+.history_outer .TwoOne {
   border-bottom: 1px solid #d9d9d9;
   padding-bottom: 14px;
   margin-bottom: 14px;
 }
-.his_outer .TwoOne h4 {
+.history_outer .TwoOne h4 {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
@@ -195,7 +199,7 @@
   line-height: 40px;
   color: #000000;
 }
-.his_outer .TwoOne p {
+.history_outer .TwoOne p {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -204,18 +208,18 @@
   color: #262626;
   max-width: 584px;
 }
-.his_outer .TwoTwo {
+.history_outer .TwoTwo {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 }
-.his_outer .TwoTwoOne {
+.history_outer .TwoTwoOne {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 23px;
 }
-.his_outer .TwoTwoOne span {
+.history_outer .TwoTwoOne span {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -224,7 +228,7 @@
   color: #b10744;
   margin-left: 12.39px;
 }
-.his_outer .TwoTwoTwo p {
+.history_outer .TwoTwoTwo p {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 300;
@@ -234,6 +238,9 @@
 }
 
 .Three {
+  min-height: 206px;
+  background-color: #e6e6e6;
+  padding: 19px 53px 10px 81px;
 }
 .ThreeOne {
 }
@@ -248,16 +255,128 @@
   align-items: center;
   justify-content: space-between;
 }
+.ThreeOne div span:first-child {
+  padding-right: 15px;
+}
+.ThreeOne div span:last-child {
+  padding-left: 15px;
+}
 
 .ThreeTwo {
+  border-top: 1px solid #cecece;
+  display: inline-block;
+  margin-top: 16px;
+  padding-top: 15px;
 }
 .ThreeTwo a {
 }
 .ThreeTwo a:first-child {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  background-color: #b10744;
+  border: 1px solid #b10744;
+  border-radius: 2.23669px;
+  padding: 8px 37px;
+  margin-right: 32px;
+  display: inline-block;
 }
 .ThreeTwo a:last-child {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #505050;
+  border: 1px solid #424242;
+  border-radius: 2.23669px;
+  padding: 8px 22px;
+  display: inline-block;
+}
+.mobile .Three {
+  display: none;
+}
+.mobile .TwoTwo {
+  display: none;
 }
 /* Sell product started and Order details ended */
+
+.sell_outer {
+}
+
+@media only screen and (max-width: 1442px) {
+  .Three {
+    padding: 19px 25px 10px 25px;
+  }
+  .ThreeTwo a:first-child {
+    padding: 8px 15px;
+    margin-right: 10px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .ThreeTwo a:last-child {
+    padding: 8px 15px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .history_outer .Two {
+    padding: 12px 18px 12px 22px;
+  }
+  .ThreeOne div span:first-child {
+    padding-right: 5px;
+  }
+  .ThreeOne div span:last-child {
+    padding-left: 5px;
+  }
+  .ThreeOne div {
+    font-size: 12px;
+    line-height: 22px;
+  }
+}
+
+@media only screen and (max-width: 1220px) {
+  .history_outer .TwoOne p {
+    font-size: 13px;
+    max-width: 430px;
+  }
+  .history_outer .TwoTwoOne span {
+    font-size: 12px;
+  }
+  .history_outer .TwoTwoTwo p {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .history_outer .Three {
+    display: none;
+  }
+  .mobile .Three {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  .mobile .Three > div {
+    width: 100%;
+  }
+  .history_outer .TwoOne p {
+    max-width: 100%;
+  }
+  .ThreeTwo {
+    width: 100%;
+    text-align: center;
+  }
+  .history_outer .TwoTwoOne {
+    margin-right: 10px;
+  }
+  .his_outer {
+    margin-bottom: 0px;
+  }
+}
 
 @media only screen and (max-width: 863px) {
   .profile_details .SpTwo > div {
@@ -282,5 +401,68 @@
   }
   .profile_details textarea {
     max-height: 57px;
+  }
+  .history_outer .mobile .TwoTwo {
+    display: block;
+    border-top: 1px solid #d9d9d9;
+    margin-top: 23px;
+    padding: 23px 10px 5px 10px;
+  }
+  .history_outer .mobile .TwoTwo > div {
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .history_outer .mobile .TwoTwo > div.produc {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #505050;
+    border: 1px solid #505050;
+    border-radius: 2.23669px;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  .history_outer .TwoTwo {
+    display: none;
+  }
+  .history_outer .TwoOne {
+    border-bottom: none;
+    margin-bottom: 0px;
+  }
+  .mobile .Three {
+    display: none;
+  }
+
+  .his_outer {
+    background-color: #f8f8f8;
+  }
+
+  .his_outer > img {
+    width: 50%;
+  }
+  .history_outer .Two {
+    width: 50%;
+  }
+  .history_outer .Two {
+    background-color: #f8f8f8;
+  }
+  .history_outer .TwoOne {
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  .history_outer .TwoOne p {
+    line-height: 22px;
+    overflow: hidden;
+    max-height: 132px;
+  }
+  .history_outer .Two {
+    padding: 17px 10px;
+  }
+  .history_outer {
+    background-color: #f8f8f8;
   }
 }

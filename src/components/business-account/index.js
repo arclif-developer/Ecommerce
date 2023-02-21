@@ -108,63 +108,116 @@ export default function BusinessAccountMain() {
                 </div>
               </div>
             ) : section === "history" ? (
-              <div className={styles.history_outer}>
-                <div className={styles.his_outer}>
-                  <img
-                    className={styles.product}
-                    src="/img/common/ni.jpg"
-                    onError={(e) => (e.target.src = "/img/common/ina.png")}
-                    alt="Product Image"
-                  />
-                  <div className={styles.Two}>
-                    <div className={styles.TwoOne}>
-                      <h4>₹349</h4>
-                      <p>
-                        The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented Smart GRID
-                        Technology Nylon Office Executive Chair.
-                      </p>
-                    </div>
-                    <div className={styles.TwoTwo}>
-                      <div className={styles.TwoTwoOne}>
-                        <img src="/img/orderlist/address.png" alt="Address" />
-                        <span>Delivery address:</span>
+              <div className={styles.max_history_outer}>
+                {Array.apply(null, { length: 5 }).map((e, i) => (
+                  <div className={styles.history_outer}>
+                    <div className={styles.his_outer}>
+                      <img
+                        className={styles.product}
+                        src="/img/common/ni.jpg"
+                        onError={(e) => (e.target.src = "/img/common/ina.png")}
+                        alt="Product Image"
+                      />
+                      <div className={styles.Two}>
+                        <div className={styles.TwoOne}>
+                          <h4>₹349</h4>
+                          <p>
+                            The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented Smart GRID
+                            Technology Nylon Office Executive Chair.
+                          </p>
+                        </div>
+                        <div className={styles.TwoTwo}>
+                          <div className={styles.TwoTwoOne}>
+                            <img src="/img/orderlist/address.png" alt="Address" />
+                            <span>Delivery address:</span>
+                          </div>
+                          <div className={styles.TwoTwoTwo}>
+                            <p>686 Great South Road, Manukau, Saules ilea 7 - 16, Cosi</p>
+                            <p>Mobile Number: +91 2543 211 212</p>
+                          </div>
+                        </div>
                       </div>
-                      <div className={styles.TwoTwoTwo}>
-                        <p>686 Great South Road, Manukau, Saules ilea 7 - 16, Cosi</p>
-                        <p>Mobile Number: +91 2543 211 212</p>
+                      <div className={styles.Three}>
+                        <div className={styles.ThreeOne}>
+                          <div>
+                            <span>Order date : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Delivery date : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Customer received : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Payment method : </span>
+                            <span>Cash on delivery</span>
+                          </div>
+                        </div>
+                        <div className={styles.ThreeTwo}>
+                          <a>Help me </a>
+                          <a>View product</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={styles.mobile}>
+                      <div className={styles.TwoTwo}>
+                        <div className={styles.TwoTwoOne}>
+                          <img src="/img/orderlist/address.png" alt="Address" />
+                          <span>Delivery address:</span>
+                        </div>
+                        <div className={styles.TwoTwoTwo}>
+                          <p>686 Great South Road, Manukau, Saules ilea 7 - 16, Cosi</p>
+                          <p>Mobile Number: +91 2543 211 212</p>
+                        </div>
+                        <div className={styles.produc}>View product</div>
+                      </div>
+                      <div className={styles.Three}>
+                        <div className={styles.ThreeOne}>
+                          <div>
+                            <span>Order date : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Delivery date : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Customer received : </span>
+                            <span>20-10-2023</span>
+                          </div>
+                          <div>
+                            <span>Payment method : </span>
+                            <span>Cash on delivery</span>
+                          </div>
+                        </div>
+                        <div className={styles.ThreeTwo}>
+                          <a>Help me </a>
+                          <a>View product</a>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className={styles.Three}>
-                    <div className={styles.ThreeOne}>
-                      <div>
-                        <span>Order date : </span>
-                        <span>20-10-2023</span>
-                      </div>
-                      <div>
-                        <span>Delivery date : </span>
-                        <span>20-10-2023</span>
-                      </div>
-                      <div>
-                        <span>Customer received : </span>
-                        <span>20-10-2023</span>
-                      </div>
-                      <div>
-                        <span>Payment method : </span>
-                        <span>Cash on delivery</span>
-                      </div>
-                    </div>
-                    <div className={styles.ThreeTwo}>
-                      <a>Help me </a>
-                      <a>View product</a>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             ) : section === "sell" ? (
-              <>
-                <div>Sell products list</div>
-              </>
+              <div className={styles.sell_max_outer}>
+                {Array.apply(null, { length: 5 }).map((e, i) => (
+                  <div className={styles.sell_outer}>
+                    <div>
+                      <img
+                        className={styles.product}
+                        src="/img/common/ni.jpg"
+                        onError={(e) => (e.target.src = "/img/common/ina.png")}
+                        alt="Product Image"
+                      />
+                    </div>
+                    <div>dfh</div>
+                  </div>
+                ))}
+              </div>
             ) : (
               ""
             )}
