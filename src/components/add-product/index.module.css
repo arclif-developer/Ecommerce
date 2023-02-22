@@ -123,6 +123,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  margin-bottom: 23px;
 }
 .thumbnail {
   width: 25%;
@@ -143,7 +144,50 @@
 
 .add_img {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.add_img img {
+.add_img img.up_F_image {
   position: absolute;
+  top: 0;
+  z-index: 3;
+  height: 80px;
+  width: 80px;
+  margin: 0 auto;
+}
+.add_img img.upd_image {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  height: 80px;
+  width: 100px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+.add_img input {
+  height: 80px;
+  z-index: 5;
+  opacity: 0;
+}
+
+.add_imgs {
+  position: relative;
+  height: 80px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+.add_imgs img {
+  position: absolute;
+  top: 0;
+  z-index: 4;
+  height: 80px;
+  width: auto;
+}
+.add_imgs input {
+  position: relative;
+  height: 80px;
+  z-index: 5;
+  opacity: 0;
 }

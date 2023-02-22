@@ -66,20 +66,21 @@ export default function AddProductMain() {
                 <div className={styles.upd_image}>
                   <div className={styles.add_img}>
                     <input type="file" name="thumbnail" placeholder="Thumbnail" />
-                    <img src="/img/common/add_images.svg" alt="add" />
+                    <img className={styles.up_F_image} src="/img/common/add_images.svg" alt="add" />
+
+                    <img
+                      className={styles.upd_image}
+                      src="/img/common/ni.svg"
+                      onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                      alt="Product Image"
+                    />
                   </div>
-                  <img
-                    className={styles.product}
-                    src="/img/common/ni.svg"
-                    onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                    alt="Product Image"
-                  />
                 </div>
               </div>
               <div className={styles.all_images}>
                 <label>Images</label>
                 <div className={styles.upd_images}>
-                  <div className={styles.add_img}>
+                  <div className={styles.add_imgs}>
                     <input type="file" multiple name="images" placeholder="Images" />
                     <img src="/img/common/add_images.svg" alt="add" />
                   </div>
@@ -101,12 +102,12 @@ export default function AddProductMain() {
                     onError={(e) => (e.target.src = "/img/common/ina.svg")}
                     alt="Product Image"
                   />
-                  <img
+                  {/* <img
                     className={styles.product}
                     src="/img/common/ni.svg"
                     onError={(e) => (e.target.src = "/img/common/ina.svg")}
                     alt="Product Image"
-                  />
+                  /> */}
                 </div>
               </div>
             </div>
