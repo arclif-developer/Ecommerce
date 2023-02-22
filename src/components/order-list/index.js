@@ -15,8 +15,8 @@ export default function OrderListMain() {
             <div className={styles.One}>
               <img
                 className={styles.product}
-                src="/img/common/ni.jpg"
-                onError={(e) => (e.target.src = "/img/common/ina.png")}
+                src="/img/common/ni.svg"
+                onError={(e) => (e.target.src = "/img/common/ina.svg")}
                 alt="Product Image"
               />
             </div>
@@ -30,7 +30,7 @@ export default function OrderListMain() {
               </div>
               <div className={styles.TwoTwo}>
                 <div className={styles.TwoTwoOne}>
-                  <img src="/img/orderlist/address.png" alt="Address" />
+                  <img src="/icon/address.png" alt="Address" />
                   <span>Delivery address:</span>
                 </div>
                 <div className={styles.TwoTwoTwo}>
@@ -44,7 +44,7 @@ export default function OrderListMain() {
           <div className={styles.Three}>
             <a className={styles.accept}>Order Accept</a>
             <a className={styles.issue}>
-              <img src="/img/orderlist/issue.png" alt="Address" />
+              <img src="/icon/issue.png" alt="Address" />
               <span>Report issue</span>
             </a>
           </div>

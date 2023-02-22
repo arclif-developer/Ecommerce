@@ -3,20 +3,77 @@
   padding: 0 5vw;
 }
 
-.secOneInner {
+.bidFilterOuter {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #5c5c5c;
+  padding-bottom: 21px;
+  margin-top: 24px;
+  margin-bottom: 39px;
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: scroll;
+  border-bottom: 1px solid #efefef;
+}
+.bidFilterOuter::-webkit-scrollbar {
+  display: none;
+}
+.bidFilterOuter span {
+}
+.bidFilterOuter span:not(:last-child) {
+  margin-right: 77px;
+}
+.bidTitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.bidOuter {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 33px;
   grid-row-gap: 33px;
+  margin: 23px 0 50px;
 }
 .bidInner {
 }
 .bidInner > img {
+  height: 175px;
+  width: 100%;
+  object-fit: cover;
 }
 .bidInner .Desc {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px;
+  color: #343434;
+  margin-top: 13px;
 }
 .bidInner .Locatn {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #b10744;
+  display: flex;
+  align-items: center;
+  margin: 5px 0px;
 }
+.bidInner .Locatn img {
+  margin-right: 10.39px;
+}
+
 .bidInner .Buttn {
   font-family: "Roboto";
   font-style: normal;
@@ -30,4 +87,29 @@
   width: 100%;
   text-align: center;
   padding: 6px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .bidOuter {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    margin: 18px 0 30px;
+  }
+}
+@media only screen and (max-width: 766px) {
+  .bidOuter {
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    margin: 18px 0 30px;
+  }
+}
+@media only screen and (max-width: 520px) {
+  .bidOuter {
+    grid-template-columns: repeat(1, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    margin: 18px 0 30px;
+  }
 }
