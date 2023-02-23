@@ -8,7 +8,7 @@ import styles from "./Header.module.css";
 
 const HeaderOne = () => {
   const [Store] = useContext(StoreContext);
-  const setSellProductPopup = Store.setSellProductPopup;
+  // const setSellProductPopup = Store.setSellProductPopup;
 
   const router = useRouter();
   return (
@@ -45,9 +45,9 @@ const HeaderOne = () => {
                 </span>
               </Link>
             </div>
-            <div className={styles.askProducts_button} onClick={() => setSellProductPopup(true)}>
-              Sell produts
-            </div>
+            <Link href="/add-product">
+              <div className={styles.askProducts_button}>Sell produts</div>
+            </Link>
           </div>
         </div>
       </div>
