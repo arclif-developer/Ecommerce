@@ -9,7 +9,7 @@ import AskProductPopUp from "@/src/components/common/askProduct-popup";
 
 import styles from "./index.module.css";
 
-export default function Home() {
+export default function LoginPage() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
   return (

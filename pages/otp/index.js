@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
 import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
-import LoginMain from "@/src/components/login";
+import OtpMain from "@/src/components/otp";
 import Help from "@/src/components/home/Help";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Login | Arclif</title>
+        <title>OTP | Arclif</title>
         <meta name="description" content="Get suitable construction materials fro your projects." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
@@ -24,7 +24,7 @@ export default function Home() {
         <div className={styles.main_outer_cover}>
           <Header />
           <div className={styles.main_inner}>
-            <LoginMain />
+            <OtpMain />
           </div>
           <Help />
           <Footer />
