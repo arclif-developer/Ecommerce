@@ -24,7 +24,7 @@ export default function Home() {
         <div className={styles.main_outer_cover}>
           <Header />
           <div className={styles.main_inner}>
-            <LoginMain />
+            <RegisterMain />
           </div>
           <Help />
           <Footer />
