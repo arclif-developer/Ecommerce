@@ -1,4 +1,81 @@
-@import "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap";
 .secOne {
   padding: 0 5vw;
+}
+
+.secOneInner {
+  max-width: 511px;
+  margin: 100px auto;
+}
+.secOneInner h1 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #585858;
+}
+.secOneInner p.otp {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #a4a4a4;
+  margin-top: 8px;
+  margin-bottom: 28px;
+}
+.secOneInner input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.2218px;
+  line-height: 15px;
+  color: #adadad;
+  background: #ffffff;
+  border: 0.5px solid #e1e1e1;
+  border-radius: 6px;
+  width: 100%;
+  padding: 15px 16px;
+}
+.secOneInner button.send {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.2218px;
+  line-height: 15px;
+  color: #ffffff;
+  background: #b10744;
+  border-radius: 6px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  margin-bottom: 19px;
+}
+.secOneInner .bottomp {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.2218px;
+  line-height: 15px;
+  color: #adadad;
+  text-align: center;
+}
+.secOneInner .bottomp span {
+  color: #b10744;
+}
+
+.top {
+  padding: 0 70px;
+}
+.bottom {
+  padding: 0 70px;
+}
+
+@media only screen and (max-width: 640px) {
+  .top {
+    padding: 0 10px;
+  }
+  .bottom {
+    padding: 0 10px;
+  }
 }

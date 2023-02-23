@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
 import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
-import LoginMain from "@/src/components/login";
+import RegisterMain from "@/src/components/register";
 import Help from "@/src/components/home/Help";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 
 import styles from "./index.module.css";
 
-export default function Home() {
+export default function RegisterPage() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
   return (
