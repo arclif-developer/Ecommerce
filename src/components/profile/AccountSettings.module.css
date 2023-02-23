@@ -9,19 +9,22 @@
   justify-content: space-between;
 }
 
-.accountSettings_header_left {
+.accountSettings_header_left,
+.accountSettings_header_left_address {
   display: flex;
   align-items: center;
 }
 
-.accountSettings_header_left > h3 {
+.accountSettings_header_left > h3,
+.accountSettings_header_left_address > h3 {
   font-size: 20px;
   font-weight: 400;
   line-height: 36px;
   color: #262626;
 }
 
-.editButton {
+.editButton,
+.editButtonMobile {
   height: 20px;
   width: 40px;
   border-radius: 13px;
@@ -262,4 +265,137 @@
   font-size: 14px;
   font-weight: 400;
   color: #888888;
+}
+
+.editButtonMobile {
+  display: none;
+}
+.mobileOnly {
+  display: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .accountSettings_header_left {
+    display: none;
+  }
+  .accountSettings_header_right {
+    width: 100%;
+    justify-content: center;
+  }
+  .personalInformation {
+    gap: 0px;
+  }
+  .personalInformation_card {
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .personalInformation_card > img {
+    margin-right: 0px;
+    height: 74px;
+    width: 74px;
+    margin-top: 34px;
+  }
+  .editButtonMobile {
+    display: flex;
+    position: absolute;
+    top: 24px;
+    right: 0;
+  }
+  .inputContainer {
+    margin: 0;
+  }
+  .inputContainer > p {
+    margin-top: 23px;
+  }
+  .genderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .buttonsContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-left: 0px;
+    margin-top: 41px;
+    margin-bottom: 98px;
+  }
+  .accountSettings_header {
+    flex-direction: column-reverse;
+  }
+  .accountSettings_header_left_address {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+  }
+  .accountSettings_header_left_address > h3 {
+    font-size: 18px;
+    line-height: 32px;
+  }
+  .addNewAddress_button {
+    height: 33px;
+    border-radius: 26px;
+    font-size: 14px;
+    margin-left: 0px;
+    margin-top: 12px;
+  }
+  .address_details {
+    margin-top: 24px;
+  }
+
+  .address_details_card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #d4d4d4;
+    padding: 0px;
+  }
+
+  .address_details_card_top {
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #d0d0d0;
+    padding: 0px 15px;
+    padding-bottom: 0px;
+  }
+  .address_details_card_top_left {
+    display: flex;
+    align-items: center;
+  }
+  .address_details_card_top_left > h4 {
+    display: none;
+  }
+  .address_details_card_top_left > span {
+    display: none;
+  }
+  .address_details_card_bottom {
+    height: fit-content;
+    padding: 10px;
+  }
+  .mobileOnly {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .mobileOnly > p {
+    color: #707070;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .mobileOnly > span {
+    color: #0475c7;
+    font-size: 14px;
+    font-weight: 400;
+  }
 }
