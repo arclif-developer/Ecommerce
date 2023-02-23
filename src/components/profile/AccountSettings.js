@@ -51,6 +51,7 @@ const AccountSettings = () => {
                   <p>Mobile number</p>
                   <input type="tel" />
                 </div>
+                <div className={styles.editButtonMobile}>Edit</div>
               </div>
               <div className={styles.personalInformation_card}>
                 <div className={styles.inputContainer}>
@@ -82,10 +83,10 @@ const AccountSettings = () => {
             {nav === "address" ? (
               <>
                 <div className={styles.accountSettings_header}>
-                  <div className={styles.accountSettings_header_left}>
+                  <div className={styles.accountSettings_header_left_address}>
                     <h3>Manage my address</h3>
                     <div className={styles.addNewAddress_button} onClick={() => setAddAddressPopUp(true)}>
-                      Add new address
+                      + Add new address
                     </div>
                   </div>
                   <div className={styles.accountSettings_header_right}>
@@ -119,6 +120,10 @@ const AccountSettings = () => {
                       </div>
                     </div>
                     <div className={styles.address_details_card_bottom}>
+                      <div className={styles.mobileOnly}>
+                        <p>ALTHAF RAHMAN</p>
+                        <span>+91 2549461987</span>
+                      </div>
                       <img src="" alt="" />
                       <p>Govt Cyber Park (sahya) nellikode Calicut, Kozhikode, Kerala - 673016</p>
                     </div>

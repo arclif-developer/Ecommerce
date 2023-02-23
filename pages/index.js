@@ -1,13 +1,13 @@
 import Head from "next/head";
-import HomePage from "../src/components/Home";
-import Header from "../src/components/common/Header";
-
-import styles from "../styles/index.module.css";
-import Help from "@/src/components/home/Help";
-import Footer from "@/src/components/common/Footer";
 import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
+import Header from "../src/components/common/Header";
+import Footer from "@/src/components/common/Footer";
+import HomePage from "../src/components/Home";
+import Help from "@/src/components/home/Help";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
+
+import styles from "../styles/index.module.css";
 
 export default function Home() {
   const [Store] = useContext(StoreContext);

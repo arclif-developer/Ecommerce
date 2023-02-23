@@ -12,6 +12,9 @@
   margin-top: 33px;
   margin-bottom: 34px;
 }
+.secOne h2 {
+  color: #b10744;
+}
 .secOne .secOneInner {
   display: flex;
   align-items: center;
@@ -130,10 +133,26 @@
   margin-right: 7.5px;
 }
 
-.secTwo {
-  padding: 0 5vw;
-  margin-top: 23px;
+.order_all_outer {
+}
+.order_all_outer:not(:last-child) {
+  border-bottom: 1px double #d9d9d9;
+  margin-bottom: 20px;
+}
+.SnOne {
+  /* border-top: 1px solid #d9d9d9;
+  margin-top: 23px; */
   margin-bottom: 23px;
+}
+.SnOne h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2c2c2c;
+  margin-top: 29px;
+  margin-bottom: 24px;
 }
 
 .section_buttons {
@@ -160,22 +179,9 @@
   margin-right: 48px;
 }
 .section_buttons .active {
-  font-weight: 500;
+  /* font-weight: 500; */
   color: #b10744;
   border-bottom: 1px solid #b10744;
-}
-.secTwo .One {
-  border-top: 1px solid #d9d9d9;
-}
-.secTwo .One h3 {
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 21px;
-  color: #2c2c2c;
-  margin-top: 29px;
-  margin-bottom: 24px;
 }
 
 .section_outer {
@@ -203,6 +209,7 @@
   .secOne .Main_con {
     align-items: flex-start;
     flex-direction: column;
+    margin-bottom: 20px;
   }
   .secOne .Two {
     margin-left: 0px;
@@ -235,7 +242,7 @@
   .secOne img.product {
     width: 100%;
   }
-  .One {
+  .SnOne {
     width: 100%;
   }
   .secOne .TwoTwoOne {
@@ -244,11 +251,13 @@
   }
 
   .Three {
-    border-top: 1px solid #d9d9d9;
+    border-top: 1px dashed #d9d9d9;
+    border-bottom: 1px dashed #d9d9d9;
     width: 100%;
     text-align: center;
     padding-top: 23px;
-    margin-top: 23px;
+    padding-bottom: 23px;
+    margin-bottom: 23px;
   }
   .section_buttons div:not(:last-child) {
     margin-right: 20px;
