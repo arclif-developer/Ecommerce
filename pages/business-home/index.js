@@ -1,11 +1,16 @@
-import Footer from "@/src/components/common/Footer";
-import HeaderOne from "@/src/components/common/Header1";
-import BusinessHomeMain from "@/src/components/business-home";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { StoreContext } from "@/global/StoreContext";
 import Head from "next/head";
+import HeaderOne from "@/src/components/common/Header1";
+import Footer from "@/src/components/common/Footer";
+import BusinessHomeMain from "@/src/components/business-home";
+import ViewOrderPopUp from "@/src/components/common/viewOrderPopup";
 
 import styles from "./index.module.css";
 
 export default function BusinessHomePage() {
+  const [Store] = useContext(StoreContext);
+  const viewOrderPopup = Store.viewOrderPopup;
   return (
     <>
       <Head>
@@ -23,6 +28,7 @@ export default function BusinessHomePage() {
           <Footer />
         </div>
       </main>
+      {viewOrderPopup ? <ViewOrderPopUp /> : ""}
     </>
   );
 }
