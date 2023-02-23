@@ -1,0 +1,106 @@
+.sectionOne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 100px);
+  width: 100%;
+}
+.not_fount_outer {
+  background: linear-gradient(180deg, #a61348 0%, #390819 100%);
+  height: 100%;
+  width: 100%;
+  padding: 150px 0;
+  text-align: center;
+}
+.not_fount_outer > .main_img {
+  padding-bottom: 50px;
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+}
+.not_fount_outer > .main_img img {
+  max-width: 100%;
+}
+.not_fount_outer > .main_img img:first-child {
+  max-width: 100%;
+  position: absolute;
+  top: -13px;
+  right: 51px;
+  animation: mymove 5s infinite;
+}
+
+@keyframes mymove {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 20px;
+  }
+  100% {
+    top: 0px;
+  }
+}
+.not_fount_outer > .main_img img:last-child {
+}
+.text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+  color: #ffffff;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.button {
+  display: inline-block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+.button > div {
+  background: #ffffff;
+  border-radius: 1.72549px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 30px;
+  position: relative;
+}
+.button > div:before {
+  content: "";
+  border: 1px solid #ffffff;
+  border-radius: 1.72549px;
+  height: 56px;
+  width: 159px;
+  position: absolute;
+  top: 11px;
+  left: 19px;
+}
+
+.button > div > span {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 43px;
+  color: #000000;
+}
+
+.button > div > img {
+  margin-right: 10px;
+}
+
+@media only screen and (max-width: 1160px) {
+  .sectionOne {
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .text {
+    font-size: 20px;
+    line-height: 38px;
+    max-width: 250px;
+  }
+}
