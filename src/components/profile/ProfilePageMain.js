@@ -13,7 +13,7 @@ const ProfilePageMain = () => {
         <div className={styles.profile_header_personal}>
           <img src="/img/profile/avatar.svg" alt="" />
           <div className={styles.profile_header_personal_details}>
-            <p>Hello</p>
+            <p>Hello,</p>
             <h5>Althaf Rahman</h5>
           </div>
         </div>

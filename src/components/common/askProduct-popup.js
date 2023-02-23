@@ -34,13 +34,13 @@ const AskProductPopUp = () => {
             <p>Choose your location</p>
             <div className={styles.selectContainer_row}>
               <select>
-                <option value="">Test</option>
+                <option>Select your district</option>
                 <option value="">Test</option>
                 <option value="">Test</option>
                 <option value="">Test</option>
               </select>
               <select>
-                <option value="">Test</option>
+                <option>Select your Panchayath</option>
                 <option value="">Test</option>
                 <option value="">Test</option>
                 <option value="">Test</option>

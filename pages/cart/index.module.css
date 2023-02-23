@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 63px;
 }
 
 .main_outer_cover {
@@ -20,5 +21,4 @@
   width: 100%;
   max-width: 1530px;
   font-family: "Roboto", sans-serif;
-  margin-top: 63px;
 }

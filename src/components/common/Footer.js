@@ -35,7 +35,7 @@ const Footer = () => {
             <li>LinkedIn</li>
             <li>YouTube</li>
           </ul>
-          <ul>
+          <ul className={styles.linksNavContainer}>
             <li>
               <span>Links</span>
             </li>
@@ -53,6 +53,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className={styles.right_footer}>
+          <span>© Copyright Arclif 2023 All Right Reserved</span>
           <p>We are Accepted</p>
           <div className={styles.right_footer_images}>
             <img src="/img/common/visa.svg" alt="" />
