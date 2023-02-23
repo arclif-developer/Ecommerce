@@ -103,6 +103,7 @@
   padding: 6px 90px;
   margin-bottom: 18px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .secOne .Three a.accepted {
@@ -117,6 +118,7 @@
   padding: 6px 90px;
   margin-bottom: 18px;
   display: inline-block;
+  cursor: pointer;
 }
 .secOne .Three a.issue {
   display: flex;

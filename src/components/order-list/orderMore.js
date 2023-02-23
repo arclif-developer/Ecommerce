@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 
 import styles from "./index.module.css";
 
-export default function OrderListMoreMain() {
+export default function OrderListMoreMain(props) {
   const [section, setSection] = useState("Overview");
   return (
     <>
@@ -26,14 +26,7 @@ export default function OrderListMoreMain() {
 
         <div className={styles.section_outer}>
           {section === "Overview" ? (
-            <>
-              <div>
-                Whether you need a chair for your gaming station or your study spot, a gaming chair is a fantastic
-                choice. Ergonomic and comfortable, our gaming chairs come in different styles too.Your gaming desk is
-                somewhere you will spend long hours, so it’s important to get the comfort, ergonomics and functionality
-                you need. And of course, the right extras can also help make things more enjoyable.
-              </div>
-            </>
+            <>{props?.desc ? <div>{props.desc}</div> : ""}</>
           ) : section === "Details" ? (
             <>
               <div>
