@@ -192,6 +192,9 @@ export default function AddProductMain() {
                 <input type="text" name="gst" placeholder="GST" />
               </div>
             </div>
+            <div className={styles.submit}>
+              <div>Upload product</div>
+            </div>
           </div>
         </div>
       </div>
