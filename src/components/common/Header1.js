@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
+import Link from "next/link";
 
 import styles from "./Header.module.css";
 
@@ -16,7 +16,9 @@ const HeaderOne = () => {
       <div className={styles.header_outer}>
         <div className={styles.header_inner}>
           <div className={styles.header_left}>
-            <img src="/img/common/logo.svg" alt="LOGO" />
+            <Link href="/">
+              <img src="/img/common/logo.svg" alt="LOGO" />
+            </Link>
           </div>
           <div className={styles.header_center}>
             <div className={styles.header_search}>

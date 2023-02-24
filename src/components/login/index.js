@@ -11,9 +11,7 @@ import styles from "./index.module.css";
 export default function LoginMain() {
   const [Store] = useContext(StoreContext);
 
-  const setOtpPopup = Store.setOtpPopup;
   const userRole = Store.userRole;
-  const setLoginPopup = Store.setLoginPopup;
   const setFromLoginOrRegister = Store.setFromLoginOrRegister;
 
   const [isError, setIsError] = useState(false);
@@ -50,8 +48,8 @@ export default function LoginMain() {
       setError("Mobile number not registered");
     } else if (data.status === 200) {
       setFromLoginOrRegister("login");
-      setOtpPopup(true);
-      setLoginPopup(false);
+      // setOtpPopup(true);
+      // setLoginPopup(false);
       localStorage.setItem("token", data.token);
     } else if (data.message === "Registeration process is not correct.Please register correctly") {
       setShowOtpText(true);
@@ -92,8 +90,8 @@ export default function LoginMain() {
     console.log(data);
     if (data.status === 200) {
       setFromLoginOrRegister("login");
-      setOtpPopup(true);
-      setLoginPopup(false);
+      // setOtpPopup(true);
+      // setLoginPopup(false);
       localStorage.setItem("token", data.otpToken);
     }
   }
@@ -107,7 +105,7 @@ export default function LoginMain() {
     <>
       <div className={styles.secOne}>
         <div className={styles.secOneInner}>
-          <h1>Log in</h1>
+          <h1>{userRole === "business" ? "Business" : "General"} Log in</h1>
           <p className={styles.otptext}>OTP will be sent via sms to your Mobile Number</p>
           <div className={styles.phone_feild}>
             <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />

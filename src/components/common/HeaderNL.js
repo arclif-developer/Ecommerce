@@ -6,20 +6,11 @@ import Link from "next/link";
 
 import styles from "./Header.module.css";
 
-const Header = () => {
+const HeaderNotLogged = () => {
   const [Store] = useContext(StoreContext);
-  const setAskProductPopup = Store.setAskProductPopup;
+  const setUserRole = Store.setUserRole;
 
   const router = useRouter();
-
-  const gotoProfile = () => {
-    router.push("/profile");
-  };
-
-  const gotoCart = () => {
-    router.push("/cart");
-  };
-
   return (
     <>
       <div className={styles.header_outer}>
@@ -36,22 +27,11 @@ const Header = () => {
             </div>
           </div>
           <div className={styles.header_right}>
-            <div className={styles.header_right_icons}>
-              <span className={styles.favorites}>
-                <img className={styles.nh} src="/icon/favorites-nh.svg" alt="" />
-                <img className={styles.h} src="/icon/favorites-h.svg" alt="" />
-              </span>
-              <span className={styles.delete} onClick={gotoCart}>
-                <img className={styles.nh} src="/icon/delete-nh.svg" alt="" />
-                <img className={styles.h} src="/icon/delete-h.svg" alt="" />
-              </span>
-              <span className={styles.user} onClick={gotoProfile}>
-                <img className={styles.nh} src="/icon/user-nh.svg" alt="" />
-                <img className={styles.h} src="/icon/user-h.svg" alt="" />
-              </span>
+            <div onClick={() => (setUserRole("general"), router.push(`/login`))} className={styles.general_login}>
+              General Login
             </div>
-            <div className={styles.askProducts_button} onClick={() => setAskProductPopup(true)}>
-              Ask products
+            <div onClick={() => (setUserRole("business"), router.push(`/login`))} className={styles.business_login}>
+              Business Login
             </div>
           </div>
         </div>
@@ -66,4 +46,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderNotLogged;
