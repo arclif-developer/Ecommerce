@@ -5,6 +5,7 @@ import { StoreContext } from "@/global/StoreContext";
 import { PulseLoader } from "react-spinners";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import backend from "@/global/backend";
 
 import styles from "./index.module.css";
 
@@ -28,8 +29,8 @@ export default function LoginMain() {
   };
 
   async function handleSubmit() {
-    const res = await fetch(`${endpoint}/auth/mobile_login`, {
-      // const res = await fetch(`${endpoint}/auth/test/login`, {
+    const res = await fetch(`${backend}/auth/mobile_login`, {
+      // const res = await fetch(`${backend}/auth/test/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -75,7 +76,7 @@ export default function LoginMain() {
   }, []);
 
   async function resentOTP() {
-    const res = await fetch(`${endpoint}/auth/resent_otp`, {
+    const res = await fetch(`${backend}/auth/resent_otp`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

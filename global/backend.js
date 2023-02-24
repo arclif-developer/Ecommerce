@@ -1,2 +1,2 @@
-var backend = "https://backend.server.com";
+var backend = "https://agriha-backend.onrender.com";
 export default backend;
