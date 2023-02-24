@@ -14,7 +14,7 @@
   line-height: 22px;
   color: #585858;
 }
-.secOneInner p.otp {
+.secOneInner p.otp_text {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -69,6 +69,22 @@
 }
 .bottom {
   padding: 0 70px;
+}
+
+.otp_feild {
+  text-align: center;
+  width: 100%;
+}
+.otp_feild > div {
+  width: 100%;
+}
+.otp_feild input {
+  padding: 1px;
+  width: 16.6666% !important;
+  height: 40px !important;
+}
+.otp_feild input:last-child {
+  margin-right: 0 !important;
 }
 
 @media only screen and (max-width: 640px) {
