@@ -10,6 +10,8 @@ export const StoreContextProvider = (props) => {
   const [viewOrderPopup, setViewOrderPopup] = useState(false);
   const [userRole, setUserRole] = useState("general");
   const [fromLoginOrRegister, setFromLoginOrRegister] = useState("login");
+  const [userId, setUserId] = useState("");
+  const [loginActive, setLoginActive] = useState(false);
   // Store 61-5a end
 
   // Store Hashir start
@@ -33,6 +35,10 @@ export const StoreContextProvider = (props) => {
     setUserRole,
     fromLoginOrRegister,
     setFromLoginOrRegister,
+    userId,
+    setUserId,
+    loginActive,
+    setLoginActive,
     // Store 61-5a end
 
     // Store Hashir start

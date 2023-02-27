@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import styles from "./SearchPage.module.css";
 
@@ -81,9 +82,7 @@ const SearchPage = () => {
                 />
               </div>
               <div className={styles.product_details}>
-                <p>
-                  Monte Contemporary Dining Chair With Black Powder Coated...
-                </p>
+                <p>Monte Contemporary Dining Chair With Black Powder Coated...</p>
                 <h4>By Furniture Global</h4>
                 <div className={styles.priceContainer}>
                   <h5>₹349</h5>
@@ -103,9 +102,7 @@ const SearchPage = () => {
                 />
               </div>
               <div className={styles.product_details}>
-                <p>
-                  Monte Contemporary Dining Chair With Black Powder Coated...
-                </p>
+                <p>Monte Contemporary Dining Chair With Black Powder Coated...</p>
                 <h4>By Furniture Global</h4>
                 <div className={styles.priceContainer}>
                   <h5>₹349</h5>
@@ -125,9 +122,7 @@ const SearchPage = () => {
                 />
               </div>
               <div className={styles.product_details}>
-                <p>
-                  Monte Contemporary Dining Chair With Black Powder Coated...
-                </p>
+                <p>Monte Contemporary Dining Chair With Black Powder Coated...</p>
                 <h4>By Furniture Global</h4>
                 <div className={styles.priceContainer}>
                   <h5>₹349</h5>
@@ -147,9 +142,7 @@ const SearchPage = () => {
                 />
               </div>
               <div className={styles.product_details}>
-                <p>
-                  Monte Contemporary Dining Chair With Black Powder Coated...
-                </p>
+                <p>Monte Contemporary Dining Chair With Black Powder Coated...</p>
                 <h4>By Furniture Global</h4>
                 <div className={styles.priceContainer}>
                   <h5>₹349</h5>

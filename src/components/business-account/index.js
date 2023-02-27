@@ -1,16 +1,27 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-
-import styles from "./index.module.css";
-var Api_url = "https://agriha-backend.onrender.com";
+import backend from "@/global/backend";
 import moment from "moment";
 
+var Api_url = "https://agriha-backend.onrender.com";
+
+import styles from "./index.module.css";
 export default function BusinessAccountMain() {
+  const router = useRouter();
+
   const [section, setSection] = useState("profile");
   const [orderHistory, setOrderHistory] = useState([]);
   const [sellingProducts, setSellingProducts] = useState([]);
   const imgurl = "#";
+
+  const logout = () => {
+    localStorage.removeItem("Id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    router.push("/");
+  };
 
   var token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
@@ -62,6 +73,7 @@ export default function BusinessAccountMain() {
             <div onClick={() => setSection("sell")} className={section === "sell" ? styles.active : ""}>
               Sell products list
             </div>
+            <div onClick={() => logout()}>Logout</div>
           </div>
 
           <div className={styles.section_outer}>
@@ -175,7 +187,7 @@ export default function BusinessAccountMain() {
                                     </div>
                                     <div className={styles.TwoTwo}>
                                       <div className={styles.TwoTwoOne}>
-                                        <img src="/icon/address.png" alt="Address" />
+                                        <img src="/icon/address-h.png" alt="Address" />
                                         <span>Delivery address:</span>
                                       </div>
                                       <div className={styles.TwoTwoTwo}>
@@ -219,7 +231,7 @@ export default function BusinessAccountMain() {
                                 <div className={styles.mobile}>
                                   <div className={styles.TwoTwo}>
                                     <div className={styles.TwoTwoOne}>
-                                      <img src="/icon/address.png" alt="Address" />
+                                      <img src="/icon/address-h.png" alt="Address" />
                                       <span>Delivery address:</span>
                                     </div>
                                     <div className={styles.TwoTwoTwo}>

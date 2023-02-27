@@ -1,5 +1,5 @@
+import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
-import HeaderOne from "@/src/components/common/Header1";
 import OrderListMain from "@/src/components/order-list";
 import Head from "next/head";
 
@@ -16,7 +16,7 @@ export default function OrderListPage() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <HeaderOne />
+          <Header />
           <div className={styles.main_inner}>
             <OrderListMain />
           </div>

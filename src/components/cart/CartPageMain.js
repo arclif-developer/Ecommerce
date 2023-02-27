@@ -95,7 +95,7 @@ const CartPageMain = () => {
           <div className={styles.orderNow_button}>Order now</div>
           <div className={styles.deliveryAddress}>
             <div className={styles.deliveryAddress_left}>
-              <img src="/img/cart/location.svg" alt="" />
+              <img src="/icon/address-nh.svg" alt="" />
               <p>Delivery address</p>
             </div>
             <div className={styles.EditButton}>Edit</div>

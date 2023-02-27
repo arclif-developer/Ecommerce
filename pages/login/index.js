@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
-import HeaderNotLogged from "@/src/components/common/HeaderNL";
 import Header from "@/src/components/common/Header";
-import HeaderOne from "@/src/components/common/Header1";
 import Footer from "@/src/components/common/Footer";
 import LoginMain from "@/src/components/login";
 import Help from "@/src/components/home/Help";
@@ -26,7 +24,7 @@ export default function LoginPage() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          {userRole == "general" ? <Header /> : userRole == "business" ? <HeaderOne /> : <HeaderNotLogged />}
+          <Header />
           <div className={styles.main_inner}>
             <LoginMain />
           </div>

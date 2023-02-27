@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
@@ -46,7 +47,7 @@ export default function BusinessHomeMain() {
                 />
                 <div className={styles.Desc}>Monte Contemporary Dining Chair Wi...</div>
                 <div className={styles.Locatn}>
-                  <img src="/icon/address.png" alt="Address" />
+                  <img src="/icon/address-h.png" alt="Address" />
                   <span>Malappuram, Tirur</span>
                 </div>
                 <div className={styles.Buttn}>Furniture</div>
