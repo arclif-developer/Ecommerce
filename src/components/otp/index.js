@@ -123,7 +123,11 @@ export default function OtpMain() {
             <h1>Verification</h1>
             <p className={styles.otp_text}>OTP code we just send to your mobile number</p>
             <div className={styles.otp_feild}>
-              <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} />
+              {typeof window !== "undefined" ? (
+                <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} />
+              ) : (
+                ""
+              )}
             </div>
             <div className={styles.additional}>
               <div className={styles.resend}>
