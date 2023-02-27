@@ -100,10 +100,33 @@
   font-size: 11px;
   line-height: 15px;
   color: #a4a4a4;
+  margin-top: 15px;
 }
 .secOneInner .privacy span {
   color: #b10744;
   text-decoration: underline;
+}
+.secOneInner p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: red;
+  margin-top: 15px;
+}
+.secOneInner h5 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  color: #a4a4a4;
+  margin-top: 15px;
+}
+.secOneInner h5 span {
+  color: #b10744;
+  margin-left: 15px;
 }
 
 .top {

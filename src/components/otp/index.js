@@ -1,12 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
-// import OTPInput, { ResendOTP } from "otp-input-react";
-import OTPInput from "otp-input-react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { StoreContext } from "@/global/StoreContext";
+// import OTPInput, { ResendOTP } from "otp-input-react";
+import backend from "@/global/backend";
+import OTPInput from "otp-input-react";
 
 import styles from "./index.module.css";
 
 export default function OtpMain() {
+  const router = useRouter();
+  const [Store] = useContext(StoreContext);
+
+  const setBid = Store.setBid;
+  const setLoginActive = Store.setLoginActive;
+  const setUserId = Store.setUserId;
+  const fromLoginOrRegister = Store.fromLoginOrRegister;
+  const setZonePopUp = Store.setZonePopUp;
+
+  const [isError, setIsError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("Please enter Mobile Number");
+
   const [OTP, setOTP] = useState("");
   console.log(OTP);
 
@@ -17,6 +33,102 @@ export default function OtpMain() {
   const dateObj = new Date(counter * 1000);
   const utcString = dateObj.toUTCString();
   const time = utcString.slice(-11, -4);
+
+  /* VERIFY OTP Login */
+  async function handleSubmitLogin(otp) {
+    const token = localStorage.getItem("token");
+    const res = await fetch(`${backend}/auth/verify_login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+      body: JSON.stringify({
+        otp: otp,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    setLoading(false);
+    if (data.status === 200) {
+      setUserId(data.id);
+      setLoginActive(true);
+      localStorage.removeItem("token");
+      localStorage.setItem("role", data.role);
+      if (data.role === "general") {
+        localStorage.setItem("generalToken", data.token);
+        localStorage.setItem("generalId", data.id);
+        router.push(`/`);
+        // setBid(true);
+      } else if (data.role === "business") {
+        localStorage.setItem("businessToken", data.token);
+        localStorage.setItem("businessId", data.id);
+        router.push(`/`);
+        // window.location.href = `/architect-dashboard/${data.id}`;
+      }
+      // setLoginPopup(false);
+      // setRegisterPopup(false);
+      // setOtpPopup(false);
+    } else {
+      setIsError(true);
+      setError(data.message);
+    }
+  }
+
+  /* VERIFY OTP Register */
+  async function handleSubmit(otp) {
+    const token = localStorage.getItem("token");
+    const res = await fetch(`${backend}/auth/verify_mobile`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + `${token}`,
+      },
+      body: JSON.stringify({
+        otp: otp,
+      }),
+    });
+    const data = await res.json();
+    console.log(data);
+    setLoading(false);
+    if (data.status === 200) {
+      setUserId(data.id);
+      setLoginActive(true);
+      // setZonePopUp(true);
+      localStorage.removeItem("token");
+      localStorage.setItem("role", data.role);
+      if (data.role === "general") {
+        localStorage.setItem("generalId", data.id);
+        localStorage.setItem("generalToken", data.token);
+        router.push(`/`);
+        // setBid(true);
+      } else if (data.role === "business") {
+        localStorage.setItem("businessId", data.id);
+        localStorage.setItem("businessToken", data.token);
+        router.push(`/`);
+      }
+      // setLoginPopup(false);
+      // setRegisterPopup(false);
+      // setOtpPopup(false);
+    } else {
+      setIsError(true);
+      setError(data.message);
+    }
+  }
+
+  const verifyClick = () => {
+    if (OTP !== "") {
+      setLoading(true);
+      handleSubmit(OTP);
+    }
+  };
+
+  const verifyClickLogin = () => {
+    if (OTP !== "") {
+      setLoading(true);
+      handleSubmitLogin(OTP);
+    }
+  };
   return (
     <>
       <div className={styles.secOne}>
@@ -42,22 +154,28 @@ export default function OtpMain() {
               </button>
             ) : (
               <>
-                <button className={styles.send}>Verify</button>
-                {/* {fromLoginOrRegister == "login" ? (
+                {fromLoginOrRegister == "login" ? (
                   <>
-                    <button className={styles.send}>Verify</button>
+                    <button className={styles.send} onClick={verifyClickLogin}>
+                      Verify
+                    </button>
                   </>
                 ) : (
                   <>
-                    <button className={styles.send}>Verify</button>
+                    <button className={styles.send} onClick={verifyClick}>
+                      Verify
+                    </button>
                   </>
-                )} */}
+                )}
               </>
             )}
           </div>
           <div className={styles.bottom}>
             <p className={styles.bottomp}>
-              Not on Arclif yet? <span>Sign up</span>
+              Not on Arclif yet?{" "}
+              <Link href={"/register"}>
+                <span>Sign up</span>
+              </Link>
             </p>
           </div>
         </div>

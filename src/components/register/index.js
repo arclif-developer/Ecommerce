@@ -135,7 +135,8 @@ export default function RegisterMain() {
       setFromLoginOrRegister("register");
       // setOtpPopup(true);
       // setRegisterPopup(false);
-      localStorage.setItem("token", response.data.otpToken);
+      console.log(data);
+      localStorage.setItem("token", response?.data?.otpToken);
       router.push(`/otp`);
     }
   }
@@ -151,7 +152,6 @@ export default function RegisterMain() {
           <div className={styles.top}>
             <h1>{userRole === "business" ? "Business" : "General"} Registraion</h1>
             <p className={styles.otp}>6 digit OTP will be sent via sms to your Mobile Number</p>
-
             <div className={styles.stwo}>
               <input
                 type="text"
