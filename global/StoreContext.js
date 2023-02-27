@@ -7,8 +7,9 @@ export const StoreContextProvider = (props) => {
   // Store Yaseen end
 
   // Store 61-5a start
-  const [sellProductPopup, setSellProductPopup] = useState(false);
   const [viewOrderPopup, setViewOrderPopup] = useState(false);
+  const [userRole, setUserRole] = useState("general");
+  const [fromLoginOrRegister, setFromLoginOrRegister] = useState("login");
   // Store 61-5a end
 
   // Store Hashir start
@@ -26,10 +27,12 @@ export const StoreContextProvider = (props) => {
     // Store Yaseen end
 
     // Store 61-5a start
-    sellProductPopup,
-    setSellProductPopup,
     viewOrderPopup,
     setViewOrderPopup,
+    userRole,
+    setUserRole,
+    fromLoginOrRegister,
+    setFromLoginOrRegister,
     // Store 61-5a end
 
     // Store Hashir start

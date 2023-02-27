@@ -1,7 +1,9 @@
 import Head from "next/head";
 import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
+import HeaderNotLogged from "@/src/components/common/HeaderNL";
 import Header from "@/src/components/common/Header";
+import HeaderOne from "@/src/components/common/Header1";
 import Footer from "@/src/components/common/Footer";
 import OtpMain from "@/src/components/otp";
 import Help from "@/src/components/home/Help";
@@ -12,6 +14,8 @@ import styles from "./index.module.css";
 export default function Home() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
+
+  const userRole = "businfess";
   return (
     <>
       <Head>
@@ -22,7 +26,7 @@ export default function Home() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <Header />
+          {userRole == "general" ? <Header /> : userRole == "business" ? <HeaderOne /> : <HeaderNotLogged />}
           <div className={styles.main_inner}>
             <OtpMain />
           </div>
