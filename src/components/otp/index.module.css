@@ -80,11 +80,29 @@
 }
 .otp_feild input {
   padding: 1px;
-  width: 16.6666% !important;
+  width: 80% !important;
   height: 40px !important;
+  margin: 0 auto;
 }
-.otp_feild input:last-child {
+/* .section_buttons div:not(:last-child) {
+  margin-right: 55px;
+} */
+/* .otp_feild input:last-child {
   margin-right: 0 !important;
+} */
+
+.additional {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.2218px;
+  line-height: 15px;
+  color: #adadad;
+  text-align: center;
+  margin-top: 15px;
 }
 
 @media only screen and (max-width: 640px) {

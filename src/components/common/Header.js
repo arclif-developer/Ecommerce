@@ -85,10 +85,10 @@ const Header = () => {
             ) : (
               <>
                 <div onClick={() => (setUserRole("general"), router.push(`/login`))} className={styles.general_login}>
-                  General Login
+                  Login
                 </div>
                 <div onClick={() => (setUserRole("business"), router.push(`/login`))} className={styles.business_login}>
-                  Business Login
+                  Business ?
                 </div>
               </>
             )}
