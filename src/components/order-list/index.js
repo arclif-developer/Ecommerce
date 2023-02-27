@@ -84,7 +84,7 @@ export default function OrderListMain() {
                                 </div>
                                 <div className={styles.TwoTwo}>
                                   <div className={styles.TwoTwoOne}>
-                                    <img src="/icon/address.png" alt="Address" />
+                                    <img src="/icon/address-h.png" alt="Address" />
                                     <span>Delivery address:</span>
                                   </div>
                                   <div className={styles.TwoTwoTwo}>

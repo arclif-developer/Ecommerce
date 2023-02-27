@@ -53,7 +53,7 @@ const ViewOrderPopUp = () => {
             The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented.
           </div>
           <div className={styles.location}>
-            <img src="/icon/address.png" alt="Address" />
+            <img src="/icon/address-h.png" alt="Address" />
             <span>Malappuram, Tirur</span>
           </div>
           <div className={styles.btns}>

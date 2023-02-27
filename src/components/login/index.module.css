@@ -67,6 +67,9 @@
   line-height: 16px;
   color: #a4a4a4;
   margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .secOneInner h5 span {
   color: #b10744;

@@ -46,7 +46,7 @@ export default function BusinessHomeMain() {
                 />
                 <div className={styles.Desc}>Monte Contemporary Dining Chair Wi...</div>
                 <div className={styles.Locatn}>
-                  <img src="/icon/address.png" alt="Address" />
+                  <img src="/icon/address-h.png" alt="Address" />
                   <span>Malappuram, Tirur</span>
                 </div>
                 <div className={styles.Buttn}>Furniture</div>

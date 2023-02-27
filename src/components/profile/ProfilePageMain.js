@@ -1,11 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import AccountSettings from "./AccountSettings";
 import MyOrder from "./MyOrder";
 import styles from "./ProfilePageMain.module.css";
 
 const ProfilePageMain = () => {
+  const router = useRouter();
   const [nav, setNav] = useState("order");
+
+  const logout = () => {
+    localStorage.removeItem("Id");
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    router.push("/");
+  };
 
   return (
     <div className={styles.profilePageMain}>
@@ -45,6 +54,10 @@ const ProfilePageMain = () => {
           <div className={styles.profile_header_menu} onClick={() => setNav("history")}>
             <img src="/img/profile/historyNC.svg" alt="" />
             <p>Ask produts history</p>
+          </div>
+          <div className={styles.profile_header_menu} onClick={() => logout()}>
+            <img src="/icon/logout-nh.svg" alt="" />
+            <p>Logout</p>
           </div>
         </div>
       </div>
