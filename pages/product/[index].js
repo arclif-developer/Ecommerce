@@ -2,13 +2,10 @@ import Footer from "@/src/components/common/Footer";
 import Header from "@/src/components/common/Header";
 import SingleProductView from "@/src/components/product/SingleProductView";
 import Head from "next/head";
-import { useRouter } from "next/router";
 
 import styles from "./product-single.module.css";
 
 export default function SingleProduct() {
-  const router = useRouter();
-  const { index } = router.query;
   return (
     <>
       <Head>
@@ -21,7 +18,7 @@ export default function SingleProduct() {
         <div className={styles.main_outer_cover}>
           <Header />
           <div className={styles.main_inner}>
-            <SingleProductView id={index} />
+            <SingleProductView />
           </div>
           <Footer />
         </div>
