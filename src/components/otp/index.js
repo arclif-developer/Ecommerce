@@ -55,20 +55,13 @@ export default function OtpMain() {
       setLoginActive(true);
       localStorage.removeItem("token");
       localStorage.setItem("role", data.role);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("Id", data.id);
       if (data.role === "general") {
-        localStorage.setItem("generalToken", data.token);
-        localStorage.setItem("generalId", data.id);
         router.push(`/`);
-        // setBid(true);
       } else if (data.role === "business") {
-        localStorage.setItem("businessToken", data.token);
-        localStorage.setItem("businessId", data.id);
         router.push(`/`);
-        // window.location.href = `/architect-dashboard/${data.id}`;
       }
-      // setLoginPopup(false);
-      // setRegisterPopup(false);
-      // setOtpPopup(false);
     } else {
       setIsError(true);
       setError(data.message);
@@ -94,22 +87,15 @@ export default function OtpMain() {
     if (data.status === 200) {
       setUserId(data.id);
       setLoginActive(true);
-      // setZonePopUp(true);
       localStorage.removeItem("token");
       localStorage.setItem("role", data.role);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("Id", data.id);
       if (data.role === "general") {
-        localStorage.setItem("generalId", data.id);
-        localStorage.setItem("generalToken", data.token);
         router.push(`/`);
-        // setBid(true);
       } else if (data.role === "business") {
-        localStorage.setItem("businessId", data.id);
-        localStorage.setItem("businessToken", data.token);
         router.push(`/`);
       }
-      // setLoginPopup(false);
-      // setRegisterPopup(false);
-      // setOtpPopup(false);
     } else {
       setIsError(true);
       setError(data.message);
