@@ -125,8 +125,7 @@ export default function OtpMain() {
             </div>
             <div className={styles.additional}>
               <div className={styles.resend}>
-                Remaining time
-                {/* Don&apos;t receive the code ? <span>Resend</span> */}
+                Remaining time :{/* Don&apos;t receive the code ? <span>Resend</span> */}
               </div>
               <div className={styles.time}>{time}</div>
             </div>
