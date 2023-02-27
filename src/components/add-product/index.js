@@ -195,7 +195,7 @@ export default function AddProductMain() {
                         {categoryDataList?.map((items, i) => {
                           return (
                             <>
-                              <option name="category_id" value={items._id}>
+                              <option name="category_id" value={items._id} key={i}>
                                 {items.category_name}
                               </option>
                               ;
@@ -223,7 +223,10 @@ export default function AddProductMain() {
                         {subCategoryList?.map((items, i) => {
                           return (
                             <>
-                              <option value={items._id}>{items.subCategory_name}</option>;
+                              <option value={items._id} key={i}>
+                                {items.subCategory_name}
+                              </option>
+                              ;
                             </>
                           );
                         })}

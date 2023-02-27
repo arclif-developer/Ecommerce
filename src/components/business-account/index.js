@@ -84,7 +84,7 @@ export default function BusinessAccountMain() {
                 </div>
                 <div className={styles.profile_details}>
                   <div>
-                    <label for="company_name">Company name</label>
+                    <label>Company name</label>
                     <input
                       type="text"
                       id="company_name"
@@ -94,7 +94,7 @@ export default function BusinessAccountMain() {
                     />
                   </div>
                   <div>
-                    <label for="location">Location</label>
+                    <label>Location</label>
                     <input
                       type="text"
                       id="location"
@@ -104,7 +104,7 @@ export default function BusinessAccountMain() {
                     />
                   </div>
                   <div>
-                    <label for="company_address">Company Address</label>
+                    <label>Company Address</label>
                     <textarea
                       type="text"
                       id="company_address"
@@ -114,7 +114,7 @@ export default function BusinessAccountMain() {
                     ></textarea>
                   </div>
                   <div>
-                    <label for="district">District</label>
+                    <label>District</label>
                     <input
                       type="text"
                       id="district"
@@ -126,7 +126,7 @@ export default function BusinessAccountMain() {
 
                   <div className={styles.SpTwo}>
                     <div>
-                      <label for="contact_number">Contact Number</label>
+                      <label>Contact Number</label>
                       <input
                         type="text"
                         id="contact_number"
@@ -136,7 +136,7 @@ export default function BusinessAccountMain() {
                       />
                     </div>
                     <div>
-                      <label for="contact_mail">Contact Mail</label>
+                      <label>Contact Mail</label>
                       <input
                         type="text"
                         id="contact_mail"
@@ -155,13 +155,13 @@ export default function BusinessAccountMain() {
             ) : section === "history" ? (
               <div className={styles.max_history_outer}>
                 {orderHistory.map((items, i) => (
-                  <>
+                  <React.Fragment key={i}>
                     {items.products.map((products, index) => {
                       return (
-                        <>
+                        <React.Fragment key={index}>
                           {products?.delivery_status === "DELIVERED" ? (
                             <>
-                              <div className={styles.history_outer}>
+                              <div className={styles.history_outer} key={index}>
                                 <div className={styles.his_outer}>
                                   <img
                                     className={styles.product}
@@ -259,16 +259,16 @@ export default function BusinessAccountMain() {
                           ) : (
                             ""
                           )}
-                        </>
+                        </React.Fragment>
                       );
                     })}
-                  </>
+                  </React.Fragment>
                 ))}
               </div>
             ) : section === "sell" ? (
               <div className={styles.sell_max_outer}>
                 {sellingProducts.map((items, i) => (
-                  <div className={styles.sell_outer}>
+                  <div className={styles.sell_outer} key={i}>
                     {items.thumbnail ? (
                       <img
                         className={styles.product}

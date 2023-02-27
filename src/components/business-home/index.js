@@ -25,6 +25,7 @@ export default function BusinessHomeMain() {
       setReqProducts(data?.reqProducts);
     }
   }
+
   useEffect(() => {
     getAllRequestsprodFn();
   }, [selectDistrict]);
@@ -56,7 +57,7 @@ export default function BusinessHomeMain() {
             {reqProducts.length > 0 ? (
               <>
                 {reqProducts.map((items, i) => (
-                  <div className={styles.bidInner} onClick={() => setViewOrderPopup(true)}>
+                  <div className={styles.bidInner} onClick={() => setViewOrderPopup(true)} key={i}>
                     {items.image ? (
                       <>
                         <img
