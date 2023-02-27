@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
 import Head from "next/head";
-import HeaderOne from "@/src/components/common/Header1";
+import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
 import BusinessHomeMain from "@/src/components/business-home";
 import ViewOrderPopUp from "@/src/components/common/viewOrderPopup";
@@ -21,7 +21,7 @@ export default function BusinessHomePage() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <HeaderOne />
+          <Header />
           <div className={styles.main_inner}>
             <BusinessHomeMain />
           </div>

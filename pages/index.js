@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
-import HeaderNotLogged from "@/src/components/common/HeaderNL";
 import Header from "../src/components/common/Header";
-import HeaderOne from "@/src/components/common/Header1";
 import Footer from "@/src/components/common/Footer";
 import HomePage from "../src/components/Home";
 import Help from "@/src/components/home/Help";
@@ -16,6 +14,40 @@ export default function Home() {
   const askProductPopup = Store.askProductPopup;
 
   const userRole = "businfess";
+
+  // const [userDetails, setUserDetails] = useState([]);
+  // async function getUserDetails() {
+  //   const generalToken = localStorage.getItem("generalToken");
+  //   const businessToken = localStorage.getItem("businessToken");
+  //   if (generalToken !== "") {
+  //     const res = await fetch(`${api_url}/user/profile`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${generalToken}`,
+  //       },
+  //     });
+  //     const data = await res.json();
+  //     // console.log(data);
+  //     setUserDetails(data.userData);
+  //   }
+  //   if (businessToken !== "") {
+  //     const res = await fetch(`${api_url}/user/profile`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${businessToken}`,
+  //       },
+  //     });
+  //     const data = await res.json();
+  //     // console.log(data);
+  //     setUserDetails(data.userData);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getUserDetails();
+  // }, []);
   return (
     <>
       <Head>
@@ -26,7 +58,7 @@ export default function Home() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          {userRole == "general" ? <Header /> : userRole == "business" ? <HeaderOne /> : <HeaderNotLogged />}
+          <Header />
           <div className={styles.main_inner}>
             <HomePage />
           </div>
