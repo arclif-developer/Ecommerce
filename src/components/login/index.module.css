@@ -100,5 +100,18 @@
   color: #b10744;
 }
 
+.top {
+  padding: 0 70px;
+}
+.bottom {
+  padding: 0 70px;
+}
+
 @media only screen and (max-width: 640px) {
+  .top {
+    padding: 0 10px;
+  }
+  .bottom {
+    padding: 0 10px;
+  }
 }

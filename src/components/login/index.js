@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
 import { PulseLoader } from "react-spinners";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
 import backend from "@/global/backend";
+import PhoneInput from "react-phone-input-2";
 
+import "react-phone-input-2/lib/style.css";
 import styles from "./index.module.css";
 
 export default function LoginMain() {
@@ -107,34 +107,36 @@ export default function LoginMain() {
     <>
       <div className={styles.secOne}>
         <div className={styles.secOneInner}>
-          <h1>{userRole === "business" ? "Business" : "General"} Log in</h1>
-          <p className={styles.otptext}>OTP will be sent via sms to your Mobile Number</p>
-          <div className={styles.phone_feild}>
-            <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />
-            <input id="phone_no" type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
+          <div className={styles.top}>
+            <h1>{userRole === "business" ? "Business" : "General"} Log in</h1>
+            <p className={styles.otptext}>OTP will be sent via sms to your Mobile Number</p>
+            <div className={styles.phone_feild}>
+              <PhoneInput country={"in"} value={code} onChange={(phone) => setCode(phone)} />
+              <input id="phone_no" type="tel" onChange={storeValues} placeholder="Enter Mobile Number" />
+            </div>
+            {isError ? <p>{error}</p> : ""}
+            {showOtpText ? (
+              <h5>
+                OTP verification not completed on Register!{" "}
+                {resentLoading ? (
+                  <PulseLoader size={7} color="#4c0ad6" />
+                ) : (
+                  <span onClick={registerClick}>Resent OTP</span>
+                )}
+              </h5>
+            ) : (
+              ""
+            )}
+            {loading ? (
+              <div className={styles.submit}>
+                <PulseLoader color="#ffffff" />
+              </div>
+            ) : (
+              <div onClick={() => showOtp()} className={styles.submit}>
+                Send OTP
+              </div>
+            )}
           </div>
-          {isError ? <p>{error}</p> : ""}
-          {showOtpText ? (
-            <h5>
-              OTP verification not completed on Register!{" "}
-              {resentLoading ? (
-                <PulseLoader size={7} color="#4c0ad6" />
-              ) : (
-                <span onClick={registerClick}>Resent OTP</span>
-              )}
-            </h5>
-          ) : (
-            ""
-          )}
-          {loading ? (
-            <div className={styles.submit}>
-              <PulseLoader color="#ffffff" />
-            </div>
-          ) : (
-            <div onClick={() => showOtp()} className={styles.submit}>
-              Send OTP
-            </div>
-          )}
           <div className={styles.bottom}>
             <p className={styles.bottomp}>
               Not on Arclif yet?{" "}

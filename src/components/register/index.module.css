@@ -35,10 +35,38 @@
   border: 0.5px solid #e1e1e1;
   border-radius: 6px;
   width: 100%;
-  padding: 15px 16px;
+  padding: 9px 16px;
   margin-bottom: 12px;
 }
-.secOneInner button.send {
+.secOneInner .phone_feild {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.secOneInner .phone_feild > div {
+  width: auto;
+}
+.secOneInner .phone_feild > div > input {
+  margin-left: 30px;
+  width: 84px;
+  margin-right: 10px;
+}
+.secOneInner .phone_feild input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12.2218px;
+  line-height: 15px;
+  color: #adadad;
+  background: #ffffff;
+  border: 0.5px solid #e1e1e1;
+  border-radius: 6px;
+  width: 100%;
+  padding: 9px 16px;
+  margin-bottom: 0px;
+}
+.secOneInner .submit {
   font-family: "Inter";
   font-style: normal;
   font-weight: 500;
@@ -51,6 +79,7 @@
   padding: 14px;
   margin-top: 20px;
   margin-bottom: 19px;
+  text-align: center;
 }
 .secOneInner .bottomp {
   font-family: "Inter";
