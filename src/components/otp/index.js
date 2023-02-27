@@ -5,7 +5,7 @@ import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
 // import OTPInput, { ResendOTP } from "otp-input-react";
 import backend from "@/global/backend";
-// import OTPInput from "otp-input-react";
+import OTPInput from "otp-input-react";
 
 import styles from "./index.module.css";
 
@@ -123,7 +123,7 @@ export default function OtpMain() {
             <h1>Verification</h1>
             <p className={styles.otp_text}>OTP code we just send to your mobile number</p>
             <div className={styles.otp_feild}>
-              {/* <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} /> */}
+              <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} />
             </div>
             <div className={styles.additional}>
               <div className={styles.resend}>
