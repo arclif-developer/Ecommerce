@@ -11,6 +11,7 @@ import "react-phone-input-2/lib/style.css";
 import styles from "./index.module.css";
 
 export default function LoginMain() {
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
 
   const userRole = Store.userRole;
@@ -53,6 +54,7 @@ export default function LoginMain() {
       // setOtpPopup(true);
       // setLoginPopup(false);
       localStorage.setItem("token", data.token);
+      router.push(`/otp`);
     } else if (data.message === "Registeration process is not correct.Please register correctly") {
       setShowOtpText(true);
       setError(false);
