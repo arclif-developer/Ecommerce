@@ -60,12 +60,12 @@ export default function OrderListMain() {
         <>
           {placedOrders.map((items, index) => {
             return (
-              <>
+              <React.Fragment key={index}>
                 <div className={styles.secOne}>
                   <h1>Order no: {index + 1}</h1>
                   {items.products.map((product, index) => {
                     return (
-                      <>
+                      <React.Fragment key={index}>
                         <div className={styles.order_all_outer}>
                           <h2>product no: {index + 1}</h2>
                           <div className={styles.secOneInner}>
@@ -116,11 +116,11 @@ export default function OrderListMain() {
                           </div>
                           <OrderListMoreMain desc={product?.productId?.description} />
                         </div>
-                      </>
+                      </React.Fragment>
                     );
                   })}
                 </div>
-              </>
+              </React.Fragment>
             );
           })}
         </>
