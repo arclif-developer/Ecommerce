@@ -150,7 +150,7 @@ export default function RegisterMain() {
       <div className={styles.secOne}>
         <div className={styles.secOneInner}>
           <div className={styles.top}>
-            <h1>{userRole === "business" ? "Business" : "General"} Registraion</h1>
+            <h1>{userRole === "business" ? "Business" : "General"} Registration</h1>
             <p className={styles.otp}>6 digit OTP will be sent via sms to your Mobile Number</p>
             <div className={styles.stwo}>
               <input

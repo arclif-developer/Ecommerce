@@ -3,9 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
+// import OTPInput from "otp-input-react";
 // import OTPInput, { ResendOTP } from "otp-input-react";
 import backend from "@/global/backend";
-// import OTPInput from "otp-input-react";
 
 import styles from "./index.module.css";
 
@@ -13,18 +13,16 @@ export default function OtpMain() {
   const router = useRouter();
   const [Store] = useContext(StoreContext);
 
-  const setBid = Store.setBid;
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
   const fromLoginOrRegister = Store.fromLoginOrRegister;
-  const setZonePopUp = Store.setZonePopUp;
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
 
-  const [OTP, setOTP] = useState("");
-  console.log(OTP);
+  // const [OTP, setOTP] = useState("");
+  // console.log(OTP);
 
   const [counter, setCounter] = React.useState(300);
   React.useEffect(() => {
@@ -127,8 +125,7 @@ export default function OtpMain() {
             </div>
             <div className={styles.additional}>
               <div className={styles.resend}>
-                Remaining time
-                {/* Don&apos;t receive the code ? <span>Resend</span> */}
+                Remaining time :{/* Don&apos;t receive the code ? <span>Resend</span> */}
               </div>
               <div className={styles.time}>{time}</div>
             </div>
