@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
 import { PulseLoader } from "react-spinners";
 import PhoneInput from "react-phone-input-2";
@@ -136,7 +137,10 @@ export default function LoginMain() {
           )}
           <div className={styles.bottom}>
             <p className={styles.bottomp}>
-              Not on Arclif yet? <span>Sign up</span>
+              Not on Arclif yet?{" "}
+              <Link href={"/register"}>
+                <span>Sign up</span>
+              </Link>
             </p>
           </div>
         </div>
