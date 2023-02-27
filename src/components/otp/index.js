@@ -3,9 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { StoreContext } from "@/global/StoreContext";
+// import OTPInput from "otp-input-react";
 // import OTPInput, { ResendOTP } from "otp-input-react";
 import backend from "@/global/backend";
-import OTPInput from "otp-input-react";
 
 import styles from "./index.module.css";
 
@@ -13,18 +13,16 @@ export default function OtpMain() {
   const router = useRouter();
   const [Store] = useContext(StoreContext);
 
-  const setBid = Store.setBid;
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
   const fromLoginOrRegister = Store.fromLoginOrRegister;
-  const setZonePopUp = Store.setZonePopUp;
 
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("Please enter Mobile Number");
 
-  const [OTP, setOTP] = useState("");
-  console.log(OTP);
+  // const [OTP, setOTP] = useState("");
+  // console.log(OTP);
 
   const [counter, setCounter] = React.useState(300);
   React.useEffect(() => {
@@ -123,11 +121,7 @@ export default function OtpMain() {
             <h1>Verification</h1>
             <p className={styles.otp_text}>OTP code we just send to your mobile number</p>
             <div className={styles.otp_feild}>
-              {typeof window !== "undefined" ? (
-                <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} />
-              ) : (
-                ""
-              )}
+              {/* <OTPInput value={OTP} onChange={setOTP} autoFocus OTPLength={6} otpType="number" disabled={false} /> */}
             </div>
             <div className={styles.additional}>
               <div className={styles.resend}>
