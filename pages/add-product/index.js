@@ -1,5 +1,5 @@
+import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
-import HeaderOne from "@/src/components/common/Header1";
 import AddProductMain from "@/src/components/add-product";
 import Head from "next/head";
 
@@ -16,7 +16,7 @@ export default function AddProductPage() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <HeaderOne />
+          <Header />
           <div className={styles.main_inner}>
             <AddProductMain />
           </div>

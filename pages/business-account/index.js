@@ -1,5 +1,5 @@
+import Header from "@/src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
-import HeaderOne from "@/src/components/common/Header1";
 import BusinessAccountMain from "@/src/components/business-account";
 import Head from "next/head";
 
@@ -16,7 +16,7 @@ export default function BusinessAccountPage() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <HeaderOne />
+          <Header />
           <div className={styles.main_inner}>
             <BusinessAccountMain />
           </div>
