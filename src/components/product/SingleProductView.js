@@ -1,10 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from "react";
 import styles from "./SingleProductView.module.css";
+import { useRouter } from "next/router";
 var Api_url = "https://agriha-backend.onrender.com";
 
-const SingleProductView = (props) => {
-  const [productDetail, setProductDetail] = useState({});
+const SingleProductView = () => {
+  const router = useRouter();
+  const { index } = router.query;
+  const [productDetail, setProductDetail] = useState();
   async function getProductDetailFn(id) {
     const ApiResponse = await fetch(`${Api_url}/product/details/${id}`, {
       method: "GET",
@@ -16,8 +19,10 @@ const SingleProductView = (props) => {
     setProductDetail(res?.productDta);
   }
   useEffect(() => {
-    getProductDetailFn(props.id);
-  }, []);
+    if (index) {
+      getProductDetailFn(index);
+    }
+  }, [index]);
   return (
     <>
       {productDetail ? (
@@ -26,17 +31,16 @@ const SingleProductView = (props) => {
             <div className={styles.single_top}>
               <div className={styles.single_top_image_container}>
                 <div className={styles.single_top_left}>
-                  <img
-                    src="https://www.dauphin.com/img?f=_media/products/tec_line/jpg/2021/020521_tec_sp9110d_deskchair_rev01.jpg&w=1000&h=1000&r=fit"
-                    alt=""
-                    onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                  />
+                  {productDetail?.image?.map((items, index) => {
+                    return (
+                      <>
+                        <img src={items} alt="" onError={(e) => (e.target.src = "/img/common/ina.svg")} />
+                      </>
+                    );
+                  })}
                 </div>
                 <div className={styles.single_top_center}>
-                  <img
-                    src="https://www.dauphin.com/img?f=_media/products/tec_line/jpg/2021/020521_tec_sp9110d_deskchair_rev01.jpg&w=1000&h=1000&r=fit"
-                    alt=""
-                  />
+                  <img src={productDetail?.thumbnail} alt="" onError={(e) => (e.target.src = "/img/common/ina.svg")} />
                   <div className={styles.saveButtonMobile}>
                     <img src="/icon/save.svg" alt="" />
                     Save
@@ -44,13 +48,21 @@ const SingleProductView = (props) => {
                 </div>
               </div>
               <div className={styles.single_top_right}>
-                <h5>The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented.</h5>
-                <span>By Furniture Global</span>
+                <h5>{productDetail.name}</h5>
+                <span>By {productDetail.brand}</span>
                 <div className={styles.priceProduct_container}>
                   <div className={styles.price_product}>
-                    <h5>₹3249</h5>
-                    <p>₹5,499</p>
-                    <span>76% off</span>
+                    {productDetail.discount_rate ? (
+                      <>
+                        <h5>
+                          ₹{Math.trunc(productDetail.mrp - (productDetail.mrp * productDetail.discount_rate) / 100)}
+                        </h5>
+                        <p>₹{productDetail.mrp}</p>
+                        <span>{productDetail.discount_rate}% off</span>
+                      </>
+                    ) : (
+                      <h5>₹{productDetail.mrp}</h5>
+                    )}
                   </div>
                   <div className={styles.quantity}>
                     Qty
