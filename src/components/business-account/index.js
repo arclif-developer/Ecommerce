@@ -40,7 +40,7 @@ export default function BusinessAccountMain() {
   }
 
   async function getSellerProducts() {
-    const ApiResponse = await fetch(`${Api_url}/product/sellersProducts`, {
+    const ApiResponse = await fetch(`${Api_url}/product/sellers_products_view`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -48,16 +48,17 @@ export default function BusinessAccountMain() {
       },
     });
     const response = await ApiResponse.json();
+    console.log(response);
     if (response.status === 200) {
+      console.log(response);
       setSellingProducts(response.sellerProducts);
     }
   }
-
   useEffect(() => {
     getOrderHistory();
     getSellerProducts();
   }, []);
-  console.log(orderHistory);
+  console.log(sellingProducts);
   return (
     <>
       <div className={styles.secOne}>
@@ -278,23 +279,38 @@ export default function BusinessAccountMain() {
               </div>
             ) : section === "sell" ? (
               <div className={styles.sell_max_outer}>
-                {Array.apply(null, { length: 5 }).map((e, i) => (
+                {sellingProducts.map((items, i) => (
                   <div className={styles.sell_outer}>
-                    <img
-                      className={styles.product}
-                      src="/img/common/ni.svg"
-                      onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                      alt="Product Image"
-                    />
+                    {items.thumbnail ? (
+                      <img
+                        className={styles.product}
+                        src={items.thumbnail}
+                        onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                        alt="Product Image"
+                      />
+                    ) : (
+                      <img
+                        className={styles.product}
+                        src="/img/common/ni.svg"
+                        onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                        alt="Product Image"
+                      />
+                    )}
+
                     <div className={styles.SellTwo}>
-                      <div className={styles.SellTwoOne}>
-                        The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented Smart GRID
-                        Technology Nylon Office Executive Chair.
-                      </div>
+                      <div className={styles.SellTwoOne}>{items.name}</div>
                       <div className={styles.SellTwoTwo}>
-                        <span>₹349</span>
-                        <span>₹1,499</span>
-                        <span>76% off</span>
+                        {items.discount_rate ? (
+                          <>
+                            <span>₹{items.mrp - (items.mrp * items.discount_rate) / 100}</span>
+                            <span>₹{items.mrp}</span>
+                            <span>{items.discount_rate}% off</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>₹{items.mrp}</span>
+                          </>
+                        )}
                       </div>
                       <div className={styles.SellTwoThree}>
                         <a>Edit Price</a>
