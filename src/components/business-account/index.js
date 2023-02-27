@@ -9,6 +9,7 @@ import moment from "moment";
 export default function BusinessAccountMain() {
   const [section, setSection] = useState("profile");
   const [orderHistory, setOrderHistory] = useState([]);
+  const [sellingProducts, setSellingProducts] = useState([]);
   const imgurl = "#";
 
   var token =
@@ -27,8 +28,23 @@ export default function BusinessAccountMain() {
     }
   }
 
+  async function getSellerProducts() {
+    const ApiResponse = await fetch(`${Api_url}/product/sellersProducts`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const response = await ApiResponse.json();
+    if (response.status === 200) {
+      setSellingProducts(response.sellerProducts);
+    }
+  }
+
   useEffect(() => {
     getOrderHistory();
+    getSellerProducts();
   }, []);
   console.log(orderHistory);
   return (
@@ -191,7 +207,7 @@ export default function BusinessAccountMain() {
                                       </div>
                                       <div>
                                         <span>Payment method : </span>
-                                        <span>ONLINE</span>
+                                        <span style={{ textTransform: "uppercase" }}>{items?.payment_method}</span>
                                       </div>
                                     </div>
                                     <div className={styles.ThreeTwo}>
