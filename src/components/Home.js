@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import SectionThree from "./home/SectionThree";
 import SectionTwo from "./SectionTwo";
-var Api_url = "https://agriha-backend.onrender.com";
+var Api_url = "https://agriha-backend-6e2r.onrender.com";
 
 const HomePage = () => {
   const [categories, setCategory] = useState([]);
@@ -45,7 +45,7 @@ const HomePage = () => {
           {categories.map((items, index) => {
             return (
               <React.Fragment key={index}>
-                <SectionTwo items={items}/>
+                <SectionTwo items={items} />
               </React.Fragment>
             );
           })}

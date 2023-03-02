@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import backend from "@/global/backend";
 import moment from "moment";
 
-var Api_url = "https://agriha-backend.onrender.com";
+var Api_url = "https://agriha-backend-6e2r.onrender.com";
 
 import styles from "./index.module.css";
 export default function BusinessAccountMain() {
