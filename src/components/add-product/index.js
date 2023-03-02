@@ -8,7 +8,7 @@ import storage from "@/global/firebase.";
 import styles from "./index.module.css";
 import { async } from "@firebase/util";
 
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+import backend from "@/global/backend";
 
 export default function AddProductMain() {
   const initialState = {
@@ -52,7 +52,7 @@ export default function AddProductMain() {
 
   // ###### API Calling =>  Find All Available Product Categories from DB ###### //
   async function getAllCategoryFn() {
-    const ApiResponse = await fetch(`${Api_url}/admin/product/categories`, {
+    const ApiResponse = await fetch(`${backend}/admin/product/categories`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export default function AddProductMain() {
 
   // ###### API Calling => Category Id to find Subcategory from DB  ######//
   async function getSubCategoryDataFn(id) {
-    const Api_response = await fetch(`${Api_url}/admin/product/sub_category/${id}`, {
+    const Api_response = await fetch(`${backend}/admin/product/sub_category/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -112,7 +112,7 @@ export default function AddProductMain() {
   async function uploadProductDataFn() {
     var token =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
-    const ApiResponse = await fetch(`${Api_url}/product/add_new_products`, {
+    const ApiResponse = await fetch(`${backend}/product/add_new_products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

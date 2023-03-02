@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import SectionThree from "./home/SectionThree";
 import SectionTwo from "./SectionTwo";
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+import backend from "@/global/backend";
 
 const HomePage = () => {
   const [categories, setCategory] = useState([]);
   async function getAllCategoryFn() {
-    const AprResponse = await fetch(`${Api_url}/admin/product/categories`, {
+    const AprResponse = await fetch(`${backend}/admin/product/categories`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

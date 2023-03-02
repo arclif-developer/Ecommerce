@@ -6,14 +6,15 @@ import OrderListMoreMain from "./orderMore";
 
 import styles from "./index.module.css";
 import { images } from "@/next.config";
-const Api_url = "https://agriha-backend-6e2r.onrender.com";
+
+import backend from "@/global/backend";
 
 export default function OrderListMain() {
   const [placedOrders, setPlacedOrders] = useState([]);
   var token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
   async function getSellerPlacedOrder() {
-    const ApiResponse = await fetch(`${Api_url}/order/seller/order_placed_list`, {
+    const ApiResponse = await fetch(`${backend}/order/seller/order_placed_list`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +28,7 @@ export default function OrderListMain() {
   }
 
   async function OrderAcceptFn(id) {
-    const ApiResponse = await fetch(`${Api_url}/order/order_confirmed`, {
+    const ApiResponse = await fetch(`${backend}/order/order_confirmed`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

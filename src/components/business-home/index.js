@@ -6,7 +6,7 @@ import { StoreContext } from "@/global/StoreContext";
 
 import styles from "./index.module.css";
 
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+import backend from "@/global/backend";
 
 export default function BusinessHomeMain() {
   const [Store] = useContext(StoreContext);
@@ -15,7 +15,7 @@ export default function BusinessHomeMain() {
   const setViewOrderPopup = Store.setViewOrderPopup;
 
   async function getAllRequestsprodFn() {
-    const ApiResponse = await fetch(`${Api_url}/product/requestProduct_view?district=${selectDistrict}`, {
+    const ApiResponse = await fetch(`${backend}/product/requestProduct_view?district=${selectDistrict}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
