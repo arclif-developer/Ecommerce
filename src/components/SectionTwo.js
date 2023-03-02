@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { useRouter } from "next/router";
-var Api_url = "https://agriha-backend.onrender.com";
+var Api_url = "https://agriha-backend-6e2r.onrender.com";
 
 const SectionTwo = (props) => {
   const [products, setproducts] = useState([]);

@@ -8,7 +8,7 @@ import storage from "@/global/firebase.";
 import styles from "./index.module.css";
 import { async } from "@firebase/util";
 
-var Api_url = "https://agriha-backend.onrender.com";
+var Api_url = "https://agriha-backend-6e2r.onrender.com";
 
 export default function AddProductMain() {
   const initialState = {

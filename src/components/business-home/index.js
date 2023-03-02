@@ -6,7 +6,7 @@ import { StoreContext } from "@/global/StoreContext";
 
 import styles from "./index.module.css";
 
-var Api_url = "https://agriha-backend.onrender.com";
+var Api_url = "https://agriha-backend-6e2r.onrender.com";
 
 export default function BusinessHomeMain() {
   const [Store] = useContext(StoreContext);
