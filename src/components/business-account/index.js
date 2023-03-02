@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 import backend from "@/global/backend";
 import moment from "moment";
 
-import backend from "@/global/backend";
-
 import styles from "./index.module.css";
 export default function BusinessAccountMain() {
   const router = useRouter();
