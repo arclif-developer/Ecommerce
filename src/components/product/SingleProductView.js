@@ -7,22 +7,61 @@ var Api_url = "https://agriha-backend-6e2r.onrender.com";
 const SingleProductView = () => {
   const router = useRouter();
   const { index } = router.query;
+
+  // STATES
   const [productDetail, setProductDetail] = useState();
+  const [image, setImages] = useState();
+  const [quantity, setQuantity] = useState(1);
+  const [token, setToken] = useState();
+  const [userId, setUserId] = useState();
+  console.log(userId);
+
+  // PRODUCTS DETAILS GET API CALLING FUNCTION
   async function getProductDetailFn(id) {
-    const ApiResponse = await fetch(`${Api_url}/product/details/${id}`, {
+    const ApiResponse = await fetch(`${Api_url}/product/details/${id}?user_id=${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
     const res = await ApiResponse.json();
+    console.log(res);
     setProductDetail(res?.productDta);
+    setImages(res?.productDta?.thumbnail);
   }
+
+  const handleImages = (images) => {
+    setImages(images);
+  };
+
+  const handleQuantity = (e) => {
+    setQuantity(parseInt(e.target.value));
+  };
+
+  const handleAddToCart = async () => {
+    const ApiRes = await fetch(`${Api_url}/cart`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        product_id: productDetail._id,
+        quantity: quantity,
+      }),
+    });
+    const res = await ApiRes.json();
+    console.log(res);
+  };
+
   useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    setUserId(localStorage.getItem("Id"));
     if (index) {
       getProductDetailFn(index);
     }
   }, [index]);
+  console.log(productDetail);
   return (
     <>
       {productDetail ? (
@@ -33,14 +72,19 @@ const SingleProductView = () => {
                 <div className={styles.single_top_left}>
                   {productDetail?.image?.map((items, index) => {
                     return (
-                      <>
-                        <img src={items} alt="" onError={(e) => (e.target.src = "/img/common/ina.svg")} />
-                      </>
+                      <React.Fragment key={index}>
+                        <img
+                          src={items}
+                          alt=""
+                          onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                          onClick={() => handleImages(items)}
+                        />
+                      </React.Fragment>
                     );
                   })}
                 </div>
                 <div className={styles.single_top_center}>
-                  <img src={productDetail?.thumbnail} alt="" onError={(e) => (e.target.src = "/img/common/ina.svg")} />
+                  <img src={image} alt="" onError={(e) => (e.target.src = "/img/common/ina.svg")} />
                   <div className={styles.saveButtonMobile}>
                     <img src="/icon/save.svg" alt="" />
                     Save
@@ -66,7 +110,7 @@ const SingleProductView = () => {
                   </div>
                   <div className={styles.quantity}>
                     Qty
-                    <select>
+                    <select onChange={handleQuantity}>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -93,7 +137,9 @@ const SingleProductView = () => {
                   Please enter pin code to check home delivery availability.
                 </div>
                 <div className={styles.button_container}>
-                  <div className={styles.addtocart_button}>Add to cart</div>
+                  <div className={styles.addtocart_button} onClick={handleAddToCart}>
+                    Add to cart
+                  </div>
                   <div className={styles.buynow_button}>Buy now</div>
                   <div className={styles.saveButton}>
                     <img src="/icon/save.svg" alt="" />
