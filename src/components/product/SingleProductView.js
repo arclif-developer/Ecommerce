@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SingleProductView.module.css";
 import { useRouter } from "next/router";
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+
+import backend from "@/global/backend";
 
 const SingleProductView = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const SingleProductView = () => {
 
   // PRODUCTS DETAILS GET API CALLING FUNCTION
   async function getProductDetailFn(id) {
-    const ApiResponse = await fetch(`${Api_url}/product/details/${id}?user_id=${userId}`, {
+    const ApiResponse = await fetch(`${backend}/product/details/${id}?user_id=${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +40,7 @@ const SingleProductView = () => {
   };
 
   const handleAddToCart = async () => {
-    const ApiRes = await fetch(`${Api_url}/cart`, {
+    const ApiRes = await fetch(`${backend}/cart`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

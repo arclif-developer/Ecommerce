@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import backend from "@/global/backend";
 import moment from "moment";
 
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+import backend from "@/global/backend";
 
 import styles from "./index.module.css";
 export default function BusinessAccountMain() {
@@ -26,7 +26,7 @@ export default function BusinessAccountMain() {
   var token =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
   async function getOrderHistory() {
-    const ApiResponse = await fetch(`${Api_url}/order/delivered_orders`, {
+    const ApiResponse = await fetch(`${backend}/order/delivered_orders`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +40,7 @@ export default function BusinessAccountMain() {
   }
 
   async function getSellerProducts() {
-    const ApiResponse = await fetch(`${Api_url}/product/sellers_products_view`, {
+    const ApiResponse = await fetch(`${backend}/product/sellers_products_view`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

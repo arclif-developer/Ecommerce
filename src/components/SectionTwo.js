@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 import { useRouter } from "next/router";
-var Api_url = "https://agriha-backend-6e2r.onrender.com";
+import backend from "@/global/backend";
 
 const SectionTwo = (props) => {
   const [products, setproducts] = useState([]);
@@ -13,7 +13,7 @@ const SectionTwo = (props) => {
   };
 
   async function getProductsFn() {
-    const ApiResponse = await fetch(`${Api_url}/product/catelogOrSubcatelog/${props.items._id}`, {
+    const ApiResponse = await fetch(`${backend}/product/catelogOrSubcatelog/${props.items._id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
