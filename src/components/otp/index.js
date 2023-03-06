@@ -16,6 +16,7 @@ export default function OtpMain() {
 
   const setLoginActive = Store.setLoginActive;
   const setUserId = Store.setUserId;
+  const setToken = Store.setToken;
   const fromLoginOrRegister = Store.fromLoginOrRegister;
 
   const [isError, setIsError] = useState(false);

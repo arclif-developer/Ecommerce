@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { StoreContext } from "@/global/StoreContext";
 import Header from "../src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
@@ -12,8 +12,6 @@ import styles from "../styles/index.module.css";
 export default function Home() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
-
-  const userRole = "businfess";
 
   // const [userDetails, setUserDetails] = useState([]);
   // async function getUserDetails() {

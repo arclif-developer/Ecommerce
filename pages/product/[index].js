@@ -1,11 +1,16 @@
+import { useContext } from "react";
+import { StoreContext } from "@/global/StoreContext";
 import Footer from "@/src/components/common/Footer";
 import Header from "@/src/components/common/Header";
 import SingleProductView from "@/src/components/product/SingleProductView";
 import Head from "next/head";
 
 import styles from "./product-single.module.css";
+import AskProductPopUp from "@/src/components/common/askProduct-popup";
 
 export default function SingleProduct() {
+  const [Store] = useContext(StoreContext);
+  const askProductPopup = Store.askProductPopup;
   return (
     <>
       <Head>
@@ -22,6 +27,7 @@ export default function SingleProduct() {
           </div>
           <Footer />
         </div>
+        {askProductPopup ? <AskProductPopUp /> : ""}
       </main>
     </>
   );

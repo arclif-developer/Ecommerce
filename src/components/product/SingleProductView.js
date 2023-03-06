@@ -1,12 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./SingleProductView.module.css";
 import { useRouter } from "next/router";
 
 import backend from "@/global/backend";
+import { StoreContext } from "@/global/StoreContext";
 
 const SingleProductView = () => {
   const router = useRouter();
+  const [Store] = useContext(StoreContext);
+  const userId = Store.userId;
+  const setUserId = Store.setUserId;
   const { index } = router.query;
 
   // STATES
@@ -14,11 +18,13 @@ const SingleProductView = () => {
   const [image, setImages] = useState();
   const [quantity, setQuantity] = useState(1);
   const [token, setToken] = useState();
-  const [userId, setUserId] = useState();
-  console.log(userId);
+  const [auth, setAuth] = useState(true);
+  // const [userId, setUserId] = useState();
+  const [Iscart, setIscart] = useState(false);
 
   // PRODUCTS DETAILS GET API CALLING FUNCTION
   async function getProductDetailFn(id) {
+    console.log(userId);
     const ApiResponse = await fetch(`${backend}/product/details/${id}?user_id=${userId}`, {
       method: "GET",
       headers: {
@@ -28,6 +34,7 @@ const SingleProductView = () => {
     const res = await ApiResponse.json();
     console.log(res);
     setProductDetail(res?.productDta);
+    setIscart(res?.cart);
     setImages(res?.productDta?.thumbnail);
   }
 
@@ -40,29 +47,47 @@ const SingleProductView = () => {
   };
 
   const handleAddToCart = async () => {
-    const ApiRes = await fetch(`${backend}/cart`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        product_id: productDetail._id,
-        quantity: quantity,
-      }),
-    });
-    const res = await ApiRes.json();
-    console.log(res);
+    if (userId && token) {
+      const ApiRes = await fetch(`${backend}/cart`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product_id: productDetail._id,
+          quantity: quantity,
+        }),
+      });
+      const res = await ApiRes.json();
+      if (res.status === 200) {
+        setIscart(true);
+      } else {
+        alert("Something went wrong. Please try again");
+      }
+    } else {
+      router.push(`/login`);
+    }
   };
 
   useEffect(() => {
-    setToken(localStorage.getItem("token"));
-    setUserId(localStorage.getItem("Id"));
+    if (!userId || (!token && auth)) {
+      console.log("store user not found");
+      let token = localStorage.getItem("token");
+      let id = localStorage.getItem("Id");
+      if (token && id) {
+        setToken(token);
+        setUserId(id);
+      } else {
+        alert("Something went wrong, please logout and try again");
+        router.push(`/login`);
+        setAuth(false);
+      }
+    }
     if (index) {
       getProductDetailFn(index);
     }
-  }, [index]);
-  console.log(productDetail);
+  }, [index, userId]);
   return (
     <>
       {productDetail ? (
@@ -94,7 +119,16 @@ const SingleProductView = () => {
               </div>
               <div className={styles.single_top_right}>
                 <h5>{productDetail.name}</h5>
-                <span>By {productDetail.brand}</span>
+                {productDetail?.seller ? (
+                  <>
+                    <span>By {productDetail.seller}</span>
+                  </>
+                ) : (
+                  <>
+                    <span>By direct seller</span>
+                  </>
+                )}
+
                 <div className={styles.priceProduct_container}>
                   <div className={styles.price_product}>
                     {productDetail.discount_rate ? (
@@ -138,9 +172,16 @@ const SingleProductView = () => {
                   Please enter pin code to check home delivery availability.
                 </div>
                 <div className={styles.button_container}>
-                  <div className={styles.addtocart_button} onClick={handleAddToCart}>
-                    Add to cart
-                  </div>
+                  {Iscart === true ? (
+                    <>
+                      <div className={styles.addtocart_button}>Go to cart</div>
+                    </>
+                  ) : (
+                    <div className={styles.addtocart_button} onClick={handleAddToCart}>
+                      Add to cart
+                    </div>
+                  )}
+
                   <div className={styles.buynow_button}>Buy now</div>
                   <div className={styles.saveButton}>
                     <img src="/icon/save.svg" alt="" />
