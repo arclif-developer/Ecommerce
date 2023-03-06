@@ -13,7 +13,6 @@ export default function Home() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
 
-  const userRole = "businfess";
   return (
     <>
       <Head>
