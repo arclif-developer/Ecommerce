@@ -174,7 +174,9 @@ const SingleProductView = () => {
                 <div className={styles.button_container}>
                   {Iscart === true ? (
                     <>
-                      <div className={styles.addtocart_button}>Go to cart</div>
+                      <div className={styles.addtocart_button} onClick={() => router.push("/cart")}>
+                        Go to cart
+                      </div>
                     </>
                   ) : (
                     <div className={styles.addtocart_button} onClick={handleAddToCart}>
