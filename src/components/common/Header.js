@@ -34,10 +34,14 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles.header_center}>
-            <div className={styles.header_search}>
-              <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
-              <img src="/icon/search.svg" alt="" />
-            </div>
+            {role == "general" && role == "business" ? (
+              <div className={styles.header_search}>
+                <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
+                <img src="/icon/search.svg" alt="" />
+              </div>
+            ) : (
+              ""
+            )}
           </div>
           <div className={styles.header_right}>
             {role == "general" ? (
@@ -99,12 +103,16 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className={styles.mobile_search}>
-        <div className={styles.header_search}>
-          <input placeholder="What are you looking for?" />
-          <img src="/icon/search.svg" alt="" />
+      {role == "general" && role == "business" ? (
+        <div className={styles.mobile_search}>
+          <div className={styles.header_search}>
+            <input placeholder="What are you looking for?" />
+            <img src="/icon/search.svg" alt="" />
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

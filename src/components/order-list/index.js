@@ -18,6 +18,7 @@ export default function OrderListMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -32,6 +33,7 @@ export default function OrderListMain() {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({

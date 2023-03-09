@@ -56,6 +56,7 @@ export default function AddProductMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const resData = await ApiResponse.json();
@@ -68,6 +69,7 @@ export default function AddProductMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const respData = await Api_response.json();
@@ -116,6 +118,7 @@ export default function AddProductMain() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(sellProductData),

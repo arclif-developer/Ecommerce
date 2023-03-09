@@ -33,6 +33,7 @@ const AskProductPopUp = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const res = await ApiResponse.json();
@@ -100,6 +101,7 @@ const AskProductPopUp = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(reqProductDta),

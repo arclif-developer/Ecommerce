@@ -29,6 +29,7 @@ export default function BusinessAccountMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });
@@ -43,6 +44,7 @@ export default function BusinessAccountMain() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
       },
     });

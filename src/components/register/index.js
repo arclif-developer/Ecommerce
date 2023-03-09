@@ -96,6 +96,7 @@ export default function RegisterMain() {
           setError(false);
         } else {
           setIsError(true);
+          setError(response.data.message);
         }
       })
       .catch((error) => {
@@ -136,7 +137,7 @@ export default function RegisterMain() {
       // setOtpPopup(true);
       // setRegisterPopup(false);
       console.log(data);
-      localStorage.setItem("token", response?.data?.otpToken);
+      localStorage.setItem("token", data?.otpToken);
       router.push(`/otp`);
     }
   }
