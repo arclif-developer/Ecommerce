@@ -1,5 +1,4 @@
 .search_outer {
-  margin-top: 63px;
   width: 100%;
 }
 
@@ -209,4 +208,33 @@
   line-height: 16.41px;
   color: #4d4d4d;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 950px) {
+  .search_left {
+    display: none;
+  }
+  .search_right {
+    width: 100%;
+    padding-right: 5vw;
+    padding-left: 5vw;
+    height: 100%;
+    padding-top: 32px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .product_card_container {
+    display: grid;
+    gap: 21px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .product_card_container {
+    display: grid;
+    gap: 21px;
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

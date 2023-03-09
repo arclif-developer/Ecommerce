@@ -104,7 +104,7 @@ const HeaderSearch = () => {
       </div>
       <div className={styles.mobile_search}>
         <div className={styles.header_search}>
-          <input placeholder="What are you looking for?" />
+          <input placeholder="What are you looking for?" onChange={handleChangeInput} />
           <img src="/icon/search.svg" alt="" />
         </div>
       </div>
