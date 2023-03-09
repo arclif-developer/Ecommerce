@@ -96,78 +96,71 @@ const SearchPage = () => {
   return (
     <div className={styles.search_outer}>
       <div className={styles.search_inner}>
-        {products.length !== 0 ? (
-          <>
-            <div className={styles.search_left}>
-              <h4>Sort by</h4>
-              <div className={styles.sort_item_container}>
-                {/* <div className={styles.sort_item}>
+        <div className={styles.search_left}>
+          <h4>Sort by</h4>
+          <div className={styles.sort_item_container}>
+            {/* <div className={styles.sort_item}>
                   <input type="radio" name="sort" />
                   <p>Relevance</p>
                 </div> */}
-                <div className={styles.sort_item}>
-                  <input type="radio" name="sort" onClick={() => setSortName("highestPrised")} />
-                  <p>Highest Priced First</p>
-                </div>
-                <div className={styles.sort_item}>
-                  <input type="radio" name="sort" onClick={() => setSortName("lowestPrised")} />
-                  <p>Lowest Priced First</p>
-                </div>
-                {/* <div className={styles.sort_item}>
+            <div className={styles.sort_item}>
+              <input type="radio" name="sort" onClick={() => setSortName("highestPrised")} />
+              <p>Highest Priced First</p>
+            </div>
+            <div className={styles.sort_item}>
+              <input type="radio" name="sort" onClick={() => setSortName("lowestPrised")} />
+              <p>Lowest Priced First</p>
+            </div>
+            {/* <div className={styles.sort_item}>
                   <input type="radio" name="sort" />
                   <p>Fastest Shipping</p>
                 </div> */}
-                {/* <div className={styles.sort_item}>
+            {/* <div className={styles.sort_item}>
                   <input type="radio" name="sort" />
                   <p>Newest</p>
                 </div> */}
-              </div>
-              <h5>Brand</h5>
-              <div className={styles.brand_item_container}>
-                {allbrands.map((item, index) => {
-                  return (
-                    <div className={styles.brand_item} key={index}>
-                      <input
-                        type="checkbox"
-                        name="brand"
-                        value={item.brand}
-                        onClick={() => handleBrandClick(item.brand)}
-                      />
-                      <p>{item.brand}</p>
+          </div>
+          <h5>Brand</h5>
+          <div className={styles.brand_item_container}>
+            {allbrands.map((item, index) => {
+              return (
+                <div className={styles.brand_item} key={index}>
+                  <input type="checkbox" name="brand" value={item.brand} onClick={() => handleBrandClick(item.brand)} />
+                  <p>{item.brand}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <div className={styles.search_right}>
+          {products.length !== 0 ? (
+            <div className={styles.product_card_container}>
+              {products.map((item, index) => {
+                return (
+                  <div className={styles.card_product} key={index}>
+                    <img src="/icon/addFav.svg" alt="" />
+                    <div className={styles.productImage}>
+                      <img src={item?.thumbnail} alt="" />
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.search_right}>
-              <div className={styles.product_card_container}>
-                {products.map((item, index) => {
-                  return (
-                    <div className={styles.card_product} key={index}>
-                      <img src="/icon/addFav.svg" alt="" />
-                      <div className={styles.productImage}>
-                        <img src={item?.thumbnail} alt="" />
+                    <div className={styles.product_details}>
+                      <p>{item?.name}</p>
+                      {/* <h4>By Furniture Global</h4> */}
+                      <div className={styles.priceContainer}>
+                        <h5>₹{Math.trunc(item.mrp - (item.mrp * item.discount_rate) / 100)}</h5>
+                        <p>₹{item.mrp}</p>
+                        <span>{item.discount_rate}% off</span>
                       </div>
-                      <div className={styles.product_details}>
-                        <p>{item?.name}</p>
-                        {/* <h4>By Furniture Global</h4> */}
-                        <div className={styles.priceContainer}>
-                          <h5>₹{Math.trunc(item.mrp - (item.mrp * item.discount_rate) / 100)}</h5>
-                          <p>₹{item.mrp}</p>
-                          <span>{item.discount_rate}% off</span>
-                        </div>
-                        <div className={styles.buyNow_button}>Buy now</div>
-                        <div className={styles.addToCart_button}>Add to cart</div>
-                      </div>
+                      <div className={styles.buyNow_button}>Buy now</div>
+                      <div className={styles.addToCart_button}>Add to cart</div>
                     </div>
-                  );
-                })}
-              </div>
+                  </div>
+                );
+              })}
             </div>
-          </>
-        ) : (
-          ""
-        )}
+          ) : (
+            ""
+          )}
+        </div>
       </div>
     </div>
   );
