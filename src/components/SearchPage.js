@@ -133,6 +133,10 @@ const SearchPage = () => {
           </div>
         </div>
         <div className={styles.search_right}>
+          {/* <div className={styles.filter_mobile_container}>
+            <img src="/icon/filterIcon.svg" alt="" />
+            Product filter
+          </div> */}
           {products.length !== 0 ? (
             <div className={styles.product_card_container}>
               {products.map((item, index) => {
