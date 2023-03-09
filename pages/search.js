@@ -1,13 +1,12 @@
 import Head from "next/head";
-import Header from "../src/components/common/Header";
 import Footer from "@/src/components/common/Footer";
+import HeaderSearch from "@/src/components/search/HeaderSearch";
 import { useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
 import AskProductPopUp from "@/src/components/common/askProduct-popup";
 import SearchPage from "@/src/components/SearchPage";
 
 import styles from "../styles/search.module.css";
-import HeaderSearch from "@/src/components/search/HeaderSearch";
 
 export default function Search() {
   const [Store] = useContext(StoreContext);
