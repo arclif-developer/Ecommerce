@@ -82,6 +82,7 @@ export default function RegisterMain() {
         referral_code: rc,
         referral_user: ru,
       })
+
       .then((response) => {
         console.log(response.data);
         setLoading(false);
