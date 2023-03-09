@@ -14,10 +14,13 @@ const CartPageMain = () => {
   const [token, setToken] = useState();
   const [auth, setAuth] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+  const [order, setOrder] = useState([]);
   const [price, setPrice] = useState();
   const [discount, setDiscount] = useState();
   const [grandTotal, setGrandTotal] = useState();
   const [checkBox, setcheckBox] = useState("");
+  const [addressId, setAddressId] = useState("");
+  const [razorpayOrderId, setRazorpayOrderId] = useState();
 
   async function getUserCartItemsFn(userid) {
     const ApiResponse = await fetch(`${backend}/cart`, {
@@ -46,7 +49,8 @@ const CartPageMain = () => {
     }
   }
   const handleCheckbox = (index, id) => {
-    console.log(index, id);
+    setcheckBox(index);
+    setAddressId(id);
   };
 
   useEffect(() => {
@@ -69,7 +73,32 @@ const CartPageMain = () => {
       getDeliveryAddressFn();
     }
   }, [userId, token]);
-  console.log(deliveryAddress);
+
+  const handleOrder = async () => {
+    console.log(addressId);
+    if (order.length > 0 && addressId && grandTotal) {
+      console.log("working");
+      const ApiResponse = await fetch(`${backend}/product/payment/create-order`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-control-Allow-Origin": "*",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          amount: parseInt(grandTotal),
+          currency: "INR",
+          address_id: addressId,
+          product_id: order,
+          payment_mode: "online",
+        }),
+      });
+      const res = await ApiResponse.json();
+      if (res?.data?.payment_method === "online") {
+        setRazorpayOrderId(res?.data?.razorpay_order_id);
+      }
+    }
+  };
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -96,6 +125,25 @@ const CartPageMain = () => {
           <>
             <div className={styles.cartPage_left_products_container}>
               {cartItems?.map((items, index) => {
+                {
+                  order[index]?.productId === items?.product_id._id ? (
+                    ""
+                  ) : (
+                    <>
+                      {items?.product_id?.seller_id
+                        ? order.push({
+                            productId: items?.product_id._id,
+                            quantity: items?.quantity,
+                            seller_id: items?.product_id?.seller_id,
+                          })
+                        : order.push({
+                            productId: items?.product_id._id,
+                            quantity: items?.quantity,
+                            seller: "admin",
+                          })}
+                    </>
+                  );
+                }
                 return (
                   <>
                     <div className={styles.cartPage_left_productCard}>
@@ -158,7 +206,9 @@ const CartPageMain = () => {
             <p>Subtotal ({cartItems?.length} items)</p>
             <span>₹{grandTotal}</span>
           </div>
-          <div className={styles.orderNow_button}>Order now</div>
+          <div className={styles.orderNow_button} onClick={handleOrder}>
+            Order now
+          </div>
           <div className={styles.deliveryAddress}>
             <div className={styles.deliveryAddress_left}>
               <img src="/icon/address-nh.svg" alt="" />

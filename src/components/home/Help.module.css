@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   background-color: #b10744;
+  margin-top: 50px;
 }
 
 .help_inner {
