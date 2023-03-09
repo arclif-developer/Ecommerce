@@ -34,7 +34,7 @@ const Header = () => {
             </Link>
           </div>
           <div className={styles.header_center}>
-            {role == "general" && role == "business" ? (
+            {role == "general" || role == "business" ? (
               <div className={styles.header_search}>
                 <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
                 <img src="/icon/search.svg" alt="" />
@@ -103,7 +103,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      {role == "general" && role == "business" ? (
+      {role == "general" || role == "business" ? (
         <div className={styles.mobile_search}>
           <div className={styles.header_search}>
             <input placeholder="What are you looking for?" />

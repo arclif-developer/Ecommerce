@@ -55,8 +55,8 @@ const ProfilePageMain = () => {
             <img src="/img/profile/historyNC.svg" alt="" />
             <p>Ask produts history</p>
           </div>
-          <div className={styles.profile_header_menu} onClick={() => logout()}>
-            <img src="/icon/logout-nh.svg" alt="" />
+          <div className={`${styles.profile_header_menu} ${styles.logout_button}`} onClick={() => logout()}>
+            <img src="/icon/logout-h.svg" alt="" />
             <p>Logout</p>
           </div>
         </div>
