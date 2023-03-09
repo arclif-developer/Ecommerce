@@ -1,2 +1,2 @@
-var backend = "https://agrihav2-production.up.railway.app";
+var backend = "https://agriha-backend-6e2r.onrender.com";
 export default backend;

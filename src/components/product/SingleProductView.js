@@ -81,8 +81,6 @@ const SingleProductView = () => {
         setToken(token);
         setUserId(id);
       } else {
-        alert("Something went wrong, please logout and try again");
-        router.push(`/login`);
         setAuth(false);
       }
     }
