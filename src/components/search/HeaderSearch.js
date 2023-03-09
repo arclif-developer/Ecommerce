@@ -4,15 +4,18 @@ import { useRouter } from "next/router";
 import { StoreContext } from "@/global/StoreContext";
 import Link from "next/link";
 
-import styles from "./Header.module.css";
+import styles from "./HeaderSearch.module.css";
 
-const Header = () => {
+const HeaderSearch = () => {
   const router = useRouter();
   const [Store] = useContext(StoreContext);
   const setUserRole = Store.setUserRole;
   const setAskProductPopup = Store.setAskProductPopup;
 
+  const setSearchQuery = Store.setSearchQuery;
+
   const [role, setRole] = useState("");
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const role = localStorage.getItem("role");
@@ -20,8 +23,8 @@ const Header = () => {
     }
   }, []);
 
-  const gotoSearchPage = () => {
-    router.push("/search");
+  const handleChangeInput = (e) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -35,7 +38,7 @@ const Header = () => {
           </div>
           <div className={styles.header_center}>
             <div className={styles.header_search}>
-              <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
+              <input autoFocus={true} placeholder="What are you looking for?" onChange={handleChangeInput} />
               <img src="/icon/search.svg" alt="" />
             </div>
           </div>
@@ -109,4 +112,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderSearch;

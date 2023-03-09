@@ -1,9 +1,11 @@
 import React, { useState, createContext } from "react";
 export const StoreContext = createContext();
+
 export const StoreContextProvider = (props) => {
   // Store Yaseen start
   const [askProductPopup, setAskProductPopup] = useState(false);
   const [addAddressPopUp, setAddAddressPopUp] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   // Store Yaseen end
 
   // Store 61-5a start
@@ -28,6 +30,8 @@ export const StoreContextProvider = (props) => {
     setAskProductPopup,
     addAddressPopUp,
     setAddAddressPopUp,
+    searchQuery,
+    setSearchQuery,
     // Store Yaseen end
 
     // Store 61-5a start
