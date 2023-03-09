@@ -12,6 +12,7 @@ const HomePage = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const res = await AprResponse.json();
