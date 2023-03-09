@@ -57,7 +57,7 @@ const HomePage = () => {
 
       {/* <SectionTwo />
       <SectionTwo /> */}
-      <SectionThree />
+      {/* <SectionThree /> */}
     </div>
   );
 };
