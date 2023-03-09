@@ -46,10 +46,12 @@ const SearchPage = () => {
       if (sortname === "lowestPrised") {
         setProducts(sortedByPrice);
       }
-      if (sortname === "newest") {
-        var result = products.slice(0).reverse();
-        setProducts(result);
-      }
+      // if (sortname === "newest") {
+      //   let sortedBydate = dataSort.sort(function (a, b) {
+      //     return new Date(a.createdAt) - new Date(b.createdAt);
+      //   });
+      //   setProducts(sortedBydate);
+      // }
     }
   }, [sortname]);
 
@@ -77,10 +79,10 @@ const SearchPage = () => {
                   <input type="radio" name="sort" />
                   <p>Fastest Shipping</p>
                 </div> */}
-                <div className={styles.sort_item}>
+                {/* <div className={styles.sort_item}>
                   <input type="radio" name="sort" />
                   <p>Newest</p>
-                </div>
+                </div> */}
               </div>
               <h5>Brand</h5>
               <div className={styles.brand_item_container}>
