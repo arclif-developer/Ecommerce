@@ -136,7 +136,7 @@ export default function RegisterMain() {
       // setOtpPopup(true);
       // setRegisterPopup(false);
       console.log(data);
-      localStorage.setItem("token", response?.data?.otpToken);
+      localStorage.setItem("token", data?.otpToken);
       router.push(`/otp`);
     }
   }

@@ -17,6 +17,7 @@ const SectionTwo = (props) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
     });
     const res = await ApiResponse.json();
