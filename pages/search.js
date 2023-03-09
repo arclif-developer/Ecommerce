@@ -7,12 +7,12 @@ import AskProductPopUp from "@/src/components/common/askProduct-popup";
 import SearchPage from "@/src/components/SearchPage";
 
 import styles from "../styles/search.module.css";
+import HeaderSearch from "@/src/components/search/HeaderSearch";
 
 export default function Search() {
   const [Store] = useContext(StoreContext);
   const askProductPopup = Store.askProductPopup;
 
-  console.log(askProductPopup);
   return (
     <>
       <Head>
@@ -23,7 +23,7 @@ export default function Search() {
       </Head>
       <main className={styles.main_outer}>
         <div className={styles.main_outer_cover}>
-          <Header />
+          <HeaderSearch />
           <div className={styles.main_inner}>
             <SearchPage />
           </div>

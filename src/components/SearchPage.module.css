@@ -8,6 +8,7 @@
   height: 100%;
   width: 100%;
   padding-bottom: 55px;
+  min-height: calc(100vh - 63px);
 }
 
 .search_left {
