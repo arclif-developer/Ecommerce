@@ -75,7 +75,9 @@ export default function BusinessAccountMain() {
             <div onClick={() => setSection("sell")} className={section === "sell" ? styles.active : ""}>
               Sell products list
             </div>
-            <div onClick={() => logout()}>Logout</div>
+            <div className={styles.logout_button} onClick={() => logout()}>
+              Logout
+            </div>
           </div>
 
           <div className={styles.section_outer}>

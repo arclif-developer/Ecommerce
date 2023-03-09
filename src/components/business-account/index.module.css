@@ -33,6 +33,18 @@
   line-height: 34px;
   color: #747474;
 }
+.section_buttons div.logout_button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 11px 38px;
+  color: #ffffff;
+  background: #b10744;
+  border-radius: 3px;
+  display: inline-block;
+}
 .section_buttons div:not(:last-child) {
   margin-right: 55px;
 }

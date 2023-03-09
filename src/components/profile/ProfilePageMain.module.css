@@ -87,6 +87,20 @@
   white-space: nowrap;
 }
 
+.profile_header_menu.logout_button {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  padding: 11px 23px;
+  border-radius: 3px;
+  border: 1px solid #b10744;
+}
+.profile_header_menu.logout_button p {
+  color: #b10744 !important;
+}
+
 .profile_body {
   margin-top: 24px;
 }
