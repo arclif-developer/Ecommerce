@@ -13,6 +13,28 @@ const SearchPage = () => {
   const [products, setProducts] = useState([]);
   const [sortname, setSortName] = useState("");
 
+  const [allbrands, setAllBrands] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+
+  async function getBrandLists() {
+    const response = await fetch(`${backend}/product/brand_list`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (data.status === 200) {
+      setAllBrands(data.brands);
+    }
+  }
+
+  useEffect(() => {
+    getBrandLists();
+  }, []);
+
   async function getSearchResults() {
     const response = await fetch(`${backend}/product/search/${searchQuery}`, {
       method: "GET",
@@ -55,6 +77,22 @@ const SearchPage = () => {
     }
   }, [sortname]);
 
+  const handleBrandClick = (brand) => {
+    // If the brand is already selected, remove it from the array
+    if (selectedBrands.includes(brand)) {
+      setSelectedBrands(selectedBrands.filter((b) => b !== brand));
+    }
+    // If the brand is not selected, add it to the array
+    else {
+      setSelectedBrands([...selectedBrands, brand]);
+    }
+  };
+
+  useEffect(() => {
+    let result = dataSort.filter((product) => selectedBrands.includes(product.brand));
+    setProducts(result);
+  }, [selectedBrands]);
+
   return (
     <div className={styles.search_outer}>
       <div className={styles.search_inner}>
@@ -86,43 +124,19 @@ const SearchPage = () => {
               </div>
               <h5>Brand</h5>
               <div className={styles.brand_item_container}>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>Status (4)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>India Circus by Krsnaa Mehta (4)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>India Circus by Krsnaa Mehta (4)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>QAALEEN (11)</p>
-                </div>
-
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>Imperial Knots (11)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>India Circus(4)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>Jaipur Rugs (5)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>QAALEEN (11)</p>
-                </div>
-                <div className={styles.brand_item}>
-                  <input type="checkbox" name="brand" />
-                  <p>Imperial Knots (11)</p>
-                </div>
+                {allbrands.map((item, index) => {
+                  return (
+                    <div className={styles.brand_item} key={index}>
+                      <input
+                        type="checkbox"
+                        name="brand"
+                        value={item.brand}
+                        onClick={() => handleBrandClick(item.brand)}
+                      />
+                      <p>{item.brand}</p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className={styles.search_right}>
