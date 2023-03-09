@@ -96,6 +96,7 @@ export default function RegisterMain() {
           setError(false);
         } else {
           setIsError(true);
+          setError(response.data.message);
         }
       })
       .catch((error) => {
