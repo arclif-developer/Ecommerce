@@ -18,6 +18,8 @@ export const StoreContextProvider = (props) => {
   // Store Hashir end
 
   // Store Shijin start
+  const [profileData, setProfileData] = useState();
+  const [deliveryAddress, setDeliveryAddress] = useState([]);
   // Store Shijin end
 
   const Store = {
@@ -45,6 +47,10 @@ export const StoreContextProvider = (props) => {
     // Store Hashir end
 
     // Store Shijin start
+    profileData,
+    setProfileData,
+    deliveryAddress,
+    setDeliveryAddress,
     // Store Shijin end
   };
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
