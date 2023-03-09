@@ -75,62 +75,62 @@ const CartPageMain = () => {
   }, [userId, token]);
 
   const handleOrder = async () => {
-    if (order.length > 0 && addressId && grandTotal) {
-      console.log("working");
-      const ApiResponse = await fetch(`${backend}/product/payment/create-order`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-control-Allow-Origin": "*",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          amount: grandTotal,
-          currency: "INR",
-          address_id: addressId,
-          product_id: order,
-          payment_mode: "online",
-        }),
-      });
-      const res = await ApiResponse.json();
-      console.log(res);
-      if (res?.data?.payment_method === "online") {
-        setRazorpayOrderId();
-        const script = document.createElement("script");
-        script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        script.async = true;
-        script.onload = () => {
-          const options = {
-            key: "rzp_test_iMKaW0U63x6w4O", // Enter the Key ID generated from the Dashboard
-            // amount: "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    if (addressId) {
+      if (order.length > 0 && grandTotal) {
+        console.log("working");
+        const ApiResponse = await fetch(`${backend}/product/payment/create-order`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-control-Allow-Origin": "*",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            amount: grandTotal,
             currency: "INR",
-            name: "Arclif", //your business name
-            description: "Test Transaction",
-            image: "https://example.com/your_logo",
-            order_id: `${res?.data?.razorpay_order_id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
-            prefill: {
-              name: "Gaurav Kumar", //your customer's name
-              email: "gaurav.kumar@example.com",
-              contact: "9000090000",
-            },
-            notes: {
-              address: "Razorpay Corporate Office",
-            },
-            theme: {
-              color: "#3399cc",
-            },
+            address_id: addressId,
+            product_id: order,
+            payment_mode: "online",
+          }),
+        });
+        const res = await ApiResponse.json();
+        if (res?.data?.payment_method === "online") {
+          setRazorpayOrderId();
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.async = true;
+          script.onload = () => {
+            const options = {
+              key: "rzp_test_iMKaW0U63x6w4O", // Enter the Key ID generated from the Dashboard
+              // amount: "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+              currency: "INR",
+              name: "Arclif", //your business name
+              description: "Test Transaction",
+              image: "https://example.com/your_logo",
+              order_id: `${res?.data?.razorpay_order_id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+              callback_url: `${backend}/product/payment/verify`,
+              prefill: {
+                name: "Gaurav Kumar", //your customer's name
+                email: "gaurav.kumar@example.com",
+                contact: "9000090000",
+              },
+              notes: {
+                address: "Razorpay Corporate Office",
+              },
+              theme: {
+                color: "#3399cc",
+              },
+            };
+            const rzp = new window.Razorpay(options);
+            rzp.open();
           };
-          const rzp = new window.Razorpay(options);
-          rzp.open();
-        };
-        document.body.appendChild(script);
+          document.body.appendChild(script);
+        }
       }
+    } else {
+      alert("Please select address");
     }
   };
-  console.log(grandTotal);
-  // // Razorpay payment
-  // const handlePayment = () => {};
 
   useEffect(() => {
     if (cartItems.length > 0) {
