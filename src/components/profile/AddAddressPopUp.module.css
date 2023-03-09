@@ -77,6 +77,16 @@
   font-size: 14px;
   font-weight: 400;
 }
+.addAddressPopup_content > textarea {
+  height: 75px;
+  width: 656px;
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 400;
+  resize: none;
+}
 
 .addAddressPopup_content_buttons {
   display: flex;
@@ -98,6 +108,16 @@
 .selectButton:hover {
   color: #b10744;
   border: 1px solid #b10744;
+}
+
+.selectButtonActive {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  padding: 11px 30px;
+  border-radius: 3px;
+  color: #ffffff;
+  background-color: #b10744;
 }
 
 .saveButton {

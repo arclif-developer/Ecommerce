@@ -70,7 +70,7 @@ export default function RegisterMain() {
 
   /* REGISTER API */
   async function handleSubmit() {
-    // console.log(phone);
+    console.log(phone);
     const rc = localStorage.getItem("rc");
     const ru = localStorage.getItem("ru");
     axios

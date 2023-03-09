@@ -215,6 +215,7 @@
 .address_details_card_top_left {
   display: flex;
   align-items: center;
+  text-transform: uppercase;
 }
 
 .address_details_card_top_left > h4 {

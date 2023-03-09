@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import backend from "@/global/backend";
 import { StoreContext } from "@/global/StoreContext";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./AccountSettings.module.css";
 
 const AccountSettings = () => {
@@ -8,6 +9,61 @@ const AccountSettings = () => {
 
   const [Store] = useContext(StoreContext);
   const setAddAddressPopUp = Store.setAddAddressPopUp;
+  const profileData = Store.profileData;
+  const setProfileData = Store.setProfileData;
+  const deliveryAddress = Store.deliveryAddress;
+  const setDeliveryAddress = Store.setDeliveryAddress;
+
+  let getprofileApiCalling = false;
+  let getAdressApiCalling = false;
+
+  async function getUserProfileData() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getprofileApiCalling = true;
+      const ApiResponse = await fetch(`${backend}/user/profile`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = await ApiResponse.json();
+      if (res.status === 200) {
+        setProfileData(res.userData);
+        getprofileApiCalling = false;
+      } else {
+        alert("Something went wrong!");
+      }
+    } else {
+      window.location.href = "/login";
+    }
+  }
+
+  async function getDeliveryAddressFn() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const ApiResponse = await fetch(`${backend}/address`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = await ApiResponse.json();
+      setDeliveryAddress(res.data);
+    }
+  }
+
+  useEffect(() => {
+    if (!profileData && getprofileApiCalling === false) {
+      getUserProfileData();
+    }
+    if (deliveryAddress.length === 0 && getAdressApiCalling === false) {
+      getDeliveryAddressFn();
+    }
+  }, []);
+  console.log(deliveryAddress);
 
   return (
     <div className={styles.accountSettings}>
@@ -39,17 +95,17 @@ const AccountSettings = () => {
                   src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                   alt=""
                 />
-                <div className={styles.inputContainer}>
+                {/* <div className={styles.inputContainer}>
                   <p>First name</p>
-                  <input type="text" />
-                </div>
+                  <input type="text" placeholder="" />
+                </div> */}
                 <div className={styles.inputContainer}>
-                  <p>Last name</p>
-                  <input type="text" />
+                  <p>Name</p>
+                  <input type="text" placeholder={profileData?.registered_id?.name} />
                 </div>
                 <div className={styles.inputContainer}>
                   <p>Mobile number</p>
-                  <input type="tel" />
+                  <input type="tel" placeholder={profileData?.registered_id?.phone} />
                 </div>
                 <div className={styles.editButtonMobile}>Edit</div>
               </div>
@@ -69,7 +125,7 @@ const AccountSettings = () => {
                 </div>
                 <div className={styles.inputContainer}>
                   <p>Email address</p>
-                  <input type="email" />
+                  <input type="email" placeholder={profileData?.registered_id?.email} />
                 </div>
                 <div className={styles.buttonsContainer}>
                   <div className={styles.discardButton}>Discard</div>
@@ -104,30 +160,44 @@ const AccountSettings = () => {
                   </div>
                 </div>
                 <div className={styles.address_details}>
-                  <div className={styles.address_details_card}>
-                    <div className={styles.address_details_card_top}>
-                      <div className={styles.address_details_card_top_left}>
-                        <h4>ALTHAF RAHMAN</h4>
-                        <span>+91 1234567890</span>
-                        <p>
-                          <img src="" alt="" />
-                          Home addess
-                        </p>
-                      </div>
-                      <div className={styles.address_details_card_top_right}>
-                        <p>Remove</p>
-                        <div className={styles.editAddress_button}>Edit Address</div>
-                      </div>
-                    </div>
-                    <div className={styles.address_details_card_bottom}>
-                      <div className={styles.mobileOnly}>
-                        <p>ALTHAF RAHMAN</p>
-                        <span>+91 2549461987</span>
-                      </div>
-                      <img src="" alt="" />
-                      <p>Govt Cyber Park (sahya) nellikode Calicut, Kozhikode, Kerala - 673016</p>
-                    </div>
-                  </div>
+                  {deliveryAddress.length > 0 ? (
+                    <>
+                      {deliveryAddress.map((items, index) => {
+                        return (
+                          <React.Fragment key={index}>
+                            <div className={styles.address_details_card}>
+                              <div className={styles.address_details_card_top}>
+                                <div className={styles.address_details_card_top_left}>
+                                  <h4>{items.name}</h4>
+                                  <span>+{items.phone}</span>
+                                  <p>
+                                    <img src="" alt="" />
+                                    {items.type_of_address} address
+                                  </p>
+                                </div>
+                                <div className={styles.address_details_card_top_right}>
+                                  <p>Remove</p>
+                                  <div className={styles.editAddress_button}>Edit Address</div>
+                                </div>
+                              </div>
+                              <div className={styles.address_details_card_bottom}>
+                                <div className={styles.mobileOnly}>
+                                  <p>{items.name}</p>
+                                  <span>+{items.phone}</span>
+                                </div>
+                                <img src="" alt="" />
+                                <p>
+                                  {items.address}, {items.location}, {items.city}, {items.district}, {items.pincode}
+                                </p>
+                              </div>
+                            </div>
+                          </React.Fragment>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <p>No address added</p>
+                  )}
                 </div>
               </>
             ) : (

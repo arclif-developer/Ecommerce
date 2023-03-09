@@ -8,12 +8,16 @@ const CartPageMain = () => {
   const [Store] = useContext(StoreContext);
   const userId = Store.userId;
   const setUserId = Store.setUserId;
+  const deliveryAddress = Store.deliveryAddress;
+  const setDeliveryAddress = Store.setDeliveryAddress;
+  const setAddAddressPopUp = Store.setAddAddressPopUp;
   const [token, setToken] = useState();
   const [auth, setAuth] = useState(true);
   const [cartItems, setCartItems] = useState([]);
   const [price, setPrice] = useState();
   const [discount, setDiscount] = useState();
   const [grandTotal, setGrandTotal] = useState();
+  const [checkBox, setcheckBox] = useState("");
 
   async function getUserCartItemsFn(userid) {
     const ApiResponse = await fetch(`${backend}/cart`, {
@@ -27,6 +31,23 @@ const CartPageMain = () => {
     setCartItems(res?.items);
     console.log(res);
   }
+
+  async function getDeliveryAddressFn() {
+    if (token) {
+      const ApiResponse = await fetch(`${backend}/address`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = await ApiResponse.json();
+      setDeliveryAddress(res.data);
+    }
+  }
+  const handleCheckbox = (index, id) => {
+    console.log(index, id);
+  };
 
   useEffect(() => {
     if (!userId || (!token && auth)) {
@@ -44,7 +65,11 @@ const CartPageMain = () => {
     if (userId && token) {
       getUserCartItemsFn(userId);
     }
+    if (deliveryAddress.length === 0) {
+      getDeliveryAddressFn();
+    }
   }, [userId, token]);
+  console.log(deliveryAddress);
 
   useEffect(() => {
     if (cartItems.length > 0) {
@@ -141,12 +166,34 @@ const CartPageMain = () => {
             </div>
             <div className={styles.EditButton}>Edit</div>
           </div>
-          <div className={styles.deliveryAddress_select}>
-            <input type="checkbox" />
-            <p>Great South Road, Manukau, Saules ilea 7 - 16, Cosi</p>
-          </div>
+          {deliveryAddress.length > 0 ? (
+            <>
+              {deliveryAddress.map((items, index) => {
+                return (
+                  <div className={styles.deliveryAddress_select} key={index}>
+                    <input
+                      type="checkbox"
+                      id={index}
+                      name="myCheckbox"
+                      checked={index === checkBox}
+                      value={index}
+                      onClick={() => handleCheckbox(index, items._id)}
+                    />
+                    <p>
+                      {items.address}, {items.location}, {items.city}, {items.district}, {items.pincode}
+                    </p>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <p>No address added</p>
+          )}
+
           <span></span>
-          <div className={styles.deliveryAddress_button}>Delivery address +</div>
+          <div className={styles.deliveryAddress_button} onClick={() => setAddAddressPopUp(true)}>
+            Delivery address +
+          </div>
           <span></span>
           <div className={styles.terms}>
             <img src="/img/cart/privacy.svg" alt="" />
