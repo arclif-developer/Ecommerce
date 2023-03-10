@@ -10,10 +10,11 @@ import backend from "@/global/backend";
 
 export default function BusinessHomeMain() {
   const [Store] = useContext(StoreContext);
+  const setViewOrderPopup = Store.setViewOrderPopup;
+  const setViewOrderPopupItem = Store.setViewOrderPopupItem;
+
   const [selectDistrict, setSelectDistrict] = useState("all");
   const [reqProducts, setReqProducts] = useState([]);
-  const setViewOrderPopup = Store.setViewOrderPopup;
-
   async function getAllRequestsprodFn() {
     const ApiResponse = await fetch(`${backend}/product/requestProduct_view?district=${selectDistrict}`, {
       method: "GET",
@@ -35,6 +36,7 @@ export default function BusinessHomeMain() {
     <>
       <div className={styles.secOne}>
         <div className={styles.secOneInner}>
+          <div className={styles.MainbidTitle}>Latest product enquiry</div>
           <div className={styles.bidFilterOuter}>
             <span onClick={() => setSelectDistrict("all")}>All</span>
             <span onClick={() => setSelectDistrict("alappuzha")}>Alappuzha</span>
@@ -54,30 +56,21 @@ export default function BusinessHomeMain() {
             <span onClick={() => setSelectDistrict("wayanad")}>Wayanad</span>
           </div>
 
-          <div className={styles.MainbidTitle}>Latest product enquiry</div>
           <div className={styles.bidTitle}>{selectDistrict}</div>
           {reqProducts.length > 0 ? (
             <div className={styles.bidOuter}>
               {reqProducts.map((items, i) => (
-                <div className={styles.bidInner} onClick={() => setViewOrderPopup(true)} key={i}>
-                  {items.image ? (
-                    <>
-                      <img
-                        className={styles.product}
-                        src={items?.image}
-                        onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                        alt="Product Image"
-                      />
-                    </>
-                  ) : (
-                    <img
-                      className={styles.product}
-                      src="/img/common/ni.svg"
-                      onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                      alt="Product Image"
-                    />
-                  )}
-
+                <div
+                  className={styles.bidInner}
+                  onClick={() => (setViewOrderPopup(true), setViewOrderPopupItem(items))}
+                  key={i}
+                >
+                  <img
+                    className={styles.product}
+                    src={items?.image ? items?.image : "/img/common/ni.svg"}
+                    onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                    alt="Product Image"
+                  />
                   <div className={styles.Desc}>{items?.description}</div>
                   <div className={styles.Locatn}>
                     <img src="/icon/address-h.png" alt="Address" />

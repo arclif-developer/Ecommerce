@@ -11,11 +11,9 @@ const HeaderSearch = () => {
   const [Store] = useContext(StoreContext);
   const setUserRole = Store.setUserRole;
   const setAskProductPopup = Store.setAskProductPopup;
-
   const setSearchQuery = Store.setSearchQuery;
 
   const [role, setRole] = useState("");
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const role = localStorage.getItem("role");
@@ -32,9 +30,15 @@ const HeaderSearch = () => {
       <div className={styles.header_outer}>
         <div className={styles.header_inner}>
           <div className={styles.header_left}>
-            <Link href="/">
-              <img src="/img/common/logo.svg" alt="LOGO" />
-            </Link>
+            {role == "business" ? (
+              <Link href="/business-home">
+                <img src="/img/common/logo.svg" alt="LOGO" />
+              </Link>
+            ) : (
+              <Link href="/">
+                <img src="/img/common/logo.svg" alt="LOGO" />
+              </Link>
+            )}
           </div>
           <div className={styles.header_center}>
             <div className={styles.header_search}>

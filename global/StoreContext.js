@@ -10,6 +10,7 @@ export const StoreContextProvider = (props) => {
 
   // Store 61-5a start
   const [viewOrderPopup, setViewOrderPopup] = useState(false);
+  const [viewOrderPopupItem, setViewOrderPopupItem] = useState([]);
   const [userRole, setUserRole] = useState("general");
   const [fromLoginOrRegister, setFromLoginOrRegister] = useState("login");
   const [userId, setUserId] = useState("");
@@ -38,6 +39,8 @@ export const StoreContextProvider = (props) => {
     // Store 61-5a start
     viewOrderPopup,
     setViewOrderPopup,
+    viewOrderPopupItem,
+    setViewOrderPopupItem,
     userRole,
     setUserRole,
     fromLoginOrRegister,
