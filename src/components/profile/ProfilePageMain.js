@@ -6,6 +6,7 @@ import AccountSettings from "./AccountSettings";
 import MyOrder from "./MyOrder";
 
 import styles from "./ProfilePageMain.module.css";
+import AskProductHistory from "./AskProductHistory";
 
 const ProfilePageMain = () => {
   const router = useRouter();
@@ -57,11 +58,17 @@ const ProfilePageMain = () => {
               <p>Account settings</p>
             </div>
           )}
-
-          <div className={styles.profile_header_menu} onClick={() => setNav("history")}>
-            <img src="/img/profile/historyNC.svg" alt="" />
-            <p>Ask produts history</p>
-          </div>
+          {nav === "history" ? (
+            <div className={styles.profile_header_menu_active}>
+              <img src="/img/profile/historyC.svg" alt="" />
+              <p>Ask produts history</p>
+            </div>
+          ) : (
+            <div className={styles.profile_header_menu} onClick={() => setNav("history")}>
+              <img src="/img/profile/historyNC.svg" alt="" />
+              <p>Ask produts history</p>
+            </div>
+          )}
           <div className={`${styles.profile_header_menu} ${styles.logout_button}`} onClick={() => logout()}>
             <img src="/icon/logout-h.svg" alt="" />
             <p>Logout</p>
@@ -71,6 +78,7 @@ const ProfilePageMain = () => {
       <div className={styles.profile_body}>
         {nav === "order" ? <MyOrder /> : ""}
         {nav === "settings" ? <AccountSettings /> : ""}
+        {nav === "history" ? <AskProductHistory /> : ""}
       </div>
     </div>
   );
