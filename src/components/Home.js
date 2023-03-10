@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import styles from "./Home.module.css";
-import SectionThree from "./home/SectionThree";
-import SectionTwo from "./SectionTwo";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { StoreContext } from "@/global/StoreContext";
 import backend from "@/global/backend";
+import SectionTwo from "./SectionTwo";
+import SectionThree from "./home/SectionThree";
+
+import styles from "./Home.module.css";
 
 const HomePage = () => {
+  const [Store] = useContext(StoreContext);
+  const setAskProductPopup = Store.setAskProductPopup;
+
   const [categories, setCategory] = useState([]);
   async function getAllCategoryFn() {
     const AprResponse = await fetch(`${backend}/admin/product/categories`, {
@@ -36,7 +41,9 @@ const HomePage = () => {
             <p>Explore 2800+ products</p>
           </div>
           <div className={styles.section_right_bottom}>
-            <div className={styles.askProducts_button}>Ask products</div>
+            <div className={styles.askProducts_button} onClick={() => setAskProductPopup(true)}>
+              Ask products
+            </div>
             <img src="/img/home/img1.png" alt="" />
           </div>
         </div>

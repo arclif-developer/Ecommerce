@@ -17,26 +17,38 @@ const Header = () => {
     if (typeof window !== "undefined") {
       const role = localStorage.getItem("role");
       setRole(role);
+      // if (role === "" || role === null || role === undefined) {
+      //   router.push("/");
+      //   if (role !== "general") {
+      //     router.push("/business-home");
+      //   }
+      //   if (role !== "business") {
+      //     router.push("/");
+      //   }
+      // }
     }
   }, []);
-
-  const gotoSearchPage = () => {
-    router.push("/search");
-  };
 
   return (
     <>
       <div className={styles.header_outer}>
         <div className={styles.header_inner}>
           <div className={styles.header_left}>
-            <Link href="/">
-              <img src="/img/common/logo.svg" alt="LOGO" />
-            </Link>
+            {role == "business" ? (
+              // <Link href="/business-home">
+              <Link href="/">
+                <img src="/img/common/logo.svg" alt="LOGO" />
+              </Link>
+            ) : (
+              <Link href="/">
+                <img src="/img/common/logo.svg" alt="LOGO" />
+              </Link>
+            )}
           </div>
           <div className={styles.header_center}>
             {role == "general" || role == "business" ? (
               <div className={styles.header_search}>
-                <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
+                <input placeholder="What are you looking for?" onClick={() => router.push("/search")} />
                 <img src="/icon/search.svg" alt="" />
               </div>
             ) : (
@@ -106,7 +118,7 @@ const Header = () => {
       {role == "general" || role == "business" ? (
         <div className={styles.mobile_search}>
           <div className={styles.header_search}>
-            <input placeholder="What are you looking for?" onClick={gotoSearchPage} />
+            <input placeholder="What are you looking for?" onClick={() => router.push("/search")} />
             <img src="/icon/search.svg" alt="" />
           </div>
         </div>

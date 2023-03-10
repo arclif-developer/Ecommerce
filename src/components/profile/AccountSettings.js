@@ -1,18 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
-import backend from "@/global/backend";
+import React, { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import { StoreContext } from "@/global/StoreContext";
-import React, { useContext, useEffect, useState } from "react";
+import backend from "@/global/backend";
+
 import styles from "./AccountSettings.module.css";
 
 const AccountSettings = () => {
-  const [nav, setNav] = useState("personal");
-
+  const router = useRouter();
   const [Store] = useContext(StoreContext);
   const setAddAddressPopUp = Store.setAddAddressPopUp;
   const profileData = Store.profileData;
   const setProfileData = Store.setProfileData;
   const deliveryAddress = Store.deliveryAddress;
   const setDeliveryAddress = Store.setDeliveryAddress;
+
+  const [nav, setNav] = useState("personal");
 
   let getprofileApiCalling = false;
   let getAdressApiCalling = false;
@@ -37,7 +40,7 @@ const AccountSettings = () => {
         alert("Something went wrong!");
       }
     } else {
-      window.location.href = "/login";
+      router.push("/login");
     }
   }
 
