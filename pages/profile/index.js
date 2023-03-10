@@ -1,11 +1,11 @@
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { StoreContext } from "@/global/StoreContext";
-import AskProductPopUp from "@/src/components/common/askProduct-popup";
-import Footer from "@/src/components/common/Footer";
-import Header from "@/src/components/common/Header";
-import AddAddressPopUp from "@/src/components/profile/AddAddressPopUp";
-import ProfilePageMain from "@/src/components/profile/ProfilePageMain";
 import Head from "next/head";
-import { useContext } from "react";
+import Header from "@/src/components/common/Header";
+import Footer from "@/src/components/common/Footer";
+import ProfilePageMain from "@/src/components/profile/ProfilePageMain";
+import AskProductPopUp from "@/src/components/common/askProduct-popup";
+import AddAddressPopUp from "@/src/components/profile/AddAddressPopUp";
 
 import styles from "./index.module.css";
 

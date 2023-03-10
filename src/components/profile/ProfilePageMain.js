@@ -1,12 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "@/global/StoreContext";
 import AccountSettings from "./AccountSettings";
 import MyOrder from "./MyOrder";
+
 import styles from "./ProfilePageMain.module.css";
+import AskProductHistory from "./AskProductHistory";
 
 const ProfilePageMain = () => {
   const router = useRouter();
+  const [Store] = useContext(StoreContext);
+  const userDetail = Store.userDetail;
+
+  console.log(userDetail);
+
   const [nav, setNav] = useState("order");
 
   const logout = () => {
@@ -23,7 +31,7 @@ const ProfilePageMain = () => {
           <img src="/img/profile/avatar.svg" alt="" />
           <div className={styles.profile_header_personal_details}>
             <p>Hello,</p>
-            <h5>Althaf Rahman</h5>
+            <h5>{userDetail?.registered_id?.name}</h5>
           </div>
         </div>
         <div className={styles.profile_header_options}>
@@ -50,11 +58,17 @@ const ProfilePageMain = () => {
               <p>Account settings</p>
             </div>
           )}
-
-          <div className={styles.profile_header_menu} onClick={() => setNav("history")}>
-            <img src="/img/profile/historyNC.svg" alt="" />
-            <p>Ask produts history</p>
-          </div>
+          {nav === "history" ? (
+            <div className={styles.profile_header_menu_active}>
+              <img src="/img/profile/historyC.svg" alt="" />
+              <p>Ask produts history</p>
+            </div>
+          ) : (
+            <div className={styles.profile_header_menu} onClick={() => setNav("history")}>
+              <img src="/img/profile/historyNC.svg" alt="" />
+              <p>Ask produts history</p>
+            </div>
+          )}
           <div className={`${styles.profile_header_menu} ${styles.logout_button}`} onClick={() => logout()}>
             <img src="/icon/logout-h.svg" alt="" />
             <p>Logout</p>
@@ -64,6 +78,7 @@ const ProfilePageMain = () => {
       <div className={styles.profile_body}>
         {nav === "order" ? <MyOrder /> : ""}
         {nav === "settings" ? <AccountSettings /> : ""}
+        {nav === "history" ? <AskProductHistory /> : ""}
       </div>
     </div>
   );

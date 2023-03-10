@@ -5,11 +5,13 @@ import { StoreContext } from "@/global/StoreContext";
 import Link from "next/link";
 
 import styles from "./Header.module.css";
+import backend from "@/global/backend";
 
 const Header = () => {
   const router = useRouter();
   const [Store] = useContext(StoreContext);
   const setUserRole = Store.setUserRole;
+  const setUserDetail = Store.setUserDetail;
   const setAskProductPopup = Store.setAskProductPopup;
 
   const [role, setRole] = useState("");
@@ -27,6 +29,28 @@ const Header = () => {
       //   }
       // }
     }
+  }, []);
+
+  const gotoSearchPage = () => {
+    router.push("/search");
+  };
+
+  async function getEcommerceDetails() {
+    const token = localStorage.getItem("token");
+    const res = await fetch(`${backend}/user/profile`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = await res.json();
+    setUserDetail(data.userData);
+  }
+
+  useEffect(() => {
+    getEcommerceDetails();
   }, []);
 
   return (
