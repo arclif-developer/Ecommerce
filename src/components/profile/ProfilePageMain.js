@@ -1,12 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect, useContext } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "@/global/StoreContext";
 import AccountSettings from "./AccountSettings";
 import MyOrder from "./MyOrder";
+
 import styles from "./ProfilePageMain.module.css";
 
 const ProfilePageMain = () => {
   const router = useRouter();
+  const [Store] = useContext(StoreContext);
+  const userDetail = Store.userDetail;
+
+  console.log(userDetail);
+
   const [nav, setNav] = useState("order");
 
   const logout = () => {
@@ -23,7 +30,7 @@ const ProfilePageMain = () => {
           <img src="/img/profile/avatar.svg" alt="" />
           <div className={styles.profile_header_personal_details}>
             <p>Hello,</p>
-            <h5>Althaf Rahman</h5>
+            <h5>{userDetail?.registered_id?.name}</h5>
           </div>
         </div>
         <div className={styles.profile_header_options}>
