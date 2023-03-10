@@ -2,12 +2,14 @@
 import React, { useRef, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import { StoreContext } from "@/global/StoreContext";
-
+import Link from "next/link";
+import useWindowDimensions from "@/global/window";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
   const router = useRouter();
   const years = new Date().getFullYear();
+  const { height, width, mobile, desktop } = useWindowDimensions();
   const [Store] = useContext(StoreContext);
   const setUserRole = Store.setUserRole;
 
@@ -27,8 +29,8 @@ const Footer = () => {
             <p>
               <b>Arclif Technologies Pvt Ltd</b>
             </p>
-            <p>Coastal Hwy, Lewes, Delaware 19958, US</p>
-            <p>Unit 3B, 3rd Floor, Sahya Government Cyberpark, Calicut, Kerala 673014</p>
+            <p>➢ Coastal Hwy, Lewes, Delaware 19958, US</p>
+            <p>➢ Unit 3B, 3rd Floor, Sahya Government Cyberpark, Calicut, Kerala 673014</p>
             <br />
             <p>
               Email: support@arclif.com <br />
@@ -68,12 +70,48 @@ const Footer = () => {
             <li>
               <span>Social media</span>
             </li>
-            <li>Facebook</li>
-            <li>Instagram</li>
-            <li>Whatsapp</li>
-            <li>Twitter</li>
-            <li>LinkedIn</li>
-            <li>YouTube</li>
+            <li>
+              <Link href="https://www.facebook.com/arclifonline/" target="_blank" rel="noopener noreferrer">
+                Facebook
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.instagram.com/arclifonline/?hl=en" target="_blank" rel="noopener noreferrer">
+                Instagram
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={
+                  desktop
+                    ? "https://web.whatsapp.com/send?phone=918921244492&submit=Continue"
+                    : "https://api.whatsapp.com/send?phone=918921244492&submit=Continue"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Whatsapp
+              </Link>
+            </li>
+            <li>
+              <Link href="https://mobile.twitter.com/arclifonline" target="_blank" rel="noopener noreferrer">
+                Twitter
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.linkedin.com/company/arclif/mycompany/" target="_blank" rel="noopener noreferrer">
+                LinkedIn
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="https://www.youtube.com/channel/UCl-44gZvJo-OMWS_ITJxyEw"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouTube
+              </Link>
+            </li>
           </ul>
           <ul className={styles.linksNavContainer}>
             <li>
@@ -81,8 +119,12 @@ const Footer = () => {
             </li>
             <li>Blog</li>
             <li>FAQs</li>
-            <li>Terms</li>
-            <li>Privacy Policy</li>
+            <li>
+              <Link href="/terms">Terms</Link>
+            </li>
+            <li>
+              <Link href="/privacypolicy">Privacy Policy</Link>
+            </li>
           </ul>
           <ul>
             <li>

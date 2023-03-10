@@ -25,6 +25,7 @@ const Help = () => {
               : "https://api.whatsapp.com/send?phone=918921244492&submit=Continue"
           }
           target="_blank"
+          rel="noopener noreferrer"
         >
           Contact us
         </a>
