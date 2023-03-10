@@ -36,6 +36,7 @@ export default function BusinessHomeMain() {
       <div className={styles.secOne}>
         <div className={styles.secOneInner}>
           <div className={styles.bidFilterOuter}>
+            <span onClick={() => setSelectDistrict("all")}>All</span>
             <span onClick={() => setSelectDistrict("alappuzha")}>Alappuzha</span>
             <span onClick={() => setSelectDistrict("ernakulam")}>Ernakulam</span>
             <span onClick={() => setSelectDistrict("idukki")}>Idukki</span>
@@ -53,48 +54,46 @@ export default function BusinessHomeMain() {
             <span onClick={() => setSelectDistrict("wayanad")}>Wayanad</span>
           </div>
 
+          <div className={styles.MainbidTitle}>Latest product enquiry</div>
           <div className={styles.bidTitle}>{selectDistrict}</div>
-
-          <div className={styles.bidOuter}>
-            {reqProducts.length > 0 ? (
-              <>
-                {reqProducts.map((items, i) => (
-                  <div className={styles.bidInner} onClick={() => setViewOrderPopup(true)} key={i}>
-                    {items.image ? (
-                      <>
-                        <img
-                          className={styles.product}
-                          src={items?.image}
-                          onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                          alt="Product Image"
-                        />
-                      </>
-                    ) : (
+          {reqProducts.length > 0 ? (
+            <div className={styles.bidOuter}>
+              {reqProducts.map((items, i) => (
+                <div className={styles.bidInner} onClick={() => setViewOrderPopup(true)} key={i}>
+                  {items.image ? (
+                    <>
                       <img
                         className={styles.product}
-                        src="/img/common/ni.svg"
+                        src={items?.image}
                         onError={(e) => (e.target.src = "/img/common/ina.svg")}
                         alt="Product Image"
                       />
-                    )}
+                    </>
+                  ) : (
+                    <img
+                      className={styles.product}
+                      src="/img/common/ni.svg"
+                      onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                      alt="Product Image"
+                    />
+                  )}
 
-                    <div className={styles.Desc}>{items?.description}</div>
-                    <div className={styles.Locatn}>
-                      <img src="/icon/address-h.png" alt="Address" />
-                      <span>
-                        {items.district}, {items.panchayath}
-                      </span>
-                    </div>
-                    <div className={styles.Buttn}>{items.product_category}</div>
+                  <div className={styles.Desc}>{items?.description}</div>
+                  <div className={styles.Locatn}>
+                    <img src="/icon/address-h.png" alt="Address" />
+                    <span>
+                      {items.district}, {items.panchayath}
+                    </span>
                   </div>
-                ))}
-              </>
-            ) : (
-              <div style={{ display: "flex", alignContent: "center", justifyContent: "center" }}>
-                <img src="https://www.kindpng.com/picc/m/580-5808137_no-product-available-hd-png-download.png" alt="" />
-              </div>
-            )}
-          </div>
+                  <div className={styles.Buttn}>{items.product_category}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.no_product_enquiry}>
+              <img src="/img/business-home/no_product_enquiry.svg" alt="" />
+            </div>
+          )}
         </div>
       </div>
     </>

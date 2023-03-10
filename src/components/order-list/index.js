@@ -93,10 +93,14 @@ export default function OrderListMain() {
                                   </div>
                                   <div className={styles.TwoTwoTwo}>
                                     <p>
-                                      {items.address_id.address}, {items.address_id.city}, {items.address_id.state},{" "}
-                                      {items.address_id.pincode}
+                                      {items?.address_id?.address}, {items?.address_id?.city},{" "}
+                                      {items?.address_id?.state}, {items?.address_id?.pincode}
                                     </p>
-                                    {items.address_id.phone ? <p>Mobile Number: +91 {items.address_id.phone}</p> : ""}
+                                    {items?.address_id?.phone ? (
+                                      <p>Mobile Number: +91 {items?.address_id?.phone}</p>
+                                    ) : (
+                                      ""
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -106,7 +110,7 @@ export default function OrderListMain() {
                               {product.confirm === true ? (
                                 <a className={styles.accepted}>Order Accepted</a>
                               ) : (
-                                <a className={styles.accept} onClick={() => handleOrderAccept(product._id)}>
+                                <a className={styles.accept} onClick={() => handleOrderAccept(product?._id)}>
                                   Order Accept
                                 </a>
                               )}
