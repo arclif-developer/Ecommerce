@@ -31,10 +31,6 @@ const Header = () => {
     }
   }, []);
 
-  const gotoSearchPage = () => {
-    router.push("/search");
-  };
-
   async function getEcommerceDetails() {
     const token = localStorage.getItem("token");
     const res = await fetch(`${backend}/user/profile`, {

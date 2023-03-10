@@ -6,6 +6,10 @@ import styles from "./viewOrderPopup.module.css";
 const ViewOrderPopUp = () => {
   const [Store] = useContext(StoreContext);
   const setViewOrderPopup = Store.setViewOrderPopup;
+  const viewOrderPopupItem = Store.viewOrderPopupItem;
+  const items = viewOrderPopupItem;
+
+  console.log(viewOrderPopupItem);
 
   return (
     <div className={styles.viewOrderPopup_outer}>
@@ -17,7 +21,7 @@ const ViewOrderPopUp = () => {
         <div className={styles.leftSide}>
           <img
             className={styles.product}
-            src="/img/common/ni.svg"
+            src={items?.image ? items?.image : "/img/common/ni.svg"}
             onError={(e) => (e.target.src = "/img/common/ina.svg")}
             alt="Product Image"
           />
@@ -49,12 +53,12 @@ const ViewOrderPopUp = () => {
               alt="Product Image"
             />
           </div>
-          <div className={styles.Descp}>
-            The Sleep Company Smart GRID Stylus High-Back Chair for Office & Overparented.
-          </div>
+          <div className={styles.Descp}>{items?.description}</div>
           <div className={styles.location}>
             <img src="/icon/address-h.png" alt="Address" />
-            <span>Malappuram, Tirur</span>
+            <span>
+              {items.district}, {items.panchayath}
+            </span>
           </div>
           <div className={styles.btns}>
             <div className={styles.accept}>Order Accept</div>
