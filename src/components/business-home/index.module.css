@@ -11,7 +11,7 @@
   color: #5c5c5c;
   padding-bottom: 21px;
   margin-top: 24px;
-  margin-bottom: 39px;
+  margin-bottom: 23px;
   display: inline-block;
   width: 100%;
   white-space: nowrap;
@@ -26,11 +26,21 @@
 .bidFilterOuter span:not(:last-child) {
   margin-right: 77px;
 }
+.MainbidTitle {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 21px;
+  color: #b10744;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
 .bidTitle {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 15px;
   line-height: 20px;
   color: #000000;
   text-transform: capitalize;
@@ -87,6 +97,12 @@
   width: 100%;
   text-align: center;
   padding: 6px;
+}
+.no_product_enquiry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 80px auto;
 }
 
 @media only screen and (max-width: 1100px) {

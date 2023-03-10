@@ -25,11 +25,11 @@ export default function RegisterMain() {
   const [resentLoading, setResentLoading] = useState(false);
 
   const termsClick = () => {
-    window.location.href = "/terms";
+    router.push("/terms");
   };
 
   const policyClick = () => {
-    window.location.href = "/privacypolicy";
+    router.push("/privacypolicy");
   };
 
   const [name, setName] = useState("");

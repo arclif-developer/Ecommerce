@@ -196,11 +196,11 @@ export default function BusinessAccountMain() {
                                       </div>
                                       <div className={styles.TwoTwoTwo}>
                                         <p>
-                                          {items.address_id.address}, {items.address_id.city}, {items.address_id.state},{" "}
-                                          {items.address_id.pincode}
+                                          {items?.address_id?.address}, {items?.address_id?.city},{" "}
+                                          {items?.address_id?.state}, {items?.address_id?.pincode}
                                         </p>
-                                        {items.address_id.phone ? (
-                                          <p>Mobile Number: +91 {items.address_id.phone}</p>
+                                        {items?.address_id?.phone ? (
+                                          <p>Mobile Number: +91 {items?.address_id?.phone}</p>
                                         ) : (
                                           ""
                                         )}

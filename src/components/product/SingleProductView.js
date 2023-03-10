@@ -44,7 +44,12 @@ const SingleProductView = () => {
   };
 
   const handleQuantity = (e) => {
-    setQuantity(parseInt(e.target.value));
+    console.log(e.target.value);
+    if (e.target.value !== "") {
+      setQuantity(parseInt(e.target.value));
+    } else {
+      setQuantity(parseInt(1));
+    }
   };
 
   const handleAddToCart = async () => {
@@ -145,7 +150,9 @@ const SingleProductView = () => {
                   </div>
                   <div className={styles.quantity}>
                     Qty
-                    <select onChange={handleQuantity}>
+                    <input type="number" onChange={handleQuantity} defaultValue={quantity} />
+                    <span>{productDetail.unit}</span>
+                    {/* <select onChange={handleQuantity}>
                       <option>1</option>
                       <option>2</option>
                       <option>3</option>
@@ -156,13 +163,19 @@ const SingleProductView = () => {
                       <option>8</option>
                       <option>9</option>
                       <option>10</option>
-                    </select>
-                    <img src="/icon/arrowDown.svg" alt="" />
+                    </select> */}
+                    {/* <img src="/icon/arrowDown.svg" alt="" /> */}
                   </div>
                 </div>
-                <p>Save ₹ 4,851 MRP ₹ 17,100 (Inc of all taxes)</p>
+                <p>
+                  Save ₹
+                  {quantity * productDetail.mrp -
+                    quantity *
+                      Math.trunc(productDetail.mrp - (productDetail.mrp * productDetail.discount_rate) / 100)}{" "}
+                  from MRP ₹{quantity * productDetail.mrp} (Inc of all taxes)
+                </p>
                 <div className={styles.ratings}></div>
-                <div className={styles.ship_date}>Ship within 2 days</div>
+                <div className={styles.ship_date}>For immediate delivery, Contact us.</div>
                 <div className={styles.pincodeCheck}>
                   <input placeholder="Enter the pincode" type="tel" />
                   <div className={styles.checkButton}>Check</div>

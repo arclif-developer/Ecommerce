@@ -6,13 +6,9 @@ import { useRouter } from "next/router";
 import backend from "@/global/backend";
 
 const SectionTwo = (props) => {
-  const [products, setproducts] = useState([]);
   const router = useRouter();
 
-  const gotoProductView = (id) => {
-    router.push(`/product/${id}`);
-  };
-
+  const [products, setproducts] = useState([]);
   async function getProductsFn() {
     const ApiResponse = await fetch(`${backend}/product/catelogOrSubcatelog/${props.items._id}`, {
       method: "GET",
@@ -27,6 +23,7 @@ const SectionTwo = (props) => {
   useEffect(() => {
     getProductsFn();
   }, []);
+
   return (
     <>
       {products.length > 0 ? (
@@ -34,7 +31,7 @@ const SectionTwo = (props) => {
           <div className={styles.sectionTwo}>
             <div className={styles.sectionTwo_header}>
               <h3>{props.items.category_name}</h3>
-              <div className={styles.showAll_button}>
+              <div className={styles.showAll_button} onClick={() => router.push("/search")}>
                 Show all
                 <img src="/icon/arrowRight.svg" alt="" />
               </div>
@@ -46,7 +43,7 @@ const SectionTwo = (props) => {
                   {products.map((items, index) => {
                     return (
                       <React.Fragment key={index}>
-                        <div className={styles.card_product} onClick={() => gotoProductView(items._id)}>
+                        <div className={styles.card_product} onClick={() => router.push(`/product/${items._id}`)}>
                           <img src="/icon/addFav.svg" alt="" />
                           <div className={styles.productImage}>
                             <img
