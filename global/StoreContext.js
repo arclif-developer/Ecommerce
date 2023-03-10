@@ -17,6 +17,7 @@ export const StoreContextProvider = (props) => {
   // Store 61-5a end
 
   // Store Hashir start
+  const [userDetail, setUserDetail] = useState([]);
   // Store Hashir end
 
   // Store Shijin start
@@ -48,6 +49,8 @@ export const StoreContextProvider = (props) => {
     // Store 61-5a end
 
     // Store Hashir start
+    userDetail,
+    setUserDetail,
     // Store Hashir end
 
     // Store Shijin start
