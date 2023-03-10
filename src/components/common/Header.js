@@ -35,8 +35,7 @@ const Header = () => {
         <div className={styles.header_inner}>
           <div className={styles.header_left}>
             {role == "business" ? (
-              // <Link href="/business-home">
-              <Link href="/">
+              <Link href="/business-home">
                 <img src="/img/common/logo.svg" alt="LOGO" />
               </Link>
             ) : (

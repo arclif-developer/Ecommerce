@@ -80,7 +80,7 @@ export default function BusinessHomeMain() {
 
                     <div className={styles.Desc}>{items?.description}</div>
                     <div className={styles.Locatn}>
-                      <img src="/icon/address.png" alt="Address" />
+                      <img src="/icon/address-h.png" alt="Address" />
                       <span>
                         {items.district}, {items.panchayath}
                       </span>
