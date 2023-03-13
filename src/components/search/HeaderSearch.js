@@ -99,7 +99,7 @@ const HeaderSearch = () => {
                   Login
                 </div>
                 <div onClick={() => (setUserRole("business"), router.push(`/login`))} className={styles.business_login}>
-                  Business ?
+                  For business
                 </div>
               </>
             )}

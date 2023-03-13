@@ -68,7 +68,9 @@ const AccountSettings = () => {
       getDeliveryAddressFn();
     }
   }, []);
+
   console.log(deliveryAddress);
+  console.log(profileData);
 
   return (
     <div className={styles.accountSettings}>
