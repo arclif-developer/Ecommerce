@@ -6,6 +6,7 @@ export const StoreContextProvider = (props) => {
   const [askProductPopup, setAskProductPopup] = useState(false);
   const [addAddressPopUp, setAddAddressPopUp] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [redeemPopup, setRedeemPopup] = useState(false);
   // Store Yaseen end
 
   // Store 61-5a start
@@ -34,6 +35,8 @@ export const StoreContextProvider = (props) => {
     setAddAddressPopUp,
     searchQuery,
     setSearchQuery,
+    redeemPopup,
+    setRedeemPopup,
     // Store Yaseen end
 
     // Store 61-5a start
