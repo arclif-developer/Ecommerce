@@ -261,9 +261,9 @@ const CartPageMain = () => {
                       value={index}
                       onClick={() => handleCheckbox(index, items._id)}
                     />
-                    <p>
+                    <label for={index}>
                       {items.address}, {items.location}, {items.city}, {items.district}, {items.pincode}
-                    </p>
+                    </label>
                   </div>
                 );
               })}
