@@ -1,12 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import styles from "./Home.module.css";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
+import { StoreContext } from "@/global/StoreContext";
 import backend from "@/global/backend";
+
+import styles from "./Home.module.css";
 
 const SectionTwo = (props) => {
   const router = useRouter();
+  var special_search = props.items.category_name.replace(/ .*/, "");
+  const [Store] = useContext(StoreContext);
+  const setSearchQuery = Store.setSearchQuery;
 
   const [products, setproducts] = useState([]);
   async function getProductsFn() {
@@ -31,7 +36,10 @@ const SectionTwo = (props) => {
           <div className={styles.sectionTwo}>
             <div className={styles.sectionTwo_header}>
               <h3>{props.items.category_name}</h3>
-              <div className={styles.showAll_button} onClick={() => router.push("/search")}>
+              <div
+                className={styles.showAll_button}
+                onClick={() => (setSearchQuery(special_search), router.push("/search"))}
+              >
                 Show all
                 <img src="/icon/arrowRight.svg" alt="" />
               </div>

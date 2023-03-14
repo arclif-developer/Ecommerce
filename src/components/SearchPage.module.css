@@ -53,6 +53,12 @@
   font-weight: 300;
   line-height: 26.95px;
 }
+.sort_item > label {
+  color: #343434;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26.95px;
+}
 
 .search_left > h5 {
   font-weight: 400;
@@ -83,6 +89,12 @@
 }
 
 .brand_item > p {
+  color: #343434;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 26.95px;
+}
+.brand_item > label {
   color: #343434;
   font-size: 15px;
   font-weight: 300;
@@ -212,6 +224,16 @@
 
 .filter_mobile_container {
   display: none;
+}
+
+.no_search_result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+.no_search_result img {
+  max-width: 200px;
 }
 
 @media only screen and (max-width: 950px) {
