@@ -251,6 +251,12 @@
   line-height: 24px;
   color: #939393;
 }
+.deliveryAddress_select > label {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #939393;
+}
 
 .deliveryAddress_button {
   display: flex;
