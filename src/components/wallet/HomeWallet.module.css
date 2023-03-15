@@ -10,7 +10,7 @@
 
 .homeWallet_container_inner {
   background-color: #ffffff;
-  height: 100%;
+  height: 752px;
   width: 650px;
   border-radius: 8px;
   padding: 42px 84px;
@@ -163,9 +163,9 @@
   display: none;
 }
 
-/* .transaction_history_container > img {
+.transaction_history_container > img {
   margin-top: -25px;
-} */
+}
 
 .transaction_history_container_table {
   width: 100%;
@@ -207,55 +207,4 @@
   color: #1aad5d;
   font-size: 15px;
   font-weight: 400;
-}
-
-@media only screen and (max-width: 1100px) {
-  .homeWallet_container {
-    padding: 20px 5vw;
-  }
-
-  .homeWallet_container_inner {
-    padding: 20px;
-  }
-
-  .coinBalance_card {
-    height: 110px;
-    margin-top: 25px;
-  }
-
-  .coinBalance_card_content {
-    flex-direction: column;
-    padding: 14px 20px;
-  }
-
-  .left_coinBalance_card_content {
-    height: 50%;
-  }
-
-  .left_coinBalance_card_content > img {
-    height: 25px;
-    object-fit: contain;
-  }
-
-  .left_coinBalance_card_content > h4 {
-    color: #ebc643;
-    font-size: 20px;
-    font-weight: 500;
-    margin-left: 11px;
-    margin-right: 19px;
-  }
-
-  .left_coinBalance_card_content > h5 {
-    font-size: 15px;
-    display: inline-block;
-    white-space: nowrap;
-  }
-
-  .right_coinBalance_card_content {
-    padding-left: 0px;
-    border-left: none;
-    border-top: 1px solid #515151;
-    padding-top: 10px;
-    width: 100%;
-  }
 }
