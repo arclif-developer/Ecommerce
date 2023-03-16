@@ -22,10 +22,10 @@ const SectionTwo = (props) => {
     const res = await ApiResponse.json();
     setproducts(res?.products);
   }
-
   useEffect(() => {
     getProductsFn();
   }, []);
+  console.log(products);
 
   return (
     <>
