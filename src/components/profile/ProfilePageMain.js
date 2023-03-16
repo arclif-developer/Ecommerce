@@ -13,7 +13,7 @@ const ProfilePageMain = () => {
   const [Store] = useContext(StoreContext);
   const userDetail = Store.userDetail;
 
-  console.log(userDetail);
+  // console.log(userDetail);
 
   const [nav, setNav] = useState("order");
 

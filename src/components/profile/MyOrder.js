@@ -17,19 +17,19 @@ const MyOrder = () => {
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="onTheWay" type="checkbox" />
-              <label for="onTheWay">On the way</label>
+              <label htmlFor="onTheWay">On the way</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="Delivered" type="checkbox" />
-              <label for="Delivered">Delivered</label>
+              <label htmlFor="Delivered">Delivered</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="Cancelled" type="checkbox" />
-              <label for="Cancelled">Cancelled</label>
+              <label htmlFor="Cancelled">Cancelled</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="Returned" type="checkbox" />
-              <label for="Returned">Returned</label>
+              <label htmlFor="Returned">Returned</label>
             </div>
           </div>
           <div className={styles.myOrder_left_table}>
@@ -40,19 +40,19 @@ const MyOrder = () => {
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="LastOneWeek" type="checkbox" />
-              <label for="LastOneWeek">Last one week</label>
+              <label htmlFor="LastOneWeek">Last one week</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="Last30Days" type="checkbox" />
-              <label for="Last30Days">Last 30 days</label>
+              <label htmlFor="Last30Days">Last 30 days</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="2022" type="checkbox" />
-              <label for="2022">2022</label>
+              <label htmlFor="2022">2022</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
               <input id="2021" type="checkbox" />
-              <label for="2021">2021</label>
+              <label htmlFor="2021">2021</label>
             </div>
           </div>
         </div>
