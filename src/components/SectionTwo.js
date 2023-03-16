@@ -1,9 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from "react";
-import styles from "./Home.module.css";
+import React, { useRef, useState, useEffect, useContext } from "react";
+import { StoreContext } from "@/global/StoreContext";
 import { useRouter } from "next/router";
 import backend from "@/global/backend";
+
+import styles from "./Home.module.css";
 
 const SectionTwo = (props) => {
   const router = useRouter();
