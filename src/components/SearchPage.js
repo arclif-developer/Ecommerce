@@ -15,6 +15,7 @@ const SearchPage = () => {
 
   const [allbrands, setAllBrands] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
 
   async function getBrandLists() {
     const response = await fetch(`${backend}/product/brand_list`, {
@@ -23,9 +24,8 @@ const SearchPage = () => {
         "Content-Type": "application/json",
       },
     });
-
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setAllBrands(data.brands);
     }
@@ -46,6 +46,7 @@ const SearchPage = () => {
 
   useEffect(() => {
     getBrandLists();
+    getAllCategoryFn();
   }, []);
 
   async function getSearchResults() {
@@ -55,9 +56,8 @@ const SearchPage = () => {
         "Content-Type": "application/json",
       },
     });
-
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === 200) {
       setDataSort(data.products);
       setProducts(data.products);
@@ -67,6 +67,8 @@ const SearchPage = () => {
   useEffect(() => {
     getSearchResults(searchQuery);
   }, [searchQuery]);
+
+  // console.log(searchQuery);
 
   useEffect(() => {
     if (dataSort.length !== 0) {
@@ -90,6 +92,16 @@ const SearchPage = () => {
     }
   }, [sortname]);
 
+  const handleCategoryClick = (category) => {
+    // If the category is already selected, remove it from the array
+    if (selectedCategories.includes(category)) {
+      setSelectedCategories(selectedCategories.filter((b) => b !== category));
+    }
+    // If the category is not selected, add it to the array
+    else {
+      setSelectedCategories([...selectedCategories, category]);
+    }
+  };
   const handleBrandClick = (brand) => {
     // If the brand is already selected, remove it from the array
     if (selectedBrands.includes(brand)) {
@@ -102,7 +114,13 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    let result = dataSort.filter((product) => selectedBrands.includes(product.brand));
+    // console.log(dataSort);
+    let result = dataSort.filter((product) => selectedCategories.includes(product?.category_id?.category_name));
+    setProducts(result);
+  }, [selectedCategories]);
+
+  useEffect(() => {
+    let result = dataSort.filter((product) => selectedBrands.includes(product?.brand));
     setProducts(result);
   }, [selectedBrands]);
 
@@ -117,12 +135,12 @@ const SearchPage = () => {
                   <p>Relevance</p>
                 </div> */}
             <div className={styles.sort_item}>
-              <input type="radio" name="sort" onClick={() => setSortName("highestPrised")} />
-              <p>Highest Priced First</p>
+              <input id="highestPrised" type="radio" name="sort" onClick={() => setSortName("highestPrised")} />
+              <label htmlFor="highestPrised">Highest Priced First</label>
             </div>
             <div className={styles.sort_item}>
-              <input type="radio" name="sort" onClick={() => setSortName("lowestPrised")} />
-              <p>Lowest Priced First</p>
+              <input id="lowestPrised" type="radio" name="sort" onClick={() => setSortName("lowestPrised")} />
+              <label htmlFor="lowestPrised">Lowest Priced First</label>
             </div>
             {/* <div className={styles.sort_item}>
                   <input type="radio" name="sort" />
@@ -133,13 +151,37 @@ const SearchPage = () => {
                   <p>Newest</p>
                 </div> */}
           </div>
+          <h5>Category</h5>
+          <div className={styles.brand_item_container}>
+            {categories.map((item, index) => {
+              // console.log(item);
+              return (
+                <div className={styles.brand_item} key={index}>
+                  <input
+                    type="checkbox"
+                    name="category"
+                    id={item.category_name}
+                    value={item.category_name}
+                    onClick={() => handleCategoryClick(item.category_name)}
+                  />
+                  <label htmlFor={item.category_name}>{item.category_name}</label>
+                </div>
+              );
+            })}
+          </div>
           <h5>Brand</h5>
           <div className={styles.brand_item_container}>
             {allbrands.map((item, index) => {
               return (
                 <div className={styles.brand_item} key={index}>
-                  <input type="checkbox" name="brand" value={item.brand} onClick={() => handleBrandClick(item.brand)} />
-                  <p>{item.brand}</p>
+                  <input
+                    type="checkbox"
+                    name="brand"
+                    id={item.brand}
+                    value={item.brand}
+                    onClick={() => handleBrandClick(item.brand)}
+                  />
+                  <label htmlFor={item.brand}>{item.brand}</label>
                 </div>
               );
             })}
@@ -175,7 +217,9 @@ const SearchPage = () => {
               })}
             </div>
           ) : (
-            ""
+            <div className={styles.no_search_result}>
+              <img src="/img/search/no_search.svg" />
+            </div>
           )}
         </div>
       </div>

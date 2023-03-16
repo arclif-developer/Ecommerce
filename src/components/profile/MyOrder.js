@@ -16,20 +16,20 @@ const MyOrder = () => {
               <span>Clear all</span>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>On the way</p>
+              <input id="onTheWay" type="checkbox" />
+              <label for="onTheWay">On the way</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>Delivered</p>
+              <input id="Delivered" type="checkbox" />
+              <label for="Delivered">Delivered</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>Cancelled</p>
+              <input id="Cancelled" type="checkbox" />
+              <label for="Cancelled">Cancelled</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>Returned</p>
+              <input id="Returned" type="checkbox" />
+              <label for="Returned">Returned</label>
             </div>
           </div>
           <div className={styles.myOrder_left_table}>
@@ -39,20 +39,20 @@ const MyOrder = () => {
               </div>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>Last one week</p>
+              <input id="LastOneWeek" type="checkbox" />
+              <label for="LastOneWeek">Last one week</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>Last 30 days</p>
+              <input id="Last30Days" type="checkbox" />
+              <label for="Last30Days">Last 30 days</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>2022</p>
+              <input id="2022" type="checkbox" />
+              <label for="2022">2022</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input type="checkbox" />
-              <p>2021</p>
+              <input id="2021" type="checkbox" />
+              <label for="2021">2021</label>
             </div>
           </div>
         </div>
