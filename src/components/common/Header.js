@@ -46,7 +46,10 @@ const Header = () => {
   }
 
   useEffect(() => {
-    getEcommerceDetails();
+    const token = localStorage.getItem("token");
+    if (token) {
+      getEcommerceDetails();
+    }
   }, []);
 
   return (

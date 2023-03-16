@@ -31,6 +31,19 @@ const SearchPage = () => {
     }
   }
 
+  const [categories, setCategory] = useState([]);
+  async function getAllCategoryFn() {
+    const ApiResponse = await fetch(`${backend}/admin/product/categories`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    const res = await ApiResponse.json();
+    setCategory(res?.category);
+  }
+
   useEffect(() => {
     getBrandLists();
   }, []);

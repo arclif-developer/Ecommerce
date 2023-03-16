@@ -13,14 +13,14 @@ const HomePage = () => {
 
   const [categories, setCategory] = useState([]);
   async function getAllCategoryFn() {
-    const AprResponse = await fetch(`${backend}/admin/product/categories`, {
+    const ApiResponse = await fetch(`${backend}/admin/product/categories`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
     });
-    const res = await AprResponse.json();
+    const res = await ApiResponse.json();
     setCategory(res?.category);
   }
   useEffect(() => {
