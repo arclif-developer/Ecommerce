@@ -11,7 +11,6 @@ const HeaderSearch = () => {
   const [Store] = useContext(StoreContext);
   const setUserRole = Store.setUserRole;
   const setAskProductPopup = Store.setAskProductPopup;
-  const searchQuery = Store.searchQuery;
   const setSearchQuery = Store.setSearchQuery;
 
   const [role, setRole] = useState("");
@@ -43,12 +42,7 @@ const HeaderSearch = () => {
           </div>
           <div className={styles.header_center}>
             <div className={styles.header_search}>
-              <input
-                defaultValue={searchQuery}
-                autoFocus={true}
-                placeholder="What are you looking for?"
-                onChange={handleChangeInput}
-              />
+              <input autoFocus={true} placeholder="What are you looking for?" onChange={handleChangeInput} />
               <img src="/icon/search.svg" alt="" />
             </div>
           </div>
@@ -114,7 +108,7 @@ const HeaderSearch = () => {
       </div>
       <div className={styles.mobile_search}>
         <div className={styles.header_search}>
-          <input defaultValue={searchQuery} placeholder="What are you looking for?" onChange={handleChangeInput} />
+          <input placeholder="What are you looking for?" onChange={handleChangeInput} />
           <img src="/icon/search.svg" alt="" />
         </div>
       </div>

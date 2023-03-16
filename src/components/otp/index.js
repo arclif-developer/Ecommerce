@@ -61,7 +61,7 @@ export default function OtpMain() {
       if (data.role === "general") {
         router.push(`/`);
       } else if (data.role === "business") {
-        router.push(`/business-home`);
+        router.push(`/`);
       }
     } else {
       setIsError(true);
@@ -96,7 +96,7 @@ export default function OtpMain() {
       if (data.role === "general") {
         router.push(`/`);
       } else if (data.role === "business") {
-        router.push(`/business-home`);
+        router.push(`/`);
       }
     } else {
       setIsError(true);
