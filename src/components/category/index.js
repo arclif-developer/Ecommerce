@@ -52,7 +52,7 @@ export default function CategoryPageMain() {
     }
   }, [categoryId]);
 
-  console.log(subCategories);
+  // console.log(subCategories);
 
   return (
     <>

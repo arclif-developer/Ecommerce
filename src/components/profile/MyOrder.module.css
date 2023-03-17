@@ -75,6 +75,15 @@
   margin-left: 21px;
 }
 
+.myOrder_left_table_row > label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: #525252;
+  margin-left: 21px;
+}
+
 .myOrder_right {
   width: 75%;
   height: 100%;

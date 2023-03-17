@@ -27,7 +27,7 @@ const ViewOrderPopUp = () => {
           />
         </div>
         <div className={styles.rightSide}>
-          <div className={styles.sideImage}>
+          {/* <div className={styles.sideImage}>
             <img
               className={styles.sideImageProduct}
               src="/img/common/ni.svg"
@@ -52,7 +52,9 @@ const ViewOrderPopUp = () => {
               onError={(e) => (e.target.src = "/img/common/ina.svg")}
               alt="Product Image"
             />
-          </div>
+          </div> */}
+          <div className={styles.Descp}>{items?.product_name}</div>
+          <div className={styles.location}>{items.product_category}</div>
           <div className={styles.Descp}>{items?.description}</div>
           <div className={styles.location}>
             <img src="/icon/address-h.png" alt="Address" />

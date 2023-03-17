@@ -69,8 +69,8 @@ const AccountSettings = () => {
     }
   }, []);
 
-  console.log(deliveryAddress);
-  console.log(profileData);
+  // console.log(deliveryAddress);
+  // console.log(profileData);
 
   return (
     <div className={styles.accountSettings}>

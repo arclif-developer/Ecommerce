@@ -103,6 +103,8 @@
   width: 50%;
   padding: 6px;
   text-align: center;
+  display: inline-block;
+  white-space: nowrap;
 }
 .rightSide .btns .contact {
   font-family: "Roboto";

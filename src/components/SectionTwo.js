@@ -25,7 +25,7 @@ const SectionTwo = (props) => {
   useEffect(() => {
     getProductsFn();
   }, []);
-  console.log(products);
+  // console.log(products);
 
   return (
     <>
