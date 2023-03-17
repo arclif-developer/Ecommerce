@@ -56,18 +56,30 @@ const HeaderSearch = () => {
             {role == "general" ? (
               <>
                 <div className={styles.header_right_icons}>
-                  <span className={styles.favorites}>
-                    <img className={styles.nh} src="/icon/favorites-nh.svg" alt="" />
-                    <img className={styles.h} src="/icon/favorites-h.svg" alt="" />
-                  </span>
-                  <span className={styles.delete} onClick={() => router.push("/cart")}>
-                    <img className={styles.nh} src="/icon/delete-nh.svg" alt="" />
-                    <img className={styles.h} src="/icon/delete-h.svg" alt="" />
-                  </span>
-                  <span className={styles.user} onClick={() => router.push("/profile")}>
-                    <img className={styles.nh} src="/icon/user-nh.svg" alt="" />
-                    <img className={styles.h} src="/icon/user-h.svg" alt="" />
-                  </span>
+                  <Link href="/wallet">
+                    <span className={`${styles.favorites} ${router.pathname == "/wallet" ? styles.active : ""}`}>
+                      <img className={styles.nh} src="/icon/wallet-nh.svg" alt="" />
+                      <img className={styles.h} src="/icon/wallet-h.svg" alt="" />
+                    </span>
+                  </Link>
+                  <Link href="/">
+                    <span className={`${styles.favorites} ${router.pathname == "/aaaaa" ? styles.active : ""}`}>
+                      <img className={styles.nh} src="/icon/favorites-nh.svg" alt="" />
+                      <img className={styles.h} src="/icon/favorites-h.svg" alt="" />
+                    </span>
+                  </Link>
+                  <Link href="/cart">
+                    <span className={`${styles.favorites} ${router.pathname == "/cart" ? styles.active : ""}`}>
+                      <img className={styles.nh} src="/icon/delete-nh.svg" alt="" />
+                      <img className={styles.h} src="/icon/delete-h.svg" alt="" />
+                    </span>
+                  </Link>
+                  <Link href="/profile">
+                    <span className={`${styles.favorites} ${router.pathname == "/profile" ? styles.active : ""}`}>
+                      <img className={styles.nh} src="/icon/user-nh.svg" alt="" />
+                      <img className={styles.h} src="/icon/user-h.svg" alt="" />
+                    </span>
+                  </Link>
                 </div>
                 <div className={styles.askProducts_button} onClick={() => setAskProductPopup(true)}>
                   Ask products
@@ -76,6 +88,12 @@ const HeaderSearch = () => {
             ) : role == "business" ? (
               <>
                 <div className={styles.header_right_icons}>
+                  <Link href="/wallet">
+                    <span className={`${styles.favorites} ${router.pathname == "/wallet" ? styles.active : ""}`}>
+                      <img className={styles.nh} src="/icon/wallet-nh.svg" alt="" />
+                      <img className={styles.h} src="/icon/wallet-h.svg" alt="" />
+                    </span>
+                  </Link>
                   <Link href="/business-home">
                     <span className={`${styles.favorites} ${router.pathname == "/business-home" ? styles.active : ""}`}>
                       <img className={styles.nh} src="/icon/bell-nh.svg" alt="" />
