@@ -189,7 +189,7 @@ const SearchPage = () => {
         </div>
         <div className={styles.search_right}>
           {/* <div className={styles.filter_mobile_container}>
-            <img src="/icon/filterIcon.svg" alt="" />
+            <img src="/icon/filterIcon.svg" alt="filterIcon" />
             Product filter
           </div> */}
           {products.length !== 0 ? (
@@ -197,9 +197,9 @@ const SearchPage = () => {
               {products.map((item, index) => {
                 return (
                   <div className={styles.card_product} key={index}>
-                    <img src="/icon/addFav.svg" alt="" />
+                    <img src="/icon/addFav.svg" alt="Add Fav" />
                     <div className={styles.productImage}>
-                      <img src={item?.thumbnail} alt="" />
+                      <img src={item?.thumbnail} alt="Thumbnail" />
                     </div>
                     <div className={styles.product_details}>
                       <p>{item?.name}</p>
@@ -218,7 +218,7 @@ const SearchPage = () => {
             </div>
           ) : (
             <div className={styles.no_search_result}>
-              <img src="/img/search/no_search.svg" />
+              <img src="/img/search/no_search.svg" alt="No results" />
             </div>
           )}
         </div>

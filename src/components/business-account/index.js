@@ -318,7 +318,7 @@ export default function BusinessAccountMain() {
                       <div className={styles.SellTwoThree}>
                         <a>Edit Price</a>
                         <div>
-                          <img src="/img/common/edit.svg" />
+                          <img src="/img/common/edit.svg" alt="Edit" />
                           <span>Edit product details</span>
                         </div>
                       </div>
