@@ -284,22 +284,12 @@ export default function BusinessAccountMain() {
               <div className={styles.sell_max_outer}>
                 {sellingProducts.map((items, i) => (
                   <div className={styles.sell_outer} key={i}>
-                    {items.thumbnail ? (
-                      <img
-                        className={styles.product}
-                        src={items.thumbnail}
-                        onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                        alt="Product Image"
-                      />
-                    ) : (
-                      <img
-                        className={styles.product}
-                        src="/img/common/ni.svg"
-                        onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                        alt="Product Image"
-                      />
-                    )}
-
+                    <img
+                      className={styles.product}
+                      src={items.thumbnail ? items.thumbnail : "/img/common/ni.svg"}
+                      onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                      alt="Product Image"
+                    />
                     <div className={styles.SellTwo}>
                       <div className={styles.SellTwoOne}>{items.name}</div>
                       <div className={styles.SellTwoTwo}>

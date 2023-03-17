@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { StoreContext } from "@/global/StoreContext";
 import React, { useContext, useState } from "react";
+import { StoreContext } from "@/global/StoreContext";
+
 import styles from "./HomeWallet.module.css";
 
 const HomeWallet = () => {
-  const [nav, setNav] = useState("credit");
-
   const [Store] = useContext(StoreContext);
-
   const setRedeemPopup = Store.setRedeemPopup;
+
+  const [nav, setNav] = useState("credit");
 
   return (
     <div className={styles.homeWallet_container}>
