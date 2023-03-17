@@ -27,7 +27,7 @@
   justify-content: center;
 }
 
-.header_left > img {
+.header_left img {
   height: 34px;
   object-fit: contain;
 }
@@ -84,7 +84,7 @@
   width: 103px;
 }
 
-.header_right_icons > img {
+.header_right_icons img {
   height: 20px;
   object-fit: contain;
 }
@@ -215,16 +215,16 @@
 }
 
 @media only screen and (max-width: 500px) {
-  .header_left > img {
+  .header_left img {
     height: 24px;
     object-fit: contain;
   }
   .header_right_icons {
     width: 80px;
-    margin-right: 20px;
+    margin-right: 13px;
   }
-  .header_right_icons > img {
-    height: 18px;
+  .header_right_icons img {
+    height: 15px;
     object-fit: contain;
   }
   .askProducts_button {
