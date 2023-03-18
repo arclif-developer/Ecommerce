@@ -73,13 +73,16 @@ export default function AddProductMain() {
       },
     });
     const respData = await Api_response.json();
+    console.log("working");
     setSubCategoryList(respData?.subcategories);
   }
 
   // ###### Category and SubCategory handler functions ####### //
   const handleSelection = (event) => {
+    if (event.target.name === "category_id") {
+      getSubCategoryDataFn(event.target.value);
+    }
     setSellProductData({ ...sellProductData, [event.target.name]: event.target.value });
-    getSubCategoryDataFn(event.target.value);
   };
 
   // ##### Image file handler funtion and image files upload to firebase ####### //
@@ -112,8 +115,7 @@ export default function AddProductMain() {
 
   // API CALLING => Submit the product data
   async function uploadProductDataFn() {
-    var token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
+    var token = localStorage.getItem("token");
     const ApiResponse = await fetch(`${backend}/product/add_new_products`, {
       method: "POST",
       headers: {
@@ -191,9 +193,7 @@ export default function AddProductMain() {
                     required
                     //  onChange={(e) => setSuggestData({ ...suggestData, phase: e.target.value })}
                   >
-                    <option disabled selected value>
-                      -- select an option --
-                    </option>
+                    <option>-- select an option --</option>
                     {categoryDataList.length > 0 ? (
                       <>
                         {categoryDataList?.map((items, i) => {

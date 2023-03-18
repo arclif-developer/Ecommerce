@@ -1,14 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StoreContext } from "@/global/StoreContext";
 
 import styles from "./HomeWallet.module.css";
+import backend from "@/global/backend";
 
 const HomeWallet = () => {
   const [Store] = useContext(StoreContext);
   const setRedeemPopup = Store.setRedeemPopup;
 
   const [nav, setNav] = useState("credit");
+  const [balance, setBalance] = useState();
+
+  async function getWalletData() {
+    const token = localStorage.getItem("token");
+    const Api = await fetch(`${backend}/wallet`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const res = await Api.json();
+    setBalance(res?.data?.balance);
+  }
+  useEffect(() => {
+    getWalletData();
+  }, []);
 
   return (
     <div className={styles.homeWallet_container}>
@@ -25,7 +44,7 @@ const HomeWallet = () => {
           <div className={styles.coinBalance_card_content}>
             <div className={styles.left_coinBalance_card_content}>
               <img src="/img/wallet/arclif_coin.svg" alt="" />
-              <h4>60</h4>
+              <h4>{balance ? balance : 0}</h4>
               <h5>Current Coin balance</h5>
             </div>
             <div className={styles.right_coinBalance_card_content} onClick={() => setRedeemPopup(true)}>
