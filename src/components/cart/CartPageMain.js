@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { StoreContext } from "@/global/StoreContext";
 import React, { useContext, useEffect, useState } from "react";
+import { PulseLoader } from "react-spinners";
 import styles from "./CartPageMain.module.css";
 import backend from "@/global/backend";
 
@@ -14,6 +15,7 @@ const CartPageMain = () => {
   const [token, setToken] = useState();
   const [auth, setAuth] = useState(true);
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [order, setOrder] = useState([]);
   const [price, setPrice] = useState();
   const [discount, setDiscount] = useState();
@@ -77,7 +79,7 @@ const CartPageMain = () => {
   const handleOrder = async () => {
     if (addressId) {
       if (order.length > 0 && grandTotal) {
-        console.log("working");
+        setLoading(true);
         const ApiResponse = await fetch(`${backend}/product/payment/create-order`, {
           method: "POST",
           headers: {
@@ -145,6 +147,7 @@ const CartPageMain = () => {
       setGrandTotal(total - discountTotal);
     }
   }, [cartItems]);
+  console.log(order);
 
   return (
     <div className={styles.cartPage}>
@@ -167,11 +170,17 @@ const CartPageMain = () => {
                             productId: items?.product_id._id,
                             quantity: items?.quantity,
                             seller_id: items?.product_id?.seller_id,
+                            amount:
+                              Math.trunc(
+                                items?.product_id?.mrp -
+                                  (items?.product_id?.mrp * items?.product_id?.discount_rate) / 100
+                              ) * items?.quantity,
                           })
                         : order.push({
                             productId: items?.product_id._id,
                             quantity: items?.quantity,
                             seller: "admin",
+                            amount: items?.quantity * items?.product_id?.mrp,
                           })}
                     </>
                   );
@@ -238,9 +247,15 @@ const CartPageMain = () => {
             <p>Subtotal ({cartItems?.length} items)</p>
             <span>₹{grandTotal}</span>
           </div>
-          <div className={styles.orderNow_button} onClick={handleOrder}>
-            Order now
-          </div>
+          {loading === true ? (
+            <div className={styles.orderNow_button}>
+              <PulseLoader color="#ffffff" />
+            </div>
+          ) : (
+            <div className={styles.orderNow_button} onClick={handleOrder}>
+              Order now
+            </div>
+          )}
           <div className={styles.deliveryAddress}>
             <div className={styles.deliveryAddress_left}>
               <img src="/icon/address-nh.svg" alt="" />

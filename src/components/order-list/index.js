@@ -11,9 +11,10 @@ import backend from "@/global/backend";
 
 export default function OrderListMain() {
   const [placedOrders, setPlacedOrders] = useState([]);
-  var token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGI2YzNhM2U5OTk2ZWViNjBkNjg1MiIsImlhdCI6MTY3NzA0ODU2MSwiZXhwIjoxNjc5NTU0MTYxfQ.BN72_j8Yux8DdRkMd7v7vJzSGT1U_AdSG6qIhW9eVL0";
+  const [confirm, setConfirm] = useState(false);
+
   async function getSellerPlacedOrder() {
+    var token = localStorage.getItem("token");
     const ApiResponse = await fetch(`${backend}/order/seller/order_placed_list`, {
       method: "GET",
       headers: {
@@ -29,6 +30,7 @@ export default function OrderListMain() {
   }
 
   async function OrderAcceptFn(id) {
+    var token = localStorage.getItem("token");
     const ApiResponse = await fetch(`${backend}/order/order_confirmed`, {
       method: "PATCH",
       headers: {
@@ -41,9 +43,9 @@ export default function OrderListMain() {
       }),
     });
     const resp = await ApiResponse.json();
-    console.log(resp);
     if (resp.status === 200) {
-      getSellerPlacedOrder();
+      setConfirm(true);
+      alert("Order Confirmed");
     }
   }
 
@@ -66,66 +68,55 @@ export default function OrderListMain() {
               <React.Fragment key={index}>
                 <div className={styles.secOne}>
                   <h1>Order no: {index + 1}</h1>
-                  {items.products.map((product, index) => {
-                    return (
-                      <React.Fragment key={index}>
-                        <div className={styles.order_all_outer}>
-                          <h2>product no: {index + 1}</h2>
-                          <div className={styles.secOneInner}>
-                            <div className={styles.Main_con}>
-                              <div className={styles.One}>
-                                <img
-                                  className={styles.product}
-                                  src={product?.productId?.thumbnail}
-                                  onError={(e) => (e.target.src = "/img/common/ina.svg")}
-                                  alt="Product Image"
-                                />
-                              </div>
-                              <div className={styles.Two}>
-                                <div className={styles.TwoOne}>
-                                  <h4>₹ {product?.productId?.mrp}</h4>
-                                  <p>{product?.productId?.name}</p>
-                                </div>
-                                <div className={styles.TwoTwo}>
-                                  <div className={styles.TwoTwoOne}>
-                                    <img src="/icon/address-h.png" alt="Address" />
-                                    <span>Delivery address:</span>
-                                  </div>
-                                  <div className={styles.TwoTwoTwo}>
-                                    <p>
-                                      {items?.address_id?.address}, {items?.address_id?.city},{" "}
-                                      {items?.address_id?.state}, {items?.address_id?.pincode}
-                                    </p>
-                                    {items?.address_id?.phone ? (
-                                      <p>Mobile Number: +91 {items?.address_id?.phone}</p>
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                </div>
-                              </div>
+                  <div className={styles.order_all_outer}>
+                    <h2>product no: {index + 1}</h2>
+                    <div className={styles.secOneInner}>
+                      <div className={styles.Main_con}>
+                        <div className={styles.One}>
+                          <img
+                            className={styles.product}
+                            src={items?.productId?.thumbnail}
+                            onError={(e) => (e.target.src = "/img/common/ina.svg")}
+                            alt="Product Image"
+                          />
+                        </div>
+                        <div className={styles.Two}>
+                          <div className={styles.TwoOne}>
+                            <h4>₹ {items?.productId?.mrp}</h4>
+                            <p>{items?.productId?.name}</p>
+                          </div>
+                          <div className={styles.TwoTwo}>
+                            <div className={styles.TwoTwoOne}>
+                              <img src="/icon/address-h.png" alt="Address" />
+                              <span>Delivery address:</span>
                             </div>
-                            <div className={styles.Line}></div>
-                            <div className={styles.Three}>
-                              {product.confirm === true ? (
-                                <a className={styles.accepted}>Order Accepted</a>
-                              ) : (
-                                <a className={styles.accept} onClick={() => handleOrderAccept(product?._id)}>
-                                  Order Accept
-                                </a>
-                              )}
-
-                              <a className={styles.issue}>
-                                <img src="/icon/issue.png" alt="Address" />
-                                <span>Report issue</span>
-                              </a>
+                            <div className={styles.TwoTwoTwo}>
+                              <p>
+                                {items?.address?.address}, {items?.address?.city}, {items?.address?.state},{" "}
+                                {items?.address?.pincode}
+                              </p>
+                              {items?.address_id?.phone ? <p>Mobile Number: +91 {items?.address_id?.phone}</p> : ""}
                             </div>
                           </div>
-                          <OrderListMoreMain desc={product?.productId?.description} />
                         </div>
-                      </React.Fragment>
-                    );
-                  })}
+                      </div>
+                      <div className={styles.Line}></div>
+                      <div className={styles.Three}>
+                        {items.confirm === true || confirm === true ? (
+                          <a className={styles.accepted}>Order Accepted</a>
+                        ) : (
+                          <a className={styles.accept} onClick={() => handleOrderAccept(items?._id)}>
+                            Order Accept
+                          </a>
+                        )}
+                        <a className={styles.issue}>
+                          <img src="/icon/issue.png" alt="Address" />
+                          <span>Report issue</span>
+                        </a>
+                      </div>
+                    </div>
+                    <OrderListMoreMain desc={items?.productId?.description} />
+                  </div>
                 </div>
               </React.Fragment>
             );
