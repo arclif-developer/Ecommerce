@@ -68,6 +68,7 @@ const SectionTwo = (props) => {
                                 <h5>₹{items.mrp}</h5>
                               )}
                             </div>
+                            <div className={styles.button_view}>View more</div>
                           </div>
                         </div>
                       </React.Fragment>

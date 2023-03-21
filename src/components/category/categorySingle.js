@@ -41,7 +41,7 @@ export default function CategoryPageSingleMain({ subCatId }) {
           <div className={styles.product_card_container}>
             {subCategoryProducts?.map((item, index) => {
               return (
-                <div className={styles.card_product} key={index}>
+                <div className={styles.card_product} key={index} onClick={() => router.push(`/product/${item._id}`)}>
                   <img src="/icon/addFav.svg" alt="" />
                   <div className={styles.productImage}>
                     <img src={item?.thumbnail} alt="" />
@@ -53,8 +53,7 @@ export default function CategoryPageSingleMain({ subCatId }) {
                       <p>₹{item.mrp}</p>
                       <span>{item.discount_rate}% off</span>
                     </div>
-                    <div className={styles.buyNow_button}>Buy now</div>
-                    <div className={styles.addToCart_button}>Add to cart</div>
+                    <div className={styles.buyNow_button}>View more</div>
                   </div>
                 </div>
               );

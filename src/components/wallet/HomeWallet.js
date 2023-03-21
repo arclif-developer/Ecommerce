@@ -8,6 +8,7 @@ import backend from "@/global/backend";
 const HomeWallet = () => {
   const [Store] = useContext(StoreContext);
   const setRedeemPopup = Store.setRedeemPopup;
+  const setAddCoinPopup = Store.setAddCoinPopup;
 
   const [nav, setNav] = useState("credit");
   const [balance, setBalance] = useState();
@@ -25,9 +26,16 @@ const HomeWallet = () => {
     const res = await Api.json();
     setBalance(res?.data?.balance);
   }
+
+  const [role, setRole] = useState("");
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const role = localStorage.getItem("role");
+      setRole(role);
+    }
     getWalletData();
   }, []);
+  // console.log(role);
 
   return (
     <div className={styles.homeWallet_container}>
@@ -47,10 +55,16 @@ const HomeWallet = () => {
               <h4>{balance ? balance : 0}</h4>
               <h5>Current Coin balance</h5>
             </div>
-            <div className={styles.right_coinBalance_card_content} onClick={() => setRedeemPopup(true)}>
-              Redeem Now
-            </div>
-            {/* <div className={styles.right_coinBalance_card_content}>+ Add Coin</div> */}
+
+            {role == "business" ? (
+              <div className={styles.right_coinBalance_card_content} onClick={() => setAddCoinPopup(true)}>
+                + Add Coin
+              </div>
+            ) : (
+              <div className={styles.right_coinBalance_card_content} onClick={() => setRedeemPopup(true)}>
+                Redeem Now
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.transaction_container}>
@@ -71,12 +85,19 @@ const HomeWallet = () => {
                   Debit
                 </p>
               )}
-              {nav === "redeem" ? (
-                <p className={styles.navActive}>Redeem details</p>
+
+              {role == "business" ? (
+                ""
               ) : (
-                <p className={styles.navNoActive} onClick={() => setNav("redeem")}>
-                  Redeem details
-                </p>
+                <>
+                  {nav === "redeem" ? (
+                    <p className={styles.navActive}>Redeem details</p>
+                  ) : (
+                    <p className={styles.navNoActive} onClick={() => setNav("redeem")}>
+                      Redeem details
+                    </p>
+                  )}
+                </>
               )}
             </div>
             {nav === "coin" ? (
