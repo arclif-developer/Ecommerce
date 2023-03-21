@@ -33,7 +33,6 @@ const SingleProductView = () => {
       },
     });
     const res = await ApiResponse.json();
-    console.log(res);
     setProductDetail(res?.productDta);
     setIscart(res?.cart);
     setImages(res?.productDta?.thumbnail);
@@ -44,12 +43,7 @@ const SingleProductView = () => {
   };
 
   const handleQuantity = (e) => {
-    console.log(e.target.value);
-    if (e.target.value !== "") {
-      setQuantity(parseInt(e.target.value));
-    } else {
-      setQuantity(parseInt(1));
-    }
+    setQuantity(parseInt(e.target.value));
   };
 
   const handleAddToCart = async () => {
@@ -79,7 +73,6 @@ const SingleProductView = () => {
 
   useEffect(() => {
     if (!userId || (!token && auth)) {
-      console.log("store user not found");
       let token = localStorage.getItem("token");
       let id = localStorage.getItem("Id");
       if (token && id) {
@@ -197,7 +190,7 @@ const SingleProductView = () => {
                     </div>
                   )}
 
-                  <div className={styles.buynow_button}>Buy now</div>
+                  {/* <div className={styles.buynow_button}>Buy now</div> */}
                   <div className={styles.saveButton}>
                     <img src="/icon/save.svg" alt="" />
                     Save
