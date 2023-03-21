@@ -68,88 +68,7 @@
   color: #2a60ca;
 }
 
-.redeemContent_container {
-  margin-top: 35px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.redeemContent_container_left {
-  display: flex;
-  flex-direction: column;
-  gap: 106px;
-}
-
-.circle_active {
-  background-color: #7b08a4;
-  height: 62px;
-  width: 62px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.circle_noActive {
-  background-color: #ececec;
-  height: 62px;
-  width: 62px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #b1b1b1;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.redeemContent_container_right {
-  width: 100%;
-  margin-left: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 130px;
-}
-
-.card_redeem {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card_redeem_left {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.card_redeem_left > img {
-  height: 33px;
-  object-fit: contain;
-}
-
-.card_redeem_text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card_redeem_text > h5 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #181818;
-}
-
-.card_redeem_text > p {
-  color: #a6a6a6;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.redeem_button {
+.paynow {
   color: #7b08a4;
   font-size: 14px;
   font-weight: 400;
@@ -161,18 +80,4 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-}
-
-.create_button {
-  height: 31px;
-  width: 117px;
-  border-radius: 5px;
-  border: 1px solid #dbdbdb;
-  color: #dbdbdb;
-  font-size: 14px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: default;
 }

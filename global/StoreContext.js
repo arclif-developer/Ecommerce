@@ -17,6 +17,7 @@ export const StoreContextProvider = (props) => {
   const [userId, setUserId] = useState("");
   const [loginActive, setLoginActive] = useState(false);
   const [addCoinPopup, setAddCoinPopup] = useState(false);
+  const [coinRatio, setCoinRatio] = useState(1);
   // Store 61-5a end
 
   // Store Hashir start
@@ -55,6 +56,8 @@ export const StoreContextProvider = (props) => {
     setLoginActive,
     addCoinPopup,
     setAddCoinPopup,
+    coinRatio,
+    setCoinRatio,
     // Store 61-5a end
 
     // Store Hashir start
