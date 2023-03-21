@@ -10,6 +10,8 @@ const AddCoinPopup = () => {
   const setAddCoinPopup = Store.setAddCoinPopup;
   const coinRatio = Store.coinRatio;
 
+  console.log(coinRatio);
+
   const [coinCount, setCoinCount] = useState("");
   const handleChangeInput = (e) => {
     if (e.target.value !== "") {
