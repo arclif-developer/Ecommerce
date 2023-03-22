@@ -14,18 +14,24 @@
 }
 
 .redeemPopup_inner {
-  height: 100%;
-  width: 100%;
-  max-width: 1530px;
-  padding: 0 5vw;
+  max-width: 100%;
+  padding: 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: inherit;
+  z-index: 4;
+}
+
+.redeemPopup_close {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
 }
 
 .redeemPopup_inner_inner {
-  height: 629px;
+  height: auto;
   width: 650px;
   border-radius: 8px;
   background-color: #ffffff;
@@ -68,16 +74,80 @@
   color: #2a60ca;
 }
 
-.paynow {
+.redeemContent_container {
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  height: calc(100% - 66px);
+}
+.input_label {
+}
+.input_label label {
+}
+.input_coin {
+}
+.input_coin input {
+  width: 100%;
+  border: 1px solid #7b08a4;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0;
+}
+.amount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.amount > span:first-child {
+}
+.amount > span:last-child {
+  margin: 0 10px;
+  display: inline-block;
   color: #7b08a4;
-  font-size: 14px;
+  font-size: 26px;
+}
+.amount > span > span {
+  display: inline-block;
+  font-size: 40px;
+  margin: 0 10px;
+}
+.payment_with {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin: 15px 0;
+}
+.payment_with span {
+  margin-right: 15px;
+  display: inline-block;
+  color: #7b08a4;
+}
+.payment_with img {
+  max-width: 160px;
+}
+.paynow {
+  color: #fff;
+  background-color: #7b08a4;
+  font-size: 15px;
   font-weight: 400;
   height: 31px;
-  width: 117px;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #7b08a4;
   display: flex;
+  padding: 20px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1100px) {
+}
+@media only screen and (max-width: 600px) {
+  .redeemPopup_inner_inner {
+    padding: 29px 15px;
+    height: auto;
+  }
 }

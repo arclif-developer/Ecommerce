@@ -14,18 +14,24 @@
 }
 
 .redeemPopup_inner {
-  height: 100%;
-  width: 100%;
-  max-width: 1530px;
-  padding: 0 5vw;
+  max-width: 100%;
+  padding: 0 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: inherit;
+  z-index: 4;
+}
+
+.redeemPopup_close {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
 }
 
 .redeemPopup_inner_inner {
-  height: 629px;
+  height: auto;
   width: 650px;
   border-radius: 8px;
   background-color: #ffffff;

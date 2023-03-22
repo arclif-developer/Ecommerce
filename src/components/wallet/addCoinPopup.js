@@ -10,7 +10,7 @@ const AddCoinPopup = () => {
   const setAddCoinPopup = Store.setAddCoinPopup;
   const coinRatio = Store.coinRatio;
 
-  console.log(coinRatio);
+  // console.log(coinRatio);
 
   const [coinCount, setCoinCount] = useState("");
   const handleChangeInput = (e) => {
@@ -27,6 +27,7 @@ const AddCoinPopup = () => {
 
   return (
     <div className={styles.redeemPopup_outer}>
+      <div className={styles.redeemPopup_close} onClick={() => setAddCoinPopup(false)}></div>
       <div className={styles.redeemPopup_inner}>
         <div className={styles.redeemPopup_inner_inner}>
           <div className={styles.redeemPopup_header}>
@@ -34,14 +35,30 @@ const AddCoinPopup = () => {
             <img src="/icon/closePopup.svg" alt="" onClick={() => setAddCoinPopup(false)} />
           </div>
           <div className={styles.redeemContent_container}>
+            <div className={styles.input_label}>
+              <label htmlFor="coinInput">Required Number of coin:</label>
+            </div>
             <div className={styles.input_coin}>
-              <span> Required Number of coin: </span>
-              <input type="number" placeholder="Count" min="1" defaultValue={coinCount} onChange={handleChangeInput} />
+              <input
+                id="coinInput"
+                type="number"
+                placeholder="Count"
+                min="1"
+                defaultValue={coinCount}
+                onChange={handleChangeInput}
+              />
             </div>
             <div className={styles.amount}>
-              Amount : Rs<span>{coinRatio * coinCount}</span>/-
+              <span> Amount : </span>
+              <span>
+                Rs<span>{coinRatio * coinCount}</span>/-
+              </span>
             </div>
             <div className={styles.paynow}>Pay now</div>
+            <div className={styles.payment_with}>
+              <span>Secure payment with</span>
+              <img src="img/wallet/Razorpay_logo.svg" alt="Razorpay" />
+            </div>
           </div>
         </div>
       </div>
