@@ -179,8 +179,12 @@ const CartPageMain = () => {
                         : order.push({
                             productId: items?.product_id._id,
                             quantity: items?.quantity,
-                            seller: "admin",
-                            amount: items?.quantity * items?.product_id?.mrp,
+                            admin: true,
+                            amount:
+                              Math.trunc(
+                                items?.product_id?.mrp -
+                                  (items?.product_id?.mrp * items?.product_id?.discount_rate) / 100
+                              ) * items?.quantity,
                           })}
                     </>
                   );

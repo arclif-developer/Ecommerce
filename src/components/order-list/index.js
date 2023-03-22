@@ -11,7 +11,7 @@ import backend from "@/global/backend";
 
 export default function OrderListMain() {
   const [placedOrders, setPlacedOrders] = useState([]);
-  const [confirm, setConfirm] = useState(false);
+  const [confirmId, setConfirmId] = useState([]);
 
   async function getSellerPlacedOrder() {
     var token = localStorage.getItem("token");
@@ -44,8 +44,7 @@ export default function OrderListMain() {
     });
     const resp = await ApiResponse.json();
     if (resp.status === 200) {
-      setConfirm(true);
-      alert("Order Confirmed");
+      setConfirmId([...confirmId, id]);
     }
   }
 
@@ -58,7 +57,7 @@ export default function OrderListMain() {
   useEffect(() => {
     getSellerPlacedOrder();
   }, []);
-  console.log(placedOrders);
+
   return (
     <>
       {placedOrders.length > 0 ? (
@@ -102,7 +101,7 @@ export default function OrderListMain() {
                       </div>
                       <div className={styles.Line}></div>
                       <div className={styles.Three}>
-                        {items.confirm === true || confirm === true ? (
+                        {items.confirm === true || confirmId.includes(items?._id) ? (
                           <a className={styles.accepted}>Order Accepted</a>
                         ) : (
                           <a className={styles.accept} onClick={() => handleOrderAccept(items?._id)}>
