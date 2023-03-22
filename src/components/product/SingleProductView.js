@@ -43,7 +43,15 @@ const SingleProductView = () => {
   };
 
   const handleQuantity = (e) => {
-    setQuantity(parseInt(e.target.value));
+    if (e.target.value !== "") {
+      if (e.target.value > 0) {
+        setQuantity(parseInt(e.target.value));
+      } else {
+        setQuantity(parseInt(1));
+      }
+    } else {
+      setQuantity(parseInt(1));
+    }
   };
 
   const handleAddToCart = async () => {
@@ -143,7 +151,14 @@ const SingleProductView = () => {
                   </div>
                   <div className={styles.quantity}>
                     Qty
-                    <input type="number" onChange={handleQuantity} defaultValue={quantity} />
+                    <input
+                      type="number"
+                      min="1"
+                      // oninput={(quantity = Math.abs(quantity))}
+                      onChange={handleQuantity}
+                      defaultValue={quantity}
+                      // value={quantity}
+                    />
                     <span>{productDetail.unit}</span>
                     {/* <select onChange={handleQuantity}>
                       <option>1</option>

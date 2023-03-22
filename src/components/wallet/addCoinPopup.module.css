@@ -75,110 +75,79 @@
 }
 
 .redeemContent_container {
-  margin-top: 35px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.redeemContent_container_left {
+  padding: 0 15px;
   display: flex;
   flex-direction: column;
-  gap: 106px;
-}
-
-.circle_active {
-  background-color: #7b08a4;
-  height: 62px;
-  width: 62px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 500;
+  height: calc(100% - 66px);
 }
-
-.circle_noActive {
-  background-color: #ececec;
-  height: 62px;
-  width: 62px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #b1b1b1;
-  font-size: 16px;
-  font-weight: 500;
+.input_label {
 }
-
-.redeemContent_container_right {
+.input_label label {
+}
+.input_coin {
+}
+.input_coin input {
   width: 100%;
-  margin-left: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 130px;
+  border: 1px solid #7b08a4;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px 0;
 }
-
-.card_redeem {
-  width: 100%;
+.amount {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
-.card_redeem_left {
-  display: flex;
-  align-items: center;
-  gap: 25px;
+.amount > span:first-child {
 }
-
-.card_redeem_left > img {
-  height: 33px;
-  object-fit: contain;
-}
-
-.card_redeem_text {
-  display: flex;
-  flex-direction: column;
-}
-
-.card_redeem_text > h5 {
-  font-size: 16px;
-  font-weight: 400;
-  color: #181818;
-}
-
-.card_redeem_text > p {
-  color: #a6a6a6;
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.redeem_button {
+.amount > span:last-child {
+  margin: 0 10px;
+  display: inline-block;
   color: #7b08a4;
-  font-size: 14px;
+  font-size: 26px;
+}
+.amount > span > span {
+  display: inline-block;
+  font-size: 40px;
+  margin: 0 10px;
+}
+.payment_with {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  margin: 15px 0;
+}
+.payment_with span {
+  margin-right: 15px;
+  display: inline-block;
+  color: #7b08a4;
+}
+.payment_with img {
+  max-width: 160px;
+}
+.paynow {
+  color: #fff;
+  background-color: #7b08a4;
+  font-size: 15px;
   font-weight: 400;
   height: 31px;
-  width: 117px;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #7b08a4;
   display: flex;
+  padding: 20px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
 
-.create_button {
-  height: 31px;
-  width: 117px;
-  border-radius: 5px;
-  border: 1px solid #dbdbdb;
-  color: #dbdbdb;
-  font-size: 14px;
-  font-weight: 400;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: default;
+@media only screen and (max-width: 1100px) {
+}
+@media only screen and (max-width: 600px) {
+  .redeemPopup_inner_inner {
+    padding: 29px 15px;
+    height: auto;
+  }
 }

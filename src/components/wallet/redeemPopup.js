@@ -9,6 +9,7 @@ const RedeemPopup = () => {
 
   return (
     <div className={styles.redeemPopup_outer}>
+      <div className={styles.redeemPopup_close} onClick={() => setRedeemPopup(false)}></div>
       <div className={styles.redeemPopup_inner}>
         <div className={styles.redeemPopup_inner_inner}>
           <div className={styles.redeemPopup_header}>

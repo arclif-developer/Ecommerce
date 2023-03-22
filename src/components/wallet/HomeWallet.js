@@ -9,6 +9,7 @@ import moment from "moment";
 const HomeWallet = () => {
   const [Store] = useContext(StoreContext);
   const setRedeemPopup = Store.setRedeemPopup;
+  const setAddCoinPopup = Store.setAddCoinPopup;
   const coinBalance = Store.coinBalance;
   const setCoinBalance = Store.setCoinBalance;
   const walletHistory = Store.walletHistory;
@@ -33,12 +34,19 @@ const HomeWallet = () => {
     setCoinBalance(res?.data?.balance);
     setWalletHistory(res?.history);
   }
+
+  const [role, setRole] = useState("");
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      const role = localStorage.getItem("role");
+      setRole(role);
+    }
     getWalletData();
     if (!userId) {
       setUserId(localStorage.getItem("Id"));
     }
   }, []);
+
   return (
     <div className={styles.homeWallet_container}>
       <div className={styles.homeWallet_container_inner}>
@@ -57,10 +65,16 @@ const HomeWallet = () => {
               <h4>{coinBalance ? coinBalance : 0}</h4>
               <h5>Current Coin balance</h5>
             </div>
-            <div className={styles.right_coinBalance_card_content} onClick={() => setRedeemPopup(true)}>
-              Redeem Now
-            </div>
-            {/* <div className={styles.right_coinBalance_card_content}>+ Add Coin</div> */}
+
+            {role == "business" ? (
+              <div className={styles.right_coinBalance_card_content} onClick={() => setAddCoinPopup(true)}>
+                + Add Coin
+              </div>
+            ) : (
+              <div className={styles.right_coinBalance_card_content} onClick={() => setRedeemPopup(true)}>
+                Redeem Now
+              </div>
+            )}
           </div>
         </div>
         <div className={styles.transaction_container}>
@@ -81,12 +95,19 @@ const HomeWallet = () => {
                   Debit
                 </p>
               )}
-              {nav === "redeem" ? (
-                <p className={styles.navActive}>Redeem details</p>
+
+              {role == "business" ? (
+                ""
               ) : (
-                <p className={styles.navNoActive} onClick={() => setNav("redeem")}>
-                  Redeem details
-                </p>
+                <>
+                  {nav === "redeem" ? (
+                    <p className={styles.navActive}>Redeem details</p>
+                  ) : (
+                    <p className={styles.navNoActive} onClick={() => setNav("redeem")}>
+                      Redeem details
+                    </p>
+                  )}
+                </>
               )}
             </div>
             {nav === "coin" ? (
