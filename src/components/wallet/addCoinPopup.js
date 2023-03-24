@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 import { StoreContext } from "@/global/StoreContext";
 
 import styles from "./addCoinPopup.module.css";
+import backend from "@/global/backend";
+import { PulseLoader } from "react-spinners";
 
 const AddCoinPopup = () => {
   const [Store] = useContext(StoreContext);
@@ -12,16 +14,66 @@ const AddCoinPopup = () => {
 
   // console.log(coinRatio);
 
-  const [coinCount, setCoinCount] = useState("");
+  const [coinCount, setCoinCount] = useState(0);
+  const [loading, setloading] = useState(false);
+
   const handleChangeInput = (e) => {
-    if (e.target.value !== "") {
-      if (e.target.value > 0) {
-        setCoinCount(parseInt(e.target.value));
-      } else {
-        setCoinCount(parseInt(1));
-      }
+    if (e.target.value > 0) {
+      setCoinCount(parseInt(e.target.value));
     } else {
-      setCoinCount(parseInt(1));
+      setCoinCount(parseInt(0));
+    }
+  };
+
+  const handlePayment = async () => {
+    if (coinCount > 0) {
+      setloading(true);
+      const token = localStorage.getItem("token");
+      const orderResponse = await fetch(`${backend}/wallet/purchaseCoin`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-control-Allow-Origin": "*",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          amount: coinCount,
+        }),
+      });
+      const res = await orderResponse.json();
+      if (res.status === 200) {
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.async = true;
+        script.onload = () => {
+          const options = {
+            key: "rzp_test_iMKaW0U63x6w4O", // Enter the Key ID generated from the Dashboard
+            // amount: "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            currency: "INR",
+            name: "Arclif", //your business name
+            description: "Test Transaction",
+            image: "https://example.com/your_logo",
+            order_id: `${res?.data?.razorpay_order_id}`, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            callback_url: `${backend}/wallet/verify`,
+            prefill: {
+              name: "Gaurav Kumar", //your customer's name
+              email: "gaurav.kumar@example.com",
+              contact: "9000090000",
+            },
+            notes: {
+              address: "Razorpay Corporate Office",
+            },
+            theme: {
+              color: "#3399cc",
+            },
+          };
+          const rzp = new window.Razorpay(options);
+          rzp.open();
+        };
+        document.body.appendChild(script);
+      } else {
+        setloading(false);
+      }
     }
   };
 
@@ -54,7 +106,15 @@ const AddCoinPopup = () => {
                 Rs<span>{coinRatio * coinCount}</span>/-
               </span>
             </div>
-            <div className={styles.paynow}>Pay now</div>
+            {loading === true ? (
+              <div className={styles.paynow} onClick={handlePayment}>
+                <PulseLoader color="#ffffff" />
+              </div>
+            ) : (
+              <div className={styles.paynow} onClick={handlePayment}>
+                Pay now
+              </div>
+            )}
             <div className={styles.payment_with}>
               <span>Secure payment with</span>
               <img src="img/wallet/Razorpay_logo.svg" alt="Razorpay" />
