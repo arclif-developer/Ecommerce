@@ -7,6 +7,8 @@ const RedeemPopup = () => {
   const [Store] = useContext(StoreContext);
   const setRedeemPopup = Store.setRedeemPopup;
 
+  console.log(setRedeemPopup);
+
   return (
     <div className={styles.redeemPopup_outer}>
       <div className={styles.redeemPopup_close} onClick={() => setRedeemPopup(false)}></div>
