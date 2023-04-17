@@ -146,7 +146,7 @@ const CartPageMain = () => {
       setGrandTotal(total - discountTotal);
     }
   }, [cartItems]);
-  console.log(order);
+  console.log(grandTotal);
 
   return (
     <div className={styles.cartPage}>

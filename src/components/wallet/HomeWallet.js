@@ -46,6 +46,7 @@ const HomeWallet = () => {
       setUserId(localStorage.getItem("Id"));
     }
   }, []);
+  console.log(walletHistory);
 
   return (
     <div className={styles.homeWallet_container}>
@@ -133,6 +134,18 @@ const HomeWallet = () => {
                               <p>Credited coin by {moment(`${items?.transactionDate}`).format("DD-M-YYYY")} </p>
                             </div>
                             <span>+{items?.coinAmount}</span>
+                          </div>
+                        </React.Fragment>
+                      );
+                    } else if (items?.captured) {
+                      return (
+                        <React.Fragment key={index}>
+                          <div className={styles.history_container_table_row}>
+                            <div className={styles.history_container_table_left}>
+                              <h3>Purchased coin from ARCLIF</h3>
+                              <p>Credited coin by {moment(`${items?.transactionDate}`).format("DD-M-YYYY")} </p>
+                            </div>
+                            <span>+{items?.amount}</span>
                           </div>
                         </React.Fragment>
                       );
