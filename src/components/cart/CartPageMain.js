@@ -160,13 +160,13 @@ const CartPageMain = () => {
             <div className={styles.cartPage_left_products_container}>
               {cartItems?.map((items, index) => {
                 {
-                  order[index]?.productId === items?.product_id._id ? (
+                  order[index]?.productId === items?.product_id?._id ? (
                     ""
                   ) : (
                     <>
                       {items?.product_id?.seller_id
                         ? order.push({
-                            productId: items?.product_id._id,
+                            productId: items?.product_id?._id,
                             quantity: items?.quantity,
                             seller_id: items?.product_id?.seller_id,
                             amount:
@@ -176,7 +176,7 @@ const CartPageMain = () => {
                               ) * items?.quantity,
                           })
                         : order.push({
-                            productId: items?.product_id._id,
+                            productId: items?.product_id?._id,
                             quantity: items?.quantity,
                             admin: true,
                             amount:
