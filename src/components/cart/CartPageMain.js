@@ -169,7 +169,7 @@ const CartPageMain = () => {
                         ? order.push({
                             productId: items?.product_id._id,
                             quantity: items?.quantity,
-                            seller_id: items?.product_id.seller_id,
+                            seller_id: items?.product_id?.seller_id,
                             amount:
                               Math.trunc(
                                 items?.product_id?.mrp -
