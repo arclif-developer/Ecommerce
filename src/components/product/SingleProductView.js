@@ -21,10 +21,11 @@ const SingleProductView = () => {
   const [auth, setAuth] = useState(true);
   // const [userId, setUserId] = useState();
   const [Iscart, setIscart] = useState(false);
+  const [subCategoryId, setSubCategoryId] = useState("");
+  const [similarProducts, setSimilarProducts] = useState();
 
   // PRODUCTS DETAILS GET API CALLING FUNCTION
   async function getProductDetailFn(id) {
-    console.log(userId);
     const ApiResponse = await fetch(`${backend}/product/details/${id}?user_id=${userId}`, {
       method: "GET",
       headers: {
@@ -36,6 +37,19 @@ const SingleProductView = () => {
     setProductDetail(res?.productDta);
     setIscart(res?.cart);
     setImages(res?.productDta?.thumbnail);
+    setSubCategoryId(res?.productDta?.subcategory_id?._id);
+  }
+
+  async function getSimilarProducts() {
+    const fetchApi = await fetch(`${backend}/product/catelogOrSubcatelog/${subCategoryId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    const response = await fetchApi.json();
+    setSimilarProducts(response?.products);
   }
 
   const handleImages = (images) => {
@@ -94,6 +108,12 @@ const SingleProductView = () => {
       getProductDetailFn(index);
     }
   }, [index, userId]);
+
+  useEffect(() => {
+    if (subCategoryId != "") {
+      getSimilarProducts();
+    }
+  }, [subCategoryId]);
   return (
     <>
       {productDetail ? (
@@ -234,17 +254,30 @@ const SingleProductView = () => {
                 you need. And of course, the right extras can also help make things more enjoyable.
               </p>
             </div> */}
-            {/* <div className={styles.single_bottom}>
+            <div className={styles.single_bottom}>
               <div className={styles.single_bottom_title}>
                 <h3>Similar products</h3>
               </div>
               <div className={styles.single_bottom_products}>
-                <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
-                <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
-                <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
-                <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
+                {similarProducts?.length > 0
+                  ? similarProducts.map((items) => {
+                      return (
+                        <>
+                          {items?._id != index ? (
+                            <img
+                              src={items.thumbnail}
+                              alt="similarProducts"
+                              onClick={() => router.push(`/product/${items._id}`)}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </>
+                      );
+                    })
+                  : "No Similar Products"}
               </div>
-            </div> */}
+            </div>
           </div>
         </>
       ) : (
