@@ -184,14 +184,14 @@ const SingleProductView = () => {
                 </p>
                 <div className={styles.ratings}></div>
                 <div className={styles.ship_date}>For immediate delivery, Contact us.</div>
-                <div className={styles.pincodeCheck}>
+                {/* <div className={styles.pincodeCheck}>
                   <input placeholder="Enter the pincode" type="tel" />
                   <div className={styles.checkButton}>Check</div>
                 </div>
                 <div className={styles.pincodeEnter}>
                   <img src="/icon/delivery.svg" alt="" />
                   Please enter pin code to check home delivery availability.
-                </div>
+                </div> */}
                 <div className={styles.button_container}>
                   {Iscart === true ? (
                     <>
@@ -213,7 +213,7 @@ const SingleProductView = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.single_center}>
+            {/* <div className={styles.single_center}>
               <div className={styles.single_center_title}>
                 <h3>More details</h3>
               </div>
@@ -233,8 +233,8 @@ const SingleProductView = () => {
                 somewhere you will spend long hours, so it’s important to get the comfort, ergonomics and functionality
                 you need. And of course, the right extras can also help make things more enjoyable.
               </p>
-            </div>
-            <div className={styles.single_bottom}>
+            </div> */}
+            {/* <div className={styles.single_bottom}>
               <div className={styles.single_bottom_title}>
                 <h3>Similar products</h3>
               </div>
@@ -244,7 +244,7 @@ const SingleProductView = () => {
                 <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
                 <img src="http://sc04.alicdn.com/kf/H2949a021ace94a4cb1878de02cb32168H.jpg" alt="" />
               </div>
-            </div>
+            </div> */}
           </div>
         </>
       ) : (
