@@ -102,7 +102,7 @@ const CartPageMain = () => {
           script.async = true;
           script.onload = () => {
             const options = {
-              key: "rzp_test_iMKaW0U63x6w4O", // Enter the Key ID generated from the Dashboard
+              key: process.env.RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
               // amount: "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
               currency: "INR",
               name: "Arclif", //your business name
@@ -132,7 +132,6 @@ const CartPageMain = () => {
       alert("Please select address");
     }
   };
-
   useEffect(() => {
     if (cartItems.length > 0) {
       const price = cartItems.map((products) => products?.product_id?.mrp * products?.quantity);
