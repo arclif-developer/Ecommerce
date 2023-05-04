@@ -29,6 +29,9 @@ export const StoreContextProvider = (props) => {
   const [deliveryAddress, setDeliveryAddress] = useState([]);
   const [coinBalance, setCoinBalance] = useState(0);
   const [walletHistory, setWalletHistory] = useState([]);
+  const [myOrders, setMyorders] = useState([]);
+  const [filtermyOrders, setFiltermyOrders] = useState([]);
+  const [filteredmyOrders, setFilteredmyOrders] = useState([]);
   // Store Shijin end
 
   const Store = {
@@ -76,6 +79,12 @@ export const StoreContextProvider = (props) => {
     setCoinBalance,
     walletHistory,
     setWalletHistory,
+    myOrders,
+    setMyorders,
+    filtermyOrders,
+    setFiltermyOrders,
+    filteredmyOrders,
+    setFilteredmyOrders,
     // Store Shijin end
   };
   return <StoreContext.Provider value={[Store]}>{props.children}</StoreContext.Provider>;
