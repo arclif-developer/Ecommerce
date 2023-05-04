@@ -1,8 +1,58 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./MyOrder.module.css";
+import backend from "@/global/backend";
+import { StoreContext } from "@/global/StoreContext";
+import moment from "moment";
 
 const MyOrder = () => {
+  const [Store] = useContext(StoreContext);
+  const setMyorders = Store.setMyorders;
+  const myOrders = Store.myOrders;
+  const filtermyOrders = Store.filtermyOrders;
+  const setFiltermyOrders = Store.setFiltermyOrders;
+  const filteredmyOrders = Store.filteredmyOrders;
+  const setFilteredmyOrders = Store.setFilteredmyOrders;
+
+  async function getMyOrders() {
+    const token = localStorage.getItem("token");
+    if (token) {
+      const apiCall = await fetch(`${backend}/order/user_order_history`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = await apiCall.json();
+      setMyorders(res);
+      console.log(res);
+    }
+  }
+
+  const handleCheckBox = (event) => {
+    if (event.target.checked) {
+      setFiltermyOrders((values) => [...values, event.target.value]);
+    } else {
+      setFiltermyOrders((values) => values.filter((items) => items !== event.target.value));
+    }
+  };
+  useEffect(() => {
+    getMyOrders();
+  }, []);
+
+  useEffect(() => {
+    if (filtermyOrders.length > 0) {
+      const filteredOrders = myOrders.filter((order) => {
+        return order.products.some((products) => filtermyOrders.includes(products.delivery_status));
+      });
+      setFilteredmyOrders(filteredOrders);
+    } else {
+      setFilteredmyOrders(myOrders);
+    }
+  }, [filtermyOrders, myOrders]);
+
   return (
     <div className={styles.myOrder_outer}>
       <div className={styles.myOrder_inner}>
@@ -13,22 +63,46 @@ const MyOrder = () => {
                 <h4>Filter now</h4>
                 <p>Order status on below</p>
               </div>
-              <span>Clear all</span>
+              <span onClick={() => setFiltermyOrders([])}>Clear all</span>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input id="onTheWay" type="checkbox" />
+              <input
+                id="onTheWay"
+                type="checkbox"
+                value="SHIPPED"
+                checked={filtermyOrders.includes("SHIPPED")}
+                onChange={handleCheckBox}
+              />
               <label htmlFor="onTheWay">On the way</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input id="Delivered" type="checkbox" />
+              <input
+                id="Delivered"
+                type="checkbox"
+                value="DELIVERED"
+                checked={filtermyOrders.includes("DELIVERED")}
+                onChange={handleCheckBox}
+              />
               <label htmlFor="Delivered">Delivered</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input id="Cancelled" type="checkbox" />
+              <input
+                id="Cancelled"
+                type="checkbox"
+                value="CANCELED"
+                checked={filtermyOrders.includes("CANCELED")}
+                onChange={handleCheckBox}
+              />
               <label htmlFor="Cancelled">Cancelled</label>
             </div>
             <div className={styles.myOrder_left_table_row}>
-              <input id="Returned" type="checkbox" />
+              <input
+                id="Returned"
+                type="checkbox"
+                value="RETURNED"
+                checked={filtermyOrders.includes("RETURNED")}
+                onChange={handleCheckBox}
+              />
               <label htmlFor="Returned">Returned</label>
             </div>
           </div>
@@ -64,55 +138,80 @@ const MyOrder = () => {
             </div>
           </div>
           <div className={styles.myOrder_right_productsContainer}>
-            <div className={styles.myOrder_right_productCard}>
-              <img
-                src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c29mYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60 "
-                alt=""
-              />
-              <div className={styles.myOrder_right_productCard_details}>
-                <div className={styles.myOrder_right_productCard_left}>
-                  <p>The Sleep Company SmartGRID High-Back ...</p>
-                  <span>Order date : 20-10-2023</span>
-                  <div className={styles.priceContainer}>
-                    <h5>₹349</h5>
-                    <p>₹1,499</p>
-                    <span>76% off</span>
-                  </div>
-                </div>
-                <div className={styles.myOrder_right_productCard_right}>
-                  <span>
-                    <img src="/img/profile/greenTick.svg" alt="" />
-                    Delivered on Oct 07, 2022
-                  </span>
-                  <p>Your item has been delivered</p>
-                </div>
-              </div>
-            </div>
-
-            <div className={styles.myOrder_right_productCard}>
-              <img
-                src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c29mYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60 "
-                alt=""
-              />
-              <div className={styles.myOrder_right_productCard_details}>
-                <div className={styles.myOrder_right_productCard_left}>
-                  <p>The Sleep Company SmartGRID High-Back ...</p>
-                  <span>Order date : 20-10-2023</span>
-                  <div className={styles.priceContainer}>
-                    <h5>₹349</h5>
-                    <p>₹1,499</p>
-                    <span>76% off</span>
-                  </div>
-                </div>
-                <div className={styles.myOrder_right_productCard_right}>
-                  <span>
-                    <img src="/img/profile/greenTick.svg" alt="" />
-                    Delivered on Oct 07, 2022
-                  </span>
-                  <p>Your item has been delivered</p>
-                </div>
-              </div>
-            </div>
+            {filteredmyOrders.length > 0 ? (
+              <>
+                {filteredmyOrders.map((orders) =>
+                  orders?.products.map((items) => {
+                    return (
+                      <div className={styles.myOrder_right_productCard}>
+                        <img src={items?.productId?.thumbnail} alt="productImages" />
+                        <div className={styles.myOrder_right_productCard_details}>
+                          <div className={styles.myOrder_right_productCard_left}>
+                            <p>{items?.productId?.name}</p>
+                            <span>Order date : {moment(orders?.createdAt).format("l")}</span>
+                            <div className={styles.priceContainer}>
+                              {items?.productId?.discount_rate ? (
+                                <>
+                                  <h5>
+                                    ₹
+                                    {Math.trunc(
+                                      items?.productId?.mrp -
+                                        (items?.productId?.mrp * items?.productId?.discount_rate) / 100
+                                    ) * items?.quantity}
+                                  </h5>
+                                  <p>₹{items?.productId?.mrp}</p>
+                                  <span>{items?.productId?.discount_rate}% off</span>
+                                </>
+                              ) : (
+                                <h5>₹ {items?.productId?.mrp}</h5>
+                              )}
+                            </div>
+                          </div>
+                          <div className={styles.myOrder_right_productCard_right}>
+                            {items?.delivery_status === "DELIVERED" ? (
+                              <>
+                                <span>
+                                  <img src="/img/profile/greenTick.svg" alt="" />
+                                  {items?.delivery_status} on {moment(orders?.updatedAt).format("LL")}
+                                </span>
+                                <p>
+                                  Your item has been{" "}
+                                  <span style={{ textTransform: "lowercase" }}>{items?.delivery_status}</span>
+                                </p>
+                              </>
+                            ) : items?.delivery_status === "SHIPPED" ? (
+                              <>
+                                <span>
+                                  <img src="/img/profile/truck.png" alt="" />
+                                  {items?.delivery_status} on {moment(orders?.updatedAt).format("LL")}
+                                </span>
+                                <p>
+                                  Your item has been{" "}
+                                  <span style={{ textTransform: "lowercase" }}>{items?.delivery_status}</span>
+                                </p>
+                                <p style={{ color: "green" }}>
+                                  Expected Delivery :{" "}
+                                  <span style={{ textTransform: "lowercase" }}>
+                                    {moment(items.delivery_date).format("ll")}
+                                  </span>
+                                </p>
+                              </>
+                            ) : (
+                              <p>
+                                Your order is{" "}
+                                <span style={{ textTransform: "lowercase" }}>{items.delivery_status}</span>...
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </>
+            ) : (
+              "No Results Available"
+            )}
           </div>
         </div>
       </div>
