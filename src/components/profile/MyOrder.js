@@ -141,9 +141,9 @@ const MyOrder = () => {
             {filteredmyOrders?.length > 0 ? (
               <>
                 {filteredmyOrders.map((orders) =>
-                  orders?.products.map((items) => {
+                  orders?.products.map((items, index) => {
                     return (
-                      <div className={styles.myOrder_right_productCard}>
+                      <div key={index} className={styles.myOrder_right_productCard}>
                         <img src={items?.productId?.thumbnail} alt="productImages" />
                         <div className={styles.myOrder_right_productCard_details}>
                           <div className={styles.myOrder_right_productCard_left}>
